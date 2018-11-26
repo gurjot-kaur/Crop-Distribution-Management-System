@@ -18,7 +18,8 @@ import javax.swing.JPanel;
 public class Manufacturer_DistributorRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new Manufacturer_DistributorWorkAreaJPanel(userProcessContainer, enterprise);
+       // return new Manufacturer_DistributorWorkAreaJPanel(userProcessContainer, enterprise);
+        return null;
     }
 
 }

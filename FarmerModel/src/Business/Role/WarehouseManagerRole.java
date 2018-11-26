@@ -18,7 +18,8 @@ import javax.swing.JPanel;
 public class WarehouseManagerRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new WarehouseManagerWorkAreaJPanel(userProcessContainer, enterprise);
+        //return new WarehouseManagerWorkAreaJPanel(userProcessContainer, enterprise);
+        return null;
     }
 
 }
