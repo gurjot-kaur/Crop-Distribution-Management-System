@@ -2,7 +2,12 @@
 
 package userinterface.AdministrativeRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
+import Business.Organization.USFDAdminOrganization;
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.MessageRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -14,13 +19,34 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     Enterprise enterprise;
-    /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+     private EcoSystem business;
+    private UserAccount userAccount;
+    private USFDAdminOrganization organisation;
+    //private Organization organisation;
+    MessageRequest request;
+ 
+   /* public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise) {
+       initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.business = business;
+        this.organisation = (USFDAdminOrganization)organization;
+        
+        valueLabel.setText(enterprise.getName());
+    }*/
+
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, USFDAdminOrganization usfdAdminOrganization, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
+        this.userAccount = account;
+        this.organisation = usfdAdminOrganization;
         valueLabel.setText(enterprise.getName());
     }
+
+ 
+
+   
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -36,6 +62,8 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         manageOrganizationJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        workArea = new javax.swing.JButton();
+        processRequest = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -73,6 +101,22 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
         valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+
+        workArea.setText("Work Area");
+        workArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                workAreaActionPerformed(evt);
+            }
+        });
+        add(workArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+
+        processRequest.setText("Process request");
+        processRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processRequestActionPerformed(evt);
+            }
+        });
+        add(processRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
@@ -101,6 +145,21 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
+
+    private void workAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workAreaActionPerformed
+
+        AdminRequestWorkAreaJPanel manageOrganizationJPanel = new AdminRequestWorkAreaJPanel(userProcessContainer,userAccount, organisation,enterprise);
+        userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_workAreaActionPerformed
+
+    private void processRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processRequestActionPerformed
+       ProcessWorkRequestJPanel manageOrganizationJPanel = new ProcessWorkRequestJPanel(userProcessContainer,request);
+        userProcessContainer.add("manageOrganizationJPanel", manageOrganizationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_processRequestActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -108,8 +167,10 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton manageEmployeeJButton;
     private javax.swing.JButton manageOrganizationJButton;
+    private javax.swing.JButton processRequest;
     private javax.swing.JButton userJButton;
     private javax.swing.JLabel valueLabel;
+    private javax.swing.JButton workArea;
     // End of variables declaration//GEN-END:variables
     
 }

@@ -35,7 +35,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     private void populateCombo(){
         organizationJComboBox.removeAllItems();
         for (Type type : Organization.Type.values()){
-            if (!type.getValue().equals(Type.USFDAdmin.getValue()))
+            if (!type.getValue().equals(Type.EnterpriseAdmin.getValue()))
                 organizationJComboBox.addItem(type);
         }
     }

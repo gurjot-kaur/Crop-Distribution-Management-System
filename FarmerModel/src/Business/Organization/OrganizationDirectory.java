@@ -29,6 +29,14 @@ public class OrganizationDirectory {
             organization = new FarmerOrganization();
             organizationList.add(organization);
         }
+        else if (type.getValue().equals(Type.USFDAdmin.getValue())){
+            organization = new USFDAdminOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.ManufacturerAdmin.getValue())){
+            organization = new ManufacturerAdminOrganization();
+            organizationList.add(organization);
+        }
         else if (type.getValue().equals(Type.Customer.getValue())){
             organization = new CustomerOrganization();
             organizationList.add(organization);
