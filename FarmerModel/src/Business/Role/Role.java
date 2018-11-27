@@ -6,7 +6,6 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Entities.ProduceDirectory;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -41,12 +40,9 @@ public abstract class Role {
         public String toString() {
             return value;
         }
-        
-        
     }
     
-    public abstract JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory
-    );
+    public abstract JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise, EcoSystem business);
 
     @Override
     public String toString() {
