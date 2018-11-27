@@ -6,10 +6,11 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Entities.ProduceDirectory;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
 import javax.swing.JPanel;
+import userinterface.USFDAdministrativeRole.USFDAdminWorkAreaJPanel;
 
 /**
  *
@@ -18,8 +19,12 @@ import javax.swing.JPanel;
 public class USFDAdminRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
+
         return new USFDAdminWorkAreaJPanel(userProcessContainer, enterprise);
+
+        
+
     }
 
     

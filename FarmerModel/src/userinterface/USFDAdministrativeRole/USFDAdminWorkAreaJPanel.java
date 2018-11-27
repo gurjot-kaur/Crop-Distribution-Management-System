@@ -1,8 +1,8 @@
 
 
-package userinterface.ManufacturuerAdminRole;
+package userinterface.USFDAdministrativeRole;
 
-import userinterface.AdministrativeRole.*;
+import userinterface.USFDAdministrativeRole.*;
 import Business.Enterprise.Enterprise;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -11,12 +11,12 @@ import javax.swing.JPanel;
  *
  * @author  raunak
  */
-public class AdminWorkAreaJPanel extends javax.swing.JPanel {
+public class USFDAdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
     Enterprise enterprise;
     /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
+    public USFDAdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;

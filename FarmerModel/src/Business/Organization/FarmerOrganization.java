@@ -5,6 +5,7 @@
  */
 package Business.Organization;
 
+import Business.Entities.ProduceDirectory;
 import Business.Role.FarmerRole;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -14,9 +15,14 @@ import java.util.ArrayList;
  * @author gurjo
  */
 public class FarmerOrganization extends Organization {
+    
+   
+    
     public FarmerOrganization(){
         super(Type.Farmer.getValue());
+       
     }
+    
     
     @Override
     public ArrayList<Role> getSupportedRole() {
@@ -24,4 +30,11 @@ public class FarmerOrganization extends Organization {
         roles.add(new FarmerRole());
         return roles;
     }
+
+
+   
+    
+    
+    
+    
 }

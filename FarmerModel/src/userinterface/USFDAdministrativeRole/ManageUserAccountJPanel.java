@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.ManufacturuerAdminRole;
+package userinterface.USFDAdministrativeRole;
 
-import userinterface.AdministrativeRole.*;
+import userinterface.USFDAdministrativeRole.*;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -132,8 +132,10 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(userJTable);
-        userJTable.getColumnModel().getColumn(0).setResizable(false);
-        userJTable.getColumnModel().getColumn(1).setResizable(false);
+        if (userJTable.getColumnModel().getColumnCount() > 0) {
+            userJTable.getColumnModel().getColumn(0).setResizable(false);
+            userJTable.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         jLabel2.setText("Password");
 
