@@ -4,6 +4,7 @@
  */
 package Business.Employee;
 
+import Business.Entities.ProduceDirectory;
 import java.util.ArrayList;
 
 /**
@@ -13,9 +14,11 @@ import java.util.ArrayList;
 public class EmployeeDirectory {
     
     private ArrayList<Employee> employeeList;
-
+    
     public EmployeeDirectory() {
         employeeList = new ArrayList();
+         
+    
     }
 
     public ArrayList<Employee> getEmployeeList() {
@@ -28,4 +31,8 @@ public class EmployeeDirectory {
         employeeList.add(employee);
         return employee;
     }
+    
+    
+    
 }
+

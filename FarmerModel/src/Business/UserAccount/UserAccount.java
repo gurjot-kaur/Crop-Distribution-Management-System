@@ -5,6 +5,7 @@
 package Business.UserAccount;
 
 import Business.Employee.Employee;
+import Business.Entities.ProduceDirectory;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 
@@ -19,9 +20,11 @@ public class UserAccount {
     private Employee employee;
     private Role role;
     private WorkQueue workQueue;
+   
 
     public UserAccount() {
         workQueue = new WorkQueue();
+        
     }
     
     
