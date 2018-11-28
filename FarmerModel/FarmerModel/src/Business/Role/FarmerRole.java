@@ -20,8 +20,8 @@ import userinterface.FarmerRole.FarmerWorkAreaPanel;
  */
 public class FarmerRole extends Role {
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
-        return new FarmerWorkAreaPanel(userProcessContainer,account, (FarmerOrganization)organization,enterprise, produceDirectory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
+        return new FarmerWorkAreaPanel(userProcessContainer,account,organization,business);
     }
 
 }

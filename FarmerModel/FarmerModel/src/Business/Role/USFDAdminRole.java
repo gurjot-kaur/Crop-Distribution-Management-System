@@ -20,7 +20,7 @@ import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
 public class USFDAdminRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
         return new AdminWorkAreaJPanel(userProcessContainer,account, (USFDAdminOrganization)organization,enterprise);
         
     }

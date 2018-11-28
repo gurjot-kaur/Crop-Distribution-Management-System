@@ -5,6 +5,7 @@
  */
 package userinterface.FarmerRole;
 
+import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Entities.Produce;
 import Business.Entities.ProduceDirectory;
@@ -12,6 +13,8 @@ import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
 import static Business.Organization.Organization.Type.Farmer;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.MessageRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -24,22 +27,22 @@ public class FarmerWorkAreaPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private FarmerOrganization farmerOrganization;
-    private Enterprise enterprise;
+    private EcoSystem business;
     private UserAccount userAccount;
-    private ProduceDirectory produceDirectory;
+    
   
 
-    public FarmerWorkAreaPanel(JPanel userProcessContainer, UserAccount account, FarmerOrganization organization, Enterprise enterprise,ProduceDirectory produceDirectory) {
+    public FarmerWorkAreaPanel(JPanel userProcessContainer, UserAccount account,  Organization organization, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.farmerOrganization = organization;
-        this.enterprise = enterprise;
+        this.farmerOrganization = (FarmerOrganization)organization;
+        this.business = business;
         this.userAccount = account;
-        this.produceDirectory = produceDirectory;
+        
         populateTable();
     }
     
-    private void populateTable(){
+    private void populateTablecrops(){
         
         DefaultTableModel model = (DefaultTableModel) produceTable.getModel();
         
@@ -76,8 +79,11 @@ public class FarmerWorkAreaPanel extends javax.swing.JPanel {
         priceText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         produceTable = new javax.swing.JTable();
-        addCropButton = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        workRequestJTable = new javax.swing.JTable();
+        refreshJButton = new javax.swing.JButton();
+        assignJButton = new javax.swing.JButton();
+        processJButton = new javax.swing.JButton();
 
         jLabel1.setText("Crop Name");
 
@@ -98,17 +104,52 @@ public class FarmerWorkAreaPanel extends javax.swing.JPanel {
             produceTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        addCropButton.setText("Add");
-        addCropButton.addActionListener(new java.awt.event.ActionListener() {
+        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Message", "Sender", "Receiver", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(workRequestJTable);
+
+        refreshJButton.setText("Refresh");
+        refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addCropButtonActionPerformed(evt);
+                refreshJButtonActionPerformed(evt);
             }
         });
 
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        assignJButton.setText("Assign to me");
+        assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                assignJButtonActionPerformed(evt);
+            }
+        });
+
+        processJButton.setText("Process");
+        processJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processJButtonActionPerformed(evt);
             }
         });
 
@@ -124,17 +165,26 @@ public class FarmerWorkAreaPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addCropButton, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                     .addComponent(nameText)
                     .addComponent(quantityText)
                     .addComponent(priceText, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(backButton)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(assignJButton)
+                        .addGap(104, 104, 104)
+                        .addComponent(processJButton)
+                        .addGap(144, 144, 144))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(217, 217, 217))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(refreshJButton)
+                        .addGap(186, 186, 186))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,43 +204,87 @@ public class FarmerWorkAreaPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(priceText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(58, 58, 58)
-                .addComponent(addCropButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
-                .addComponent(backButton)
-                .addGap(63, 63, 63))
+                .addGap(87, 87, 87)
+                .addComponent(refreshJButton)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(processJButton)
+                    .addComponent(assignJButton))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backButtonActionPerformed
+    private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
 
-    private void addCropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCropButtonActionPerformed
-        // TODO add your handling code here:
-        Produce produce = produceDirectory.addProduce();
-        produce.setCropName(nameText.getText());
-        produce.setCropQuantity(Integer.parseInt(quantityText.getText()));
-        produce.setCropPrice(Double.parseDouble(priceText.getText()));
-        
+        int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow < 0){
+            return;
+        }
+
+        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        request.setReceiver(userAccount);
+        request.setStatus("Pending");
         populateTable();
-    }//GEN-LAST:event_addCropButtonActionPerformed
+
+    }//GEN-LAST:event_assignJButtonActionPerformed
+
+    private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
+
+        int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow < 0){
+            return;
+        }
+
+        MessageRequest request = (MessageRequest)workRequestJTable.getValueAt(selectedRow, 0);
+
+        request.setStatus("Processing");
+
+        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
+        userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+
+    }//GEN-LAST:event_processJButtonActionPerformed
+
+    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
+        populateTable();
+    }//GEN-LAST:event_refreshJButtonActionPerformed
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addCropButton;
-    private javax.swing.JButton backButton;
+    private javax.swing.JButton assignJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField nameText;
     private javax.swing.JTextField priceText;
+    private javax.swing.JButton processJButton;
     private javax.swing.JTable produceTable;
     private javax.swing.JTextField quantityText;
+    private javax.swing.JButton refreshJButton;
+    private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
+
+    public void populateTable(){
+        DefaultTableModel model = (DefaultTableModel)workRequestJTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for(WorkRequest request : farmerOrganization.getWorkQueue().getWorkRequestList()){
+            Object[] row = new Object[4];
+            row[0] = request;
+            row[1] = request.getSender().getEmployee().getName();
+            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[3] = request.getStatus();
+            
+            model.addRow(row);
+        }
+    }
 }
