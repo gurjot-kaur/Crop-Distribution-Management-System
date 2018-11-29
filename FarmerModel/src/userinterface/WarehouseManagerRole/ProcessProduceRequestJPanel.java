@@ -2,10 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.AdministrativeRole;
+package userinterface.WarehouseManagerRole;
 
 
-import Business.WorkQueue.MessageRequest;
+import Business.WorkQueue.ProduceRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -14,14 +14,14 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
+public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
-    MessageRequest request;
+    ProduceRequest request;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessWorkRequestJPanel(JPanel userProcessContainer, MessageRequest request) {
+    public ProcessProduceRequestJPanel(JPanel userProcessContainer, ProduceRequest request) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
@@ -96,9 +96,8 @@ public class ProcessWorkRequestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        AdminRequestWorkAreaJPanel dwjp = (AdminRequestWorkAreaJPanel) component;
-       // AdminWorkAreaJPanel dwjp = (AdminWorkAreaJPanel) component;
-        dwjp.populateTable();
+        WarehouseWorkAreaJPanel wwjp = (WarehouseWorkAreaJPanel) component;
+        wwjp.populateTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed

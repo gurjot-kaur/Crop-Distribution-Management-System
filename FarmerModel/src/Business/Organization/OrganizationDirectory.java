@@ -4,6 +4,7 @@
  */
 package Business.Organization;
 
+import Business.Enterprise.ManufacturerEnterprise;
 import Business.Organization.Organization.Type;
 import java.util.ArrayList;
 
@@ -29,38 +30,28 @@ public class OrganizationDirectory {
             organization = new FarmerOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.USFDAdmin.getValue())){
-            organization = new USFDAdminOrganization();
-            organizationList.add(organization);
-        }
-        else if (type.getValue().equals(Type.ManufacturerAdmin.getValue())){
-            organization = new ManufacturerAdminOrganization();
-            organizationList.add(organization);
-        }
         else if (type.getValue().equals(Type.Customer.getValue())){
             organization = new CustomerOrganization();
             organizationList.add(organization);
         }
-         else if (type.getValue().equals(Type.Supplier.getValue())){
-            organization = new SupplierOrganization();
-            organizationList.add(organization);
-        }
+        
          else if (type.getValue().equals(Type.Warehouse.getValue())){
             organization = new WarehouseOrganization();
             organizationList.add(organization);
         }
-         else if (type.getValue().equals(Type.USFDDistributor.getValue())){
-            organization = new USFD_DistributorOrganization();
+        else if (type.getValue().equals(Type.ManufacturerProducer.getValue())){
+            organization = new ManufacturerProductionOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.Production.getValue())){
-            organization = new ProductionOrganization();
+        else if (type.getValue().equals(Type.ManufacturerSupplier.getValue())){
+            organization = new ManufacturerSupplierOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.ManufacturerDistributor.getValue())){
-            organization = new Manufacturer_DistributorOrganization();
+         else if (type.getValue().equals(Type.OfficeStaff.getValue())){
+            organization = new StaffOrganization();
             organizationList.add(organization);
         }
+        
         return organization;
     }
 }

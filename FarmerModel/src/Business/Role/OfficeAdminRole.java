@@ -7,21 +7,19 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-import Business.Organization.USFDAdminOrganization;
 import Business.UserAccount.UserAccount;
-import javax.swing.JPanel;
 import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
+import javax.swing.JPanel;
 
 /**
  *
  * @author raunak
  */
-public class USFDAdminRole extends Role{
+public class OfficeAdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new AdminWorkAreaJPanel(userProcessContainer,account, (USFDAdminOrganization)organization,enterprise);
-        
+        return new AdminWorkAreaJPanel(userProcessContainer, enterprise);
     }
 
     

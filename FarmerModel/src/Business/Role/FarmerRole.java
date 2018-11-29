@@ -11,7 +11,7 @@ import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.FarmerRole.FarmerWorkAreaPanel;
+import userinterface.FarmerRole.FarmerWorkAreaJPanel;
 
 /**
  *
@@ -20,7 +20,7 @@ import userinterface.FarmerRole.FarmerWorkAreaPanel;
 public class FarmerRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new FarmerWorkAreaPanel(userProcessContainer,account, (FarmerOrganization)organization,enterprise);
+        return new FarmerWorkAreaJPanel(userProcessContainer,account, (FarmerOrganization)organization,business);
     }
 
 }

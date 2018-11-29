@@ -2,17 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CutomerRole;
+package userinterface.CustomerRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.CustomerOrganization;
-
+import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
-import Business.Organization.USFDAdminOrganization;
+import Business.Organization.StaffOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.MessageRequest;
-
+import Business.WorkQueue.ProduceRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.logging.Level;
@@ -29,7 +27,7 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     /**
-     * Creates new form RequestProduceTestJPanel
+     * Creates new form RequestLabTestJPanel
      */
     public RequestProduceJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
         initComponents();
@@ -90,14 +88,14 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         
         String message = messageJTextField.getText();
         
-        MessageRequest request = new MessageRequest();
+        ProduceRequest request = new ProduceRequest();
         request.setMessage(message);
         request.setSender(userAccount);
         request.setStatus("Sent");
         
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof CustomerOrganization){
+            if (organization instanceof StaffOrganization){
                 org = organization;
                 break;
             }
@@ -114,8 +112,8 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        CustomerWorkAreaJPanel dwjp = (CustomerWorkAreaJPanel) component;
-        dwjp.populateRequestTable();
+        CustomerWorkAreaJPanel cwjp = (CustomerWorkAreaJPanel) component;
+        cwjp.populateRequestTable();
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
         

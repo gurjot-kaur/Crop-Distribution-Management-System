@@ -12,7 +12,7 @@ import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.CutomerRole.CustomerWorkAreaJPanel;
+import userinterface.CustomerRole.CustomerWorkAreaJPanel;
 
 /**
  *

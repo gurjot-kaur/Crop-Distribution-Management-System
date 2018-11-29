@@ -1,6 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package Business.Role;
@@ -8,18 +7,21 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.Organization.StaffOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.StaffRole.StaffWorkAreaJPanel;
 
 /**
  *
- * @author gurjo
+ * @author raunak
  */
-public class USFD_DistributorRole extends Role {
+public class StaffRole extends Role{
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        //return new USFD_DistributorWorkAreaJPanel(userProcessContainer, enterprise);
-        return null;
+        return new StaffWorkAreaJPanel(userProcessContainer, account,(StaffOrganization)organization, enterprise);
     }
-
+    
+    
 }

@@ -4,25 +4,28 @@
  */
 package Business.Organization;
 
-import Business.Role.USFDAdminRole;
 import Business.Role.Role;
+import Business.Role.StaffRole;
 import java.util.ArrayList;
 
 /**
  *
  * @author raunak
  */
-public class USFDAdminOrganization extends Organization{
+public class StaffOrganization extends Organization{
 
-    public USFDAdminOrganization() {
-        super(Type.USFDAdmin.getValue());
+    public StaffOrganization() {
+        super(Organization.Type.OfficeStaff.getValue());
     }
-    
+
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(new USFDAdminRole());
+        roles.add(new StaffRole());
         return roles;
     }
      
+   
+    
+    
 }

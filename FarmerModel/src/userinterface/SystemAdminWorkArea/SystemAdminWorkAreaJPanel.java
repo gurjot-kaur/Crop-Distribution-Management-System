@@ -30,49 +30,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.ecosystem=ecosystem;
-        //populateTree();
+       
     }
-    /*
-    public void populateTree(){
-        //DefaultTreeModel model=(DefaultTreeModel)jTree.getModel();
-        ArrayList<Network> networkList=ecosystem.getNetworkList();
-        ArrayList<Enterprise> enterpriseList;
-        ArrayList<Organization> organizationList;
-        
-        Network network;
-        Enterprise enterprise;
-        Organization organization;
-        
-        DefaultMutableTreeNode networks=new DefaultMutableTreeNode("Networks");
-        DefaultMutableTreeNode root=(DefaultMutableTreeNode)model.getRoot();
-        root.removeAllChildren();
-        root.insert(networks, 0);
-        
-        DefaultMutableTreeNode networkNode;
-        DefaultMutableTreeNode enterpriseNode;
-        DefaultMutableTreeNode organizationNode;
-        
-        for(int i=0;i<networkList.size();i++){
-            network=networkList.get(i);
-            networkNode=new DefaultMutableTreeNode(network.getName());
-            networks.insert(networkNode, i);
-            
-            enterpriseList=network.getEnterpriseDirectory().getEnterpriseList();
-            for(int j=0; j<enterpriseList.size();j++){
-                enterprise=enterpriseList.get(j);
-                enterpriseNode=new DefaultMutableTreeNode(enterprise.getName());
-                networkNode.insert(enterpriseNode, j);
-                
-                organizationList=enterprise.getOrganizationDirectory().getOrganizationList();
-                for(int k=0;k<organizationList.size();k++){
-                    organization=organizationList.get(i);
-                    organizationNode=new DefaultMutableTreeNode(organization.getName());
-                    enterpriseNode.insert(organizationNode, k);
-                }
-            }
-        }
-        model.reload();
-    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,49 +46,61 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnManageNetwork = new javax.swing.JButton();
         btnManageEnterprise = new javax.swing.JButton();
         btnManageAdmin = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnManageNetwork.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnManageNetwork.setText("Manage Network");
         btnManageNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageNetworkActionPerformed(evt);
             }
         });
-        add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
+        add(btnManageNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 208, 233, -1));
 
+        btnManageEnterprise.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnManageEnterprise.setText("Manage Enterprise");
         btnManageEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageEnterpriseActionPerformed(evt);
             }
         });
-        add(btnManageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
+        add(btnManageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 315, 233, -1));
 
+        btnManageAdmin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnManageAdmin.setText("Manage Enterprise Admin");
         btnManageAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageAdminActionPerformed(evt);
             }
         });
-        add(btnManageAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, -1, -1));
+        add(btnManageAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 427, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("System Administrator Work Area");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 820, 70));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
-        ManageNetworkJPanel manageNetworkJPanel=new ManageNetworkJPanel(userProcessContainer, ecosystem);
-        userProcessContainer.add("manageNetworkJPanel",manageNetworkJPanel);
-        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnManageNetworkActionPerformed
-
     private void btnManageEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageEnterpriseActionPerformed
+        // TODO add your handling code here:
         ManageEnterpriseJPanel manageEnterpriseJPanel=new ManageEnterpriseJPanel(userProcessContainer, ecosystem);
         userProcessContainer.add("manageEnterpriseJPanel",manageEnterpriseJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageEnterpriseActionPerformed
 
+    private void btnManageNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageNetworkActionPerformed
+        // TODO add your handling code here:
+        ManageNetworkJPanel manageNetworkJPanel=new ManageNetworkJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("manageNetworkJPanel",manageNetworkJPanel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageNetworkActionPerformed
+
     private void btnManageAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAdminActionPerformed
+        // TODO add your handling code here:
         ManageEnterpriseAdminJPanel manageEnterpriseAdminJPanel=new ManageEnterpriseAdminJPanel(userProcessContainer, ecosystem);
         userProcessContainer.add("manageEnterpriseAdminJPanel",manageEnterpriseAdminJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
@@ -139,5 +112,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageAdmin;
     private javax.swing.JButton btnManageEnterprise;
     private javax.swing.JButton btnManageNetwork;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

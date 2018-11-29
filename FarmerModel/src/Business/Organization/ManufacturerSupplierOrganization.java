@@ -5,24 +5,26 @@
  */
 package Business.Organization;
 
-import Business.Role.ProducerRole;
+import Business.Role.ManufacturerAdminRole;
+import Business.Role.ManufacturerSupplierRole;
+import Business.Role.ManufacturerSupplierRole;
 import Business.Role.Role;
-import Business.Role.SupplierRole;
 import java.util.ArrayList;
 
 /**
  *
  * @author gurjo
  */
-public class SupplierOrganization extends Organization{
-    public SupplierOrganization(){
-        super(Type.Supplier.getValue());
+public class ManufacturerSupplierOrganization extends Organization{
+    
+    public ManufacturerSupplierOrganization(){
+        super(Type.ManufacturerSupplier.getValue());
     }
     
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(new SupplierRole());
+        roles.add(new ManufacturerSupplierRole());
         return roles;
     }  
 }

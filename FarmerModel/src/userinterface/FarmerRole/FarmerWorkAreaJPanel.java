@@ -2,18 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.AdministrativeRole;
+package userinterface.FarmerRole;
 
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-
+import Business.Entities.Produce;
+import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
-import Business.Organization.USFDAdminOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.MessageRequest;
-
+import Business.WorkQueue.ProduceRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,26 +20,25 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raunak
  */
-public class AdminRequestWorkAreaJPanel extends javax.swing.JPanel {
+public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
-    private Enterprise enterprise;
+    private EcoSystem business;
     private UserAccount userAccount;
-    private USFDAdminOrganization organization;
-    
+    private FarmerOrganization farmerOrganization;
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public AdminRequestWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, USFDAdminOrganization organization,Enterprise enterprise) {
+    public FarmerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
-        this.enterprise = enterprise;
-        this.organization = organization;
-        //this.labOrganization = labOrganization;
+        this.business = business;
+        this.farmerOrganization = (FarmerOrganization)organization;
         populateTable();
+        populateCropTable();
     }
     
     public void populateTable(){
@@ -48,7 +46,7 @@ public class AdminRequestWorkAreaJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         
-        for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
+        for(WorkRequest request : farmerOrganization.getWorkQueue().getWorkRequestList()){
             Object[] row = new Object[4];
             row[0] = request;
             row[1] = request.getSender().getEmployee().getName();
@@ -57,6 +55,23 @@ public class AdminRequestWorkAreaJPanel extends javax.swing.JPanel {
             
             model.addRow(row);
         }
+    }
+    
+    public void populateCropTable(){
+        
+       /* DefaultTableModel model = (DefaultTableModel)produceTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for(Produce produce : farmerOrganization.getProduceDirectory().getProduceList()){
+            Object[] row = new Object[5];
+            row[0] = produce;
+            row[1] = produce.getCropQuantity();
+            row[2] = produce.getCropPrice();
+            row[3] = farmerOrganization.getName();
+            
+            model.addRow(row);
+        }*/
     }
 
     /**
@@ -73,6 +88,14 @@ public class AdminRequestWorkAreaJPanel extends javax.swing.JPanel {
         assignJButton = new javax.swing.JButton();
         processJButton = new javax.swing.JButton();
         refreshJButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        produceTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        cropNameTextField = new javax.swing.JTextField();
+        quantityTextField = new javax.swing.JTextField();
+        priceTextField = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -135,6 +158,30 @@ public class AdminRequestWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(406, 26, -1, -1));
+
+        produceTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Crop Name", "Quantity", "Price", "Farmer"
+            }
+        ));
+        jScrollPane2.setViewportView(produceTable);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, 170));
+
+        jLabel1.setText("Crop Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, -1, -1));
+
+        jLabel2.setText("Quantity");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 620, -1, -1));
+
+        jLabel3.setText("Price");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 670, -1, -1));
+        add(cropNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, 200, -1));
+        add(quantityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 200, -1));
+        add(priceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 670, 200, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -160,12 +207,12 @@ public class AdminRequestWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         
-        MessageRequest request = (MessageRequest)workRequestJTable.getValueAt(selectedRow, 0);
+        ProduceRequest request = (ProduceRequest)workRequestJTable.getValueAt(selectedRow, 0);
      
         request.setStatus("Processing");
         
-        ProcessWorkRequestJPanel processWorkRequestJPanel = new ProcessWorkRequestJPanel(userProcessContainer, request);
-        userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
+        ProcessProduceRequestJPanel processWorkRequestJPanel = new ProcessProduceRequestJPanel(userProcessContainer, request);
+        userProcessContainer.add("ProcessProduceJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         
@@ -177,8 +224,16 @@ public class AdminRequestWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
+    private javax.swing.JTextField cropNameTextField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField priceTextField;
     private javax.swing.JButton processJButton;
+    private javax.swing.JTable produceTable;
+    private javax.swing.JTextField quantityTextField;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables

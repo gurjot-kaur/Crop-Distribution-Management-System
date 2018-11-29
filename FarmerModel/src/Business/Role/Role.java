@@ -17,15 +17,14 @@ import javax.swing.JPanel;
 public abstract class Role {
     
     public enum RoleType{
-        USFDAdmin("Admin"),
+        OfficeAdmin("Admin"),
         ManufacturerAdmin("Admin"),
         Customer("Customer"),
         Farmer("Farmer"),
-        Supplier("Supplier"),
+        ManufacturerSupplier("Supplier"),
         WarehouseManager("Warehouse Manager"),
-        USFD_Distributor("Distributor"),
-        Manufacturer_Distributor("Distributor"),
-        Producer("Producer");
+        ManufacturerProducer("Producer"),
+        OfficeStaff("Staff");
         
         private String value;
         private RoleType(String value){

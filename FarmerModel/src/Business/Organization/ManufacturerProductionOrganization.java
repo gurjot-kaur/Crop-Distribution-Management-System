@@ -5,25 +5,23 @@
  */
 package Business.Organization;
 
-import Business.Role.ProducerRole;
+import Business.Role.ManufacturerProducerRole;
 import Business.Role.Role;
-import Business.Role.USFD_DistributorRole;
 import java.util.ArrayList;
 
 /**
  *
  * @author gurjo
  */
-public class USFD_DistributorOrganization extends Organization {
-    
-    public USFD_DistributorOrganization(){
-        super(Type.USFDDistributor.getValue());
+public class ManufacturerProductionOrganization extends Organization{
+    public ManufacturerProductionOrganization(){
+        super(Type.ManufacturerProducer.getValue());
     }
     
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
-        roles.add(new USFD_DistributorRole());
+        roles.add(new ManufacturerProducerRole() );
         return roles;
     }  
 }

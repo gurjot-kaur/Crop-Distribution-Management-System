@@ -2,15 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.CutomerRole;
+package userinterface.CustomerRole;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.CustomerOrganization;
-
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.MessageRequest;
-
+import Business.WorkQueue.ProduceRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -24,11 +22,10 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private CustomerOrganization organization;
-    private Enterprise enterprie;
+    private Enterprise enterprise;
     private UserAccount userAccount;
-    private final Enterprise enterprise;
     /**
-     * Creates new form CustomerWorkAreaJPanel
+     * Creates new form DoctorWorkAreaJPanel
      */
     public CustomerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, CustomerOrganization organization, Enterprise enterprise) {
         initComponents();
@@ -40,8 +37,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel.setText(enterprise.getName());
         populateRequestTable();
     }
-
-   
     
     public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
@@ -52,7 +47,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             row[0] = request.getMessage();
             row[1] = request.getReceiver();
             row[2] = request.getStatus();
-            String result = ((MessageRequest) request).getTestResult();
+            String result = ((ProduceRequest) request).getTestResult();
             row[3] = result == null ? "Waiting" : result;
             
             model.addRow(row);
@@ -171,7 +166,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestLabTestJPanel", new RequestProduceJPanel(userProcessContainer, userAccount, enterprise));
+        userProcessContainer.add("RequestProduceJPanel", new RequestProduceJPanel(userProcessContainer, userAccount, enterprise));
         layout.next(userProcessContainer);
         
     }//GEN-LAST:event_requestTestJButtonActionPerformed
