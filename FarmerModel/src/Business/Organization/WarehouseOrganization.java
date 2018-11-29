@@ -5,7 +5,7 @@
  */
 package Business.Organization;
 
-import Business.Role.ProducerRole;
+import Business.Role.ManufacturerProducerRole;
 import Business.Role.Role;
 import Business.Role.WarehouseManagerRole;
 import java.util.ArrayList;
