@@ -6,6 +6,7 @@ package userinterface.WarehouseManagerRole;
 
 import userinterface.FarmerRole.*;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Entities.Produce;
 import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
@@ -29,16 +30,18 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
     private UserAccount userAccount;
     private WarehouseOrganization warehouseOrganization;
     
+    private Enterprise enterprise;
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public WarehouseWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
-        initComponents();
+    public WarehouseWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise, EcoSystem business) {
+     initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        this.warehouseOrganization = (WarehouseOrganization)organization;
+        
+        this.enterprise= enterprise;this.warehouseOrganization = (WarehouseOrganization)organization;
         populateTable();
     }
     
@@ -118,7 +121,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 375, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 375, 96));
 
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {

@@ -20,7 +20,9 @@ public class StaffRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new StaffWorkAreaJPanel(userProcessContainer, account,(StaffOrganization)organization, enterprise);
+
+        return new StaffWorkAreaJPanel(userProcessContainer, account,(StaffOrganization)organization, enterprise,business);
+
     }
     
     

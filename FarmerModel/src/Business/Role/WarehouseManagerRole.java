@@ -19,7 +19,8 @@ import userinterface.WarehouseManagerRole.WarehouseWorkAreaJPanel;
 public class WarehouseManagerRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new WarehouseWorkAreaJPanel(userProcessContainer,account, (WarehouseOrganization)organization,business);
+
+        return new WarehouseWorkAreaJPanel(userProcessContainer,account, (WarehouseOrganization)organization,enterprise,business);
         
     }
 
