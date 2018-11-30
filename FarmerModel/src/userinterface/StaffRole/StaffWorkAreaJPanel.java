@@ -78,10 +78,14 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         sendToWarehouseJButton = new javax.swing.JButton();
         sendToSupplierJButton = new javax.swing.JButton();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 27, 127, 30));
 
         valueLabel.setText("<value>");
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 27, 158, 26));
 
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +93,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 refreshJButtonActionPerformed(evt);
             }
         });
+        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 90, -1, -1));
 
         workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,7 +123,10 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(workRequestJTable1);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 131, 375, 96));
+
         jLabel1.setText("Customer Request");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 94, -1, -1));
 
         sendToFarmerJButton.setText("Send to Farmer");
         sendToFarmerJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +134,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 sendToFarmerJButtonActionPerformed(evt);
             }
         });
+        add(sendToFarmerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 245, -1, -1));
 
         sendToWarehouseJButton.setText("Send to Warehouse Manager");
         sendToWarehouseJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +142,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 sendToWarehouseJButtonActionPerformed(evt);
             }
         });
+        add(sendToWarehouseJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 245, -1, -1));
 
         sendToSupplierJButton.setText("Send to Supplier");
         sendToSupplierJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -140,58 +150,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 sendToSupplierJButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(refreshJButton)
-                .addGap(213, 213, 213))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(sendToFarmerJButton)
-                                .addGap(53, 53, 53)
-                                .addComponent(sendToWarehouseJButton))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(323, 323, 323)
-                        .addComponent(sendToSupplierJButton)))
-                .addContainerGap(249, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(refreshJButton)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sendToWarehouseJButton)
-                    .addComponent(sendToFarmerJButton))
-                .addGap(46, 46, 46)
-                .addComponent(sendToSupplierJButton)
-                .addContainerGap(321, Short.MAX_VALUE))
-        );
+        add(sendToSupplierJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 314, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
