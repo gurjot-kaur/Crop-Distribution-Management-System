@@ -76,6 +76,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         sendToFarmerJButton = new javax.swing.JButton();
         sendToWarehouseJButton = new javax.swing.JButton();
+        sendToSupplierJButton = new javax.swing.JButton();
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
@@ -133,6 +134,13 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        sendToSupplierJButton.setText("Send to Supplier");
+        sendToSupplierJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendToSupplierJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,7 +165,10 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                                 .addComponent(sendToFarmerJButton)
                                 .addGap(53, 53, 53)
                                 .addComponent(sendToWarehouseJButton))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(323, 323, 323)
+                        .addComponent(sendToSupplierJButton)))
                 .addContainerGap(249, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -177,7 +188,9 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendToWarehouseJButton)
                     .addComponent(sendToFarmerJButton))
-                .addContainerGap(390, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(sendToSupplierJButton)
+                .addContainerGap(321, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -240,12 +253,38 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_sendToWarehouseJButtonActionPerformed
 
+    private void sendToSupplierJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToSupplierJButtonActionPerformed
+        int selectedRow = workRequestJTable1.getSelectedRow();
+        
+        if (selectedRow < 0){
+            return;
+        }
+        
+        ProduceRequest request = (ProduceRequest)workRequestJTable1.getValueAt(selectedRow, 0);
+        request.setStatus("sent to Manufacturer.Supplier ");
+        populateCustomerRequestTable();
+        userAccount.getWorkQueue().getWorkRequestList().add(request);
+        
+        Organization org = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof ManufacturerSupplierOrganization){
+                org = organization;
+                break;
+            }
+        }
+        if (org!=null){
+            org.getWorkQueue().getWorkRequestList().add(request);
+        }
+        
+    }//GEN-LAST:event_sendToSupplierJButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JButton sendToFarmerJButton;
+    private javax.swing.JButton sendToSupplierJButton;
     private javax.swing.JButton sendToWarehouseJButton;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable1;

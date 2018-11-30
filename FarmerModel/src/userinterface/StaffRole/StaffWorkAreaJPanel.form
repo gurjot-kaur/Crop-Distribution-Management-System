@@ -23,7 +23,7 @@
               <Component id="refreshJButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -41,6 +41,10 @@
                           </Group>
                           <Component id="jScrollPane2" min="-2" pref="375" max="-2" attributes="0"/>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="323" max="-2" attributes="0"/>
+                      <Component id="sendToSupplierJButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="249" max="32767" attributes="0"/>
@@ -67,7 +71,9 @@
                   <Component id="sendToWarehouseJButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="sendToFarmerJButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="390" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <Component id="sendToSupplierJButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="321" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -137,6 +143,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sendToWarehouseJButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="sendToSupplierJButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Send to Supplier"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sendToSupplierJButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -42,6 +42,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         this.farmerOrganization = (FarmerOrganization)organization;
         populateTable();
         populateCropTable();
+        populateRequestRMTable();
     }
     
     public void populateTable(){
@@ -99,6 +100,9 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         cropNameTextField = new javax.swing.JTextField();
         quantityTextField = new javax.swing.JTextField();
         priceTextField = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        requestRMjTable = new javax.swing.JTable();
+        requestTestJButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -172,7 +176,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(produceTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, 170));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 370, 80));
 
         jLabel1.setText("Crop Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, -1, -1));
@@ -185,6 +189,40 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         add(cropNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, 200, -1));
         add(quantityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 200, -1));
         add(priceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 670, 200, -1));
+
+        requestRMjTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Message", "Sender", "Receiver", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(requestRMjTable);
+        if (requestRMjTable.getColumnModel().getColumnCount() > 0) {
+            requestRMjTable.getColumnModel().getColumn(0).setResizable(false);
+            requestRMjTable.getColumnModel().getColumn(1).setResizable(false);
+            requestRMjTable.getColumnModel().getColumn(2).setResizable(false);
+            requestRMjTable.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 400, 90));
+
+        requestTestJButton.setText("Request Test");
+        requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestTestJButtonActionPerformed(evt);
+            }
+        });
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -225,6 +263,14 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_refreshJButtonActionPerformed
 
+    private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("RequestProduceJPanel", new RequestRawMaterialJPanel(userProcessContainer, userAccount, enterprise));
+        layout.next(userProcessContainer);
+
+    }//GEN-LAST:event_requestTestJButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JTextField cropNameTextField;
@@ -233,11 +279,30 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField priceTextField;
     private javax.swing.JButton processJButton;
     private javax.swing.JTable produceTable;
     private javax.swing.JTextField quantityTextField;
     private javax.swing.JButton refreshJButton;
+    private javax.swing.JTable requestRMjTable;
+    private javax.swing.JButton requestTestJButton;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
+
+    void populateRequestRMTable() {
+        DefaultTableModel model = (DefaultTableModel) requestRMjTable.getModel();
+        
+        model.setRowCount(0);
+        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
+            Object[] row = new Object[4];
+            row[0] = request.getMessage();
+            row[1] = request.getReceiver();
+            row[2] = request.getStatus();
+            String result = ((ProduceRequest) request).getTestResult();
+            row[3] = result == null ? "Waiting" : result;
+            
+            model.addRow(row);
+        }
+    }
 }
