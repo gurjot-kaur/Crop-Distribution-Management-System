@@ -6,6 +6,7 @@ package userinterface.WarehouseManagerRole;
 
 import userinterface.FarmerRole.*;
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import Business.Entities.Produce;
 import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
@@ -28,16 +29,18 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem business;
     private UserAccount userAccount;
     private WarehouseOrganization warehouseOrganization;
+    private Enterprise enterprise;
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public WarehouseWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
+    public WarehouseWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise, EcoSystem business) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
+        this.enterprise= enterprise;
         this.warehouseOrganization = (WarehouseOrganization)organization;
         populateTable();
     }

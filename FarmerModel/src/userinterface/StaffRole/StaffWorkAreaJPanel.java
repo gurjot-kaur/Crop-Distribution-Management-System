@@ -24,16 +24,18 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
     private StaffOrganization organization;
     private Enterprise enterprise;
     private UserAccount userAccount;
+    private EcoSystem business;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public StaffWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, StaffOrganization organization, Enterprise enterprise) {
+    public StaffWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, StaffOrganization organization, Enterprise enterprise,EcoSystem business) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.business = business;
         valueLabel.setText(enterprise.getName());
         populateCustomerRequestTable();
       
