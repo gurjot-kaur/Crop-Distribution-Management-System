@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/AdministrativeRole/AdminWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/SupplierRole/SupplierWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Enterprise/USFDEnterprise.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Role/ManufacturerAdminRole.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/FarmerRole/FarmerWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/ManufacturerAdminRole/MManageUserAccountJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Organization/ManufacturerAdminOrganization.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Enterprise/ManufacturerEnterprise.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Organization/ManufacturerSupplierOrganization.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/SystemAdminWorkArea/ManageEnterpriseAdminJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/AdministrativeRole/ManageEmployeeJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/ManufacturerAdminRole/MAdminWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/ManufacturerAdminRole/MManageOrganizationJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/SystemAdminWorkArea/SystemAdminWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Role/StaffRole.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/SystemAdminWorkArea/ManageEnterpriseJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/UserAccount/UserAccountDirectory.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Organization/Organization.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/SystemAdminWorkArea/ManageNetworkJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Organization/OfficeAdminOrganization.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/WarehouseManagerRole/WarehouseWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Role/OfficeAdminRole.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Role/CustomerRole.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/StaffRole/StaffWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Role/FarmerRole.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Enterprise/EnterpriseDirectory.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Organization/WarehouseOrganization.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/ManufacturerAdminRole/MManageEmployeeJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Role/ManufacturerSupplierRole.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Organization/FarmerOrganization.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Role/WarehouseManagerRole.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Role/Role.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/CustomerRole/CustomerWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/FarmerRole/WeatherInformationJPanel.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/userinterface/Main/MainJFrame.java</file>
+            <file>file:/C:/Users/Welcome/Desktop/MIS_SEM_1/AED/Final%20Poject/famers-market/aed-final-project/FarmerModel/src/Business/Enterprise/Enterprise.java</file>
+        </group>
+    </open-files>
+</project-private>

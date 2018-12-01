@@ -5,7 +5,9 @@
 package userinterface.FarmerRole;
 
 import Business.EcoSystem;
+
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.USFDEnterprise;
 import Business.Entities.Produce;
 import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
@@ -27,18 +29,23 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem business;
     private UserAccount userAccount;
     private FarmerOrganization farmerOrganization;
-    private Enterprise enterprise;
+    //private Enterprise enterprise;
+    private USFDEnterprise enterprise;
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
+
     public FarmerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise ,EcoSystem business) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        this.enterprise = enterprise;
+        this.farmerOrganization = (FarmerOrganization)organization;
+        populateTable();
+        populateCropTable();
+        this.enterprise = (USFDEnterprise)enterprise;
         this.farmerOrganization = (FarmerOrganization)organization;
         populateTable();
         populateCropTable();
@@ -103,6 +110,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         requestRMjTable = new javax.swing.JTable();
         requestTestJButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -176,7 +184,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(produceTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 370, 80));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, 170));
 
         jLabel1.setText("Crop Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, -1, -1));
@@ -214,7 +222,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             requestRMjTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 400, 90));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 400, 90));
 
         requestTestJButton.setText("Request Test");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -223,6 +231,14 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
+
+        jButton1.setText("Weather Information");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 590, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -271,9 +287,18 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        userProcessContainer.add("WeatherInformationJPanel", new WeatherInformationJPanel (userProcessContainer));
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JTextField cropNameTextField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

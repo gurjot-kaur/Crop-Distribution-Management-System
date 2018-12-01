@@ -7,6 +7,7 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.USFDEnterprise;
 import Business.Organization.*;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
@@ -19,7 +20,8 @@ import userinterface.WarehouseManagerRole.WarehouseWorkAreaJPanel;
 public class WarehouseManagerRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new WarehouseWorkAreaJPanel(userProcessContainer,account, (WarehouseOrganization)organization,enterprise,business);
+
+        return new WarehouseWorkAreaJPanel(userProcessContainer,account, (WarehouseOrganization)organization,(USFDEnterprise)enterprise,business);
         
     }
 
