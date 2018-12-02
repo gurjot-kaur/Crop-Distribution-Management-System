@@ -6,10 +6,11 @@
 package Business.Role;
 
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Organization.Organization;
+import Business.Enterprise.*;
+import Business.Organization.*;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.ProducerRole.ManufacturerProducerJPanel;
 
 /**
  *
@@ -18,8 +19,7 @@ import javax.swing.JPanel;
 public class ManufacturerProducerRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        //return new ProducerWorkAreaJPanel(userProcessContainer, enterprise);
-        return null;
+        return new ManufacturerProducerJPanel(userProcessContainer,account, (ManufacturerProductionOrganization)organization,(ManufacturerEnterprise)enterprise,business);
     }
 
 }

@@ -5,6 +5,7 @@
 package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
+import Business.Enterprise.Enterprise;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -24,8 +25,11 @@ public abstract class Organization {
     private static int counter=0;
     
     public enum Type{
-        Farmer("Farmer Organization"), Customer("Customer Organization"), Warehouse("Warehouse Organization"), OfficeStaff("Staff Organization"),
-        ManufacturerProducer("Production Organization"),ManufacturerSupplier("Supplier Organization"),OfficeAdmin("Admin Organization"),ManufacturerAdmin("Admin Organization");
+      
+        Farmer("Farmer Organization"), Customer("Customer Organization"), Warehouse("Warehouse Organization"), 
+        OfficeStaff("Staff Organization"),OfficeAdmin("Admin Organization"),
+        ManufacturerProducer("Production Organization"),ManufacturerWarehouse("Manufacturer Warehouse Organization"),
+        ManufacturerSupplier("Supplier Organization"),ManufacturerAdmin("Admin Organization");
         private String value;
         private Type(String value) {
             this.value = value;

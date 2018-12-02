@@ -176,7 +176,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 737, 124, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, 124, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
@@ -199,7 +199,13 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         
-        UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new OfficeAdminRole() );
+        if (enterprise.getEnterpriseType()==Enterprise.EnterpriseType.USFD)
+        {
+            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new OfficeAdminRole() );}
+        else
+        {
+           UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturerAdminRole()); 
+        }
         populateTable();
         
     }//GEN-LAST:event_submitJButtonActionPerformed

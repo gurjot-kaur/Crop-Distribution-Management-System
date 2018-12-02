@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.WarehouseManagerRole;
+package userinterface.ManufacturerWarehouseRole;
 
 
+import userinterface.WarehouseManagerRole.*;
 import Business.WorkQueue.ProduceRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -14,14 +15,14 @@ import javax.swing.JPanel;
  *
  * @author raunak
  */
-public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
+public class ProcessRequestRMJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     ProduceRequest request;
     /**
      * Creates new form ProcessWorkRequestJPanel
      */
-    public ProcessProduceRequestJPanel(JPanel userProcessContainer, ProduceRequest request) {
+    public ProcessRequestRMJPanel(JPanel userProcessContainer, ProduceRequest request) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
@@ -96,8 +97,8 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        WarehouseWorkAreaJPanel wwjp = (WarehouseWorkAreaJPanel) component;
-        wwjp.populateTable();
+        ManufacturerWarehouseJPanel wwjp = (ManufacturerWarehouseJPanel) component;
+        wwjp.populateSuppRequestTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed

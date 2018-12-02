@@ -3,6 +3,7 @@
 package userinterface.AdministrativeRole;
 
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.USFDEnterprise;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -13,12 +14,12 @@ import javax.swing.JPanel;
 public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
-    Enterprise enterprise;
+    USFDEnterprise enterprise;
     /** Creates new form AdminWorkAreaJPanel */
     public AdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = enterprise;
+        this.enterprise = (USFDEnterprise)enterprise;
         valueLabel.setText(enterprise.getName());
     }
     

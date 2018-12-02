@@ -23,6 +23,7 @@ public abstract class Role {
         Farmer("Farmer"),
         ManufacturerSupplier("Supplier"),
         WarehouseManager("Warehouse Manager"),
+        ManufacturerWarehouseManager("Manufacturer Warehouse Manager"),
         ManufacturerProducer("Producer"),
         OfficeStaff("Staff");
         

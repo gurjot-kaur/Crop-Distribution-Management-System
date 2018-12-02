@@ -6,13 +6,16 @@ package userinterface.StaffRole;
 
 import userinterface.CustomerRole.*;
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
+import Business.Enterprise.*;
+import Business.Enterprise.USFDEnterprise;
+import Business.Network.Network;
 import Business.Organization.*;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.*;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import sun.applet.AppletViewer;
 
 /**
  *
@@ -22,18 +25,24 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private StaffOrganization organization;
-    private Enterprise enterprise;
+    private USFDEnterprise enterprise;
     private UserAccount userAccount;
+
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public StaffWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, StaffOrganization organization, Enterprise enterprise) {
+    private EcoSystem business;
+    /**
+     * Creates new form DoctorWorkAreaJPanel
+     */
+    public StaffWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, StaffOrganization organization, Enterprise enterprise,EcoSystem business) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
-        this.enterprise = enterprise;
+        this.enterprise = (USFDEnterprise)enterprise;
         this.userAccount = account;
+        this.business = business;
         valueLabel.setText(enterprise.getName());
         populateCustomerRequestTable();
       
@@ -74,11 +83,16 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         sendToFarmerJButton = new javax.swing.JButton();
         sendToWarehouseJButton = new javax.swing.JButton();
+        sendToSupp = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 27, 127, 30));
 
         valueLabel.setText("<value>");
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 27, 158, 26));
 
         refreshJButton.setText("Refresh");
         refreshJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +100,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 refreshJButtonActionPerformed(evt);
             }
         });
+        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 90, -1, -1));
 
         workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,7 +130,10 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(workRequestJTable1);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 133, 375, 96));
+
         jLabel1.setText("Customer Request");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 94, -1, -1));
 
         sendToFarmerJButton.setText("Send to Farmer");
         sendToFarmerJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +141,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 sendToFarmerJButtonActionPerformed(evt);
             }
         });
+        add(sendToFarmerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 247, -1, -1));
 
         sendToWarehouseJButton.setText("Send to Warehouse Manager");
         sendToWarehouseJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -130,53 +149,15 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 sendToWarehouseJButtonActionPerformed(evt);
             }
         });
+        add(sendToWarehouseJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 247, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(refreshJButton)
-                .addGap(213, 213, 213))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(sendToFarmerJButton)
-                                .addGap(53, 53, 53)
-                                .addComponent(sendToWarehouseJButton))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(249, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(refreshJButton)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sendToWarehouseJButton)
-                    .addComponent(sendToFarmerJButton))
-                .addContainerGap(390, Short.MAX_VALUE))
-        );
+        sendToSupp.setText("Send to Supplier");
+        sendToSupp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendToSuppActionPerformed(evt);
+            }
+        });
+        add(sendToSupp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
@@ -238,12 +219,76 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_sendToWarehouseJButtonActionPerformed
 
+    private void sendToSupplierJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToSupplierJButtonActionPerformed
+        int selectedRow = workRequestJTable1.getSelectedRow();
+        
+        if (selectedRow < 0){
+            return;
+        }
+        
+        ProduceRequest request = (ProduceRequest)workRequestJTable1.getValueAt(selectedRow, 0);
+        request.setStatus("sent to Manufacturer.Supplier ");
+        populateCustomerRequestTable();
+        userAccount.getWorkQueue().getWorkRequestList().add(request);
+        
+        Organization org = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+            if (organization instanceof ManufacturerSupplierOrganization){
+                org = organization;
+                break;
+            }
+        }
+        if (org!=null){
+            org.getWorkQueue().getWorkRequestList().add(request);
+        }
+        
+    }//GEN-LAST:event_sendToSupplierJButtonActionPerformed
+
+    private void sendToSuppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToSuppActionPerformed
+         int selectedRow = workRequestJTable1.getSelectedRow();
+        
+        if (selectedRow < 0){
+            return;
+        }
+        
+        ProduceRequest request = (ProduceRequest)workRequestJTable1.getValueAt(selectedRow, 0);
+        request.setStatus("sent to supplier ");
+        populateCustomerRequestTable();
+        userAccount.getWorkQueue().getWorkRequestList().add(request);
+        
+        Organization org = null;
+        for (Network network: business.getNetworkList()){
+               
+            for (Enterprise e: network.getEnterpriseDirectory().getEnterpriseList())
+            {   
+                
+                if (e instanceof ManufacturerEnterprise)
+                {
+                   for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
+            
+            if (organization instanceof ManufacturerSupplierOrganization){
+                org = organization;
+                System.out.println(org);
+                break;
+            }
+        }
+            if (org!=null){
+            org.getWorkQueue().getWorkRequestList().add(request);
+            } 
+                }
+                
+            }
+        }
+        
+    }//GEN-LAST:event_sendToSuppActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JButton sendToFarmerJButton;
+    private javax.swing.JButton sendToSupp;
     private javax.swing.JButton sendToWarehouseJButton;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable1;
