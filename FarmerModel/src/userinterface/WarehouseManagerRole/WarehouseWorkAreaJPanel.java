@@ -201,7 +201,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
      
         request.setStatus("Processing");
         
-        ProcessProduceRequestJPanel processWorkRequestJPanel = new ProcessProduceRequestJPanel(userProcessContainer, request);
+        ProcessRequestJPanel processWorkRequestJPanel = new ProcessRequestJPanel(userProcessContainer, request);
         userProcessContainer.add("ProcessProduceJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

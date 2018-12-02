@@ -163,7 +163,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         ProduceRequest request = (ProduceRequest)workRequestRMJTable.getValueAt(selectedRow, 0);
-        request.setStatus("sent to farmer ");
+        request.setStatus("sent to Producer ");
         populateSuppRequestTable();
         userAccount.getWorkQueue().getWorkRequestList().add(request);
         
@@ -220,14 +220,11 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof WarehouseOrganization){
+            if (organization instanceof ManufacturerWarehouseOrganization){
                 org = organization;
                 break;
             }
-            else if (organization instanceof WarehouseOrganization){
-                org = organization;
-                break;
-            }
+           
         }
         if (org!=null){
             org.getWorkQueue().getWorkRequestList().add(request);

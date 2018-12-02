@@ -35,6 +35,7 @@ public class UserAccountDirectory {
     
     public UserAccount createUserAccount(String username, String password, Employee employee, Role role){
         UserAccount userAccount = new UserAccount();
+       
         if (checkIfUsernameIsUnique(username))
         {
             userAccount.setUsername(username);
@@ -51,10 +52,14 @@ public class UserAccountDirectory {
     }
     
     public boolean checkIfUsernameIsUnique(String username){
+        boolean flag = true;
         for (UserAccount ua : userAccountList){
             if (ua.getUsername().equals(username))
-                return false;
-        }
-        return true;
+                flag = false;
+            else
+                flag = true;
+        } 
+        
+        return flag;
     }
 }

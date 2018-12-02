@@ -15,8 +15,10 @@ import java.util.ArrayList;
  */
 public class ManufacturerWarehouseOrganization extends Organization{
 
-    public ManufacturerWarehouseOrganization(String name) {
-         super(Type.ManufacturerWarehouse.getValue());
+  
+
+   public ManufacturerWarehouseOrganization() {
+        super(Type.ManufacturerWarehouse.getValue());
     }
 
     @Override
