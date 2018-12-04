@@ -10,6 +10,8 @@ import Business.Enterprise.*;
 import Business.Enterprise.USFDEnterprise;
 import Business.Network.Network;
 import Business.Organization.*;
+import Business.Produce.Produce;
+import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.*;
 import java.awt.CardLayout;
@@ -27,6 +29,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
     private StaffOrganization organization;
     private USFDEnterprise enterprise;
     private UserAccount userAccount;
+    
 
     /**
      * Creates new form DoctorWorkAreaJPanel
@@ -48,7 +51,6 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
       
         
     }
-
 
     public void populateCustomerRequestTable(){
      DefaultTableModel model = (DefaultTableModel)workRequestJTable1.getModel();
@@ -293,4 +295,6 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable1;
     // End of variables declaration//GEN-END:variables
+
+    
 }

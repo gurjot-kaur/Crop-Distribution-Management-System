@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.USFDEnterprise;
 import Business.Organization.*;
+import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.WarehouseManagerRole.WarehouseWorkAreaJPanel;
@@ -19,9 +20,9 @@ import userinterface.WarehouseManagerRole.WarehouseWorkAreaJPanel;
  */
 public class WarehouseManagerRole extends Role {
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
 
-        return new WarehouseWorkAreaJPanel(userProcessContainer,account, (WarehouseOrganization)organization,(USFDEnterprise)enterprise,business);
+        return new WarehouseWorkAreaJPanel(userProcessContainer,account, (WarehouseOrganization)organization,(USFDEnterprise)enterprise,business,produceDirectory);
         
     }
 

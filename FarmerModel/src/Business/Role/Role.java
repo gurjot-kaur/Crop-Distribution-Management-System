@@ -7,6 +7,7 @@ package Business.Role;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
@@ -25,7 +26,8 @@ public abstract class Role {
         WarehouseManager("Warehouse Manager"),
         ManufacturerWarehouseManager("Manufacturer Warehouse Manager"),
         ManufacturerProducer("Producer"),
-        OfficeStaff("Staff");
+        OfficeStaff("Staff"),
+        QualityControl("Quality Control Manager");
         
         private String value;
         private RoleType(String value){
@@ -42,7 +44,7 @@ public abstract class Role {
         }
     }
     
-    public abstract JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise, EcoSystem business);
+    public abstract JPanel createWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory);
 
     @Override
     public String toString() {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.Entities;
+package Business.RawMaterial;
 
 /**
  *
@@ -13,6 +13,7 @@ public class RawMaterial {
     private String materialName;
     private int materialQuantity;
     private double materialPrice;
+    
     public String getMaterialName() {
         return materialName;
     }

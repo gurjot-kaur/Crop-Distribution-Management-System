@@ -6,6 +6,7 @@ package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
 import Business.Enterprise.Enterprise;
+import Business.Produce.ProduceDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -22,6 +23,8 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
+    private ProduceDirectory produceDirectory;
+    
     private static int counter=0;
     
     public enum Type{
@@ -44,6 +47,7 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        produceDirectory = new ProduceDirectory();
         organizationID = counter;
         ++counter;
     }
@@ -65,17 +69,25 @@ public abstract class Organization {
     public String getName() {
         return name;
     }
-
-    public WorkQueue getWorkQueue() {
-        return workQueue;
-    }
-
+    
     public void setName(String name) {
         this.name = name;
+    }
+    
+     public WorkQueue getWorkQueue() {
+        return workQueue;
     }
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
+    }
+
+    public ProduceDirectory getProduceDirectory() {
+        return produceDirectory;
+    }
+
+    public void setProduceDirectory(ProduceDirectory produceDirectory) {
+        this.produceDirectory = produceDirectory;
     }
 
     @Override
