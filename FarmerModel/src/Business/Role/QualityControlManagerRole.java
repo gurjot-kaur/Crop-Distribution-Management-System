@@ -7,22 +7,24 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.ManufacturerEnterprise;
-import Business.Organization.*;
+import Business.Enterprise.USFDEnterprise;
+import Business.Organization.FarmerOrganization;
+import Business.Organization.Organization;
 import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.SupplierRole.SupplierWorkAreaJPanel;
+import userinterface.FarmerRole.FarmerWorkAreaJPanel;
+import userinterface.QualityControlManagerRole.QualityControlWorkAreaJPanel;
 
 /**
  *
  * @author gurjo
  */
-public class ManufacturerSupplierRole extends Role {
-    @Override
+public class QualityControlManagerRole extends Role {
+    
+     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
-        return new SupplierWorkAreaJPanel(userProcessContainer,account,(ManufacturerSupplierOrganization)organization, (ManufacturerEnterprise)enterprise, business);
-       
-    }
+        return new QualityControlWorkAreaJPanel(userProcessContainer,account, (FarmerOrganization)organization,(USFDEnterprise)enterprise,business);
 
+    }
 }

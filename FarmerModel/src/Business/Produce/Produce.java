@@ -1,5 +1,7 @@
 
-package Business.Entities;
+package Business.Produce;
+
+import Business.UserAccount.UserAccount;
 
 /**
  *
@@ -10,6 +12,7 @@ public class Produce {
     private String cropName;
     private int cropQuantity;
     private double cropPrice;
+    private String farmerName;
     
 
     public String getCropName() {
@@ -36,5 +39,18 @@ public class Produce {
         this.cropPrice = cropPrice;
     }
 
+    public String getFarmerName() {
+        return farmerName;
+    }
+
+    public void setFarmerName(String farmerName) {
+        this.farmerName = farmerName;
+    }
+
+    
+     @Override
+    public String toString() {
+        return cropName;
+    }
     
 }

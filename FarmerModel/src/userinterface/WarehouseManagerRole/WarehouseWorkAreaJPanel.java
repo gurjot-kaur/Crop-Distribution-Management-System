@@ -8,10 +8,11 @@ import userinterface.FarmerRole.*;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.USFDEnterprise;
-import Business.Entities.Produce;
+import Business.Produce.Produce;
 import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.WarehouseOrganization;
+import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProduceRequest;
 import Business.WorkQueue.WorkRequest;
@@ -30,21 +31,22 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem business;
     private UserAccount userAccount;
     private WarehouseOrganization warehouseOrganization;
-    
+    private ProduceDirectory produceDirectory;
     private USFDEnterprise enterprise;
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
-    public WarehouseWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise, EcoSystem business) {
+    public WarehouseWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
      initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        
         this.enterprise = (USFDEnterprise)enterprise;
         this.warehouseOrganization = (WarehouseOrganization)organization;
+        this.produceDirectory = produceDirectory;
         populateTable();
+        populateCropTable();
     }
     
     public void populateTable(){
@@ -59,6 +61,22 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
             row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
             row[3] = request.getStatus();
             
+            model.addRow(row);
+        }
+    }
+    
+    public void populateCropTable(){
+         DefaultTableModel model = (DefaultTableModel)produceTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for(Produce produce : produceDirectory.getProduceList()){
+            Object[] row = new Object[4];
+            row[0] = produce;
+            row[1] = produce.getCropQuantity();
+            row[2] = produce.getCropPrice();
+            //row[3] = userAccount.getUsername();
+            row[3] = produce.getFarmerName();
             model.addRow(row);
         }
     }
@@ -80,21 +98,12 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
         refreshJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         produceTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        cropNameTextField = new javax.swing.JTextField();
-        quantityTextField = new javax.swing.JTextField();
-        priceTextField = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Message", "Sender", "Receiver", "Status"
@@ -154,24 +163,26 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Crop Name", "Quantity", "Price", "Farmer"
+                "Crop Name", "Quantity", "Price", "Farmer", "Raw Material"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(produceTable);
+        if (produceTable.getColumnModel().getColumnCount() > 0) {
+            produceTable.getColumnModel().getColumn(0).setResizable(false);
+            produceTable.getColumnModel().getColumn(1).setResizable(false);
+            produceTable.getColumnModel().getColumn(2).setResizable(false);
+            produceTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, 170));
-
-        jLabel1.setText("Crop Name");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 570, -1, -1));
-
-        jLabel2.setText("Quantity");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 620, -1, -1));
-
-        jLabel3.setText("Price");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 670, -1, -1));
-        add(cropNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, 200, -1));
-        add(quantityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 200, -1));
-        add(priceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 670, 200, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -214,16 +225,10 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
-    private javax.swing.JTextField cropNameTextField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField priceTextField;
     private javax.swing.JButton processJButton;
     private javax.swing.JTable produceTable;
-    private javax.swing.JTextField quantityTextField;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
