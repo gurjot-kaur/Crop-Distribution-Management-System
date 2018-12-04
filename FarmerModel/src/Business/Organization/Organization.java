@@ -5,6 +5,8 @@
 package Business.Organization;
 
 import Business.Employee.EmployeeDirectory;
+import Business.Enterprise.Enterprise;
+import Business.Produce.ProduceDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
@@ -21,11 +23,16 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
+    private ProduceDirectory produceDirectory;
+    
     private static int counter=0;
     
     public enum Type{
-        Farmer("Farmer Organization"), Customer("Customer Organization"), Warehouse("Warehouse Organization"), OfficeStaff("Staff Organization"),
-        ManufacturerProducer("Production Organization"),ManufacturerSupplier("Supplier Organization"),OfficeAdmin("Admin Organization"),ManufacturerAdmin("Admin Organization");
+      
+        Farmer("Farmer Organization"), Customer("Customer Organization"), Warehouse("Warehouse Organization"), 
+        OfficeStaff("Staff Organization"),OfficeAdmin("Admin Organization"),
+        ManufacturerProducer("Production Organization"),ManufacturerWarehouse("Manufacturer Warehouse Organization"),
+        ManufacturerSupplier("Supplier Organization"),ManufacturerAdmin("Admin Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -40,6 +47,7 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
+        produceDirectory = new ProduceDirectory();
         organizationID = counter;
         ++counter;
     }
@@ -61,17 +69,25 @@ public abstract class Organization {
     public String getName() {
         return name;
     }
-
-    public WorkQueue getWorkQueue() {
-        return workQueue;
-    }
-
+    
     public void setName(String name) {
         this.name = name;
+    }
+    
+     public WorkQueue getWorkQueue() {
+        return workQueue;
     }
 
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
+    }
+
+    public ProduceDirectory getProduceDirectory() {
+        return produceDirectory;
+    }
+
+    public void setProduceDirectory(ProduceDirectory produceDirectory) {
+        this.produceDirectory = produceDirectory;
     }
 
     @Override

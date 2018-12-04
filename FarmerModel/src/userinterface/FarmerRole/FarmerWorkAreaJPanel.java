@@ -7,9 +7,12 @@ package userinterface.FarmerRole;
 import Business.EcoSystem;
 
 import Business.Enterprise.Enterprise;
-import Business.Entities.Produce;
+import Business.Enterprise.USFDEnterprise;
+import Business.Produce.Produce;
 import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
+import Business.Organization.StaffOrganization;
+import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProduceRequest;
 import Business.WorkQueue.WorkRequest;
@@ -28,26 +31,26 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private EcoSystem business;
     private UserAccount userAccount;
     private FarmerOrganization farmerOrganization;
-    private Enterprise enterprise;
+    private USFDEnterprise enterprise;
+    private ProduceDirectory produceDirectory;
     
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
 
-    public FarmerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise ,EcoSystem business) {
+    public FarmerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise ,EcoSystem business,ProduceDirectory produceDirectory) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
         this.farmerOrganization = (FarmerOrganization)organization;
+        this.enterprise = (USFDEnterprise)enterprise;
+        this.produceDirectory = produceDirectory;
+        System.out.println("produce directory"+ produceDirectory);
         populateTable();
-        populateCropTable();
-        this.enterprise = enterprise;
-        this.farmerOrganization = (FarmerOrganization)organization;
-        populateTable();
-        populateCropTable();
         populateRequestRMTable();
+        populateCropTable();
     }
     
     public void populateTable(){
@@ -63,24 +66,41 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             row[3] = request.getStatus();
             
             model.addRow(row);
+            
         }
     }
     
     public void populateCropTable(){
         
-       /* DefaultTableModel model = (DefaultTableModel)produceTable.getModel();
+       DefaultTableModel model = (DefaultTableModel)produceTable.getModel();
         
         model.setRowCount(0);
         
-        for(Produce produce : farmerOrganization.getProduceDirectory().getProduceList()){
-            Object[] row = new Object[5];
+        for(Produce produce : produceDirectory.getProduceList()){
+            Object[] row = new Object[4];
             row[0] = produce;
             row[1] = produce.getCropQuantity();
             row[2] = produce.getCropPrice();
-            row[3] = farmerOrganization.getName();
+            //row[3] = userAccount.getUsername();
+            row[3] = produce.getFarmerName();
+            model.addRow(row);
+        }
+    }
+
+        void populateRequestRMTable() {
+        DefaultTableModel model = (DefaultTableModel) requestRMjTable.getModel();
+        
+        model.setRowCount(0);
+        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
+            Object[] row = new Object[4];
+            row[0] = request.getMessage();
+            row[1] = request.getReceiver();
+            row[2] = request.getStatus();
+            String result = ((ProduceRequest) request).getTestResult();
+            row[3] = result == null ? "Waiting" : result;
             
             model.addRow(row);
-        }*/
+        }
     }
 
     /**
@@ -108,7 +128,8 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         requestRMjTable = new javax.swing.JTable();
         requestTestJButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        weatherButton = new javax.swing.JButton();
+        addCropButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -177,7 +198,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Crop Name", "Quantity", "Price", "Farmer"
+                "Crop Name", "Quantity", "Price", "Farmer", "Raw Material"
             }
         ));
         jScrollPane2.setViewportView(produceTable);
@@ -230,13 +251,21 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
 
-        jButton1.setText("Weather Information");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        weatherButton.setText("Weather Information");
+        weatherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                weatherButtonActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 770, -1, -1));
+        add(weatherButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, -1, -1));
+
+        addCropButton.setText("Add Crop");
+        addCropButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCropButtonActionPerformed(evt);
+            }
+        });
+        add(addCropButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 780, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -285,18 +314,32 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void weatherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weatherButtonActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         userProcessContainer.add("WeatherInformationJPanel", new WeatherInformationJPanel (userProcessContainer));
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_weatherButtonActionPerformed
+
+    private void addCropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCropButtonActionPerformed
+        // TODO add your handling code here:
+        Produce produce =  produceDirectory.addProduce();
+        System.out.println(produce);
+        produce.setCropName(cropNameTextField.getText());
+        produce.setCropPrice(Double.parseDouble(quantityTextField.getText()));
+        produce.setCropQuantity(Integer.parseInt(priceTextField.getText()));
+        produce.setFarmerName(userAccount.getUsername());
+        System.out.println(produce);
+        //farmerOrganization.getProduceDirectory().getProduceList().add(produce);
+        
+        populateCropTable();
+    }//GEN-LAST:event_addCropButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCropButton;
     private javax.swing.JButton assignJButton;
     private javax.swing.JTextField cropNameTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -310,22 +353,8 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton refreshJButton;
     private javax.swing.JTable requestRMjTable;
     private javax.swing.JButton requestTestJButton;
+    private javax.swing.JButton weatherButton;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 
-    void populateRequestRMTable() {
-        DefaultTableModel model = (DefaultTableModel) requestRMjTable.getModel();
-        
-        model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((ProduceRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
-            
-            model.addRow(row);
-        }
-    }
 }

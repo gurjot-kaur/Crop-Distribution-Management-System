@@ -4,6 +4,7 @@
  */
 package userinterface.AdministrativeRole;
 
+import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -34,9 +35,17 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
     
     private void populateCombo(){
         organizationJComboBox.removeAllItems();
-        for (Type type : Organization.Type.values()){
-            if (!type.getValue().equals(Type.OfficeAdmin.getValue()))
-                organizationJComboBox.addItem(type);
+        for (Enterprise.EnterpriseType enterpriseType : Enterprise.EnterpriseType.values())
+        {
+            if(enterpriseType.getValue().equals(Enterprise.EnterpriseType.USFD.getValue()))
+            {
+                System.out.println(enterpriseType.getValue()+"Enterprise value");
+                for (Type type : Organization.Type.values()){
+                    System.out.println("type"+type);
+                    if ((!type.getValue().equals(Type.OfficeAdmin.getValue())) && (type.getValue().equals(Type.Farmer.getValue()) || type.getValue().equals(Type.Warehouse.getValue()) || type.getValue().equals(Type.Customer.getValue()) || type.getValue().equals(Type.OfficeStaff.getValue())))
+                    organizationJComboBox.addItem(type);
+                }
+            }
         }
     }
 

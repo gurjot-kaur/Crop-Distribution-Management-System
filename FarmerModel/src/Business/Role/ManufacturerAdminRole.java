@@ -6,10 +6,13 @@ package Business.Role;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Enterprise.ManufacturerEnterprise;
 import Business.Organization.Organization;
+import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
-import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
+
 import javax.swing.JPanel;
+import userinterface.ManufacturerAdminRole.MAdminWorkAreaJPanel;
 
 /**
  *
@@ -18,8 +21,8 @@ import javax.swing.JPanel;
 public class ManufacturerAdminRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business) {
-        return new AdminWorkAreaJPanel(userProcessContainer, enterprise);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
+        return new MAdminWorkAreaJPanel(userProcessContainer, (ManufacturerEnterprise)enterprise);
     }
 
     

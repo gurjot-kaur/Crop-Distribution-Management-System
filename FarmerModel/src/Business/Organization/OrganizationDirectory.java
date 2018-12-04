@@ -51,6 +51,10 @@ public class OrganizationDirectory {
             organization = new StaffOrganization();
             organizationList.add(organization);
         }
+         else if (type.getValue().equals(Type.ManufacturerWarehouse.getValue())){
+            organization = new ManufacturerWarehouseOrganization();
+            organizationList.add(organization);
+        }
         
         return organization;
     }

@@ -10,6 +10,8 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.Produce.Produce;
+import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -23,6 +25,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    ProduceDirectory produceDirectory = new ProduceDirectory();
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
@@ -134,20 +137,33 @@ public class MainJFrame extends javax.swing.JFrame {
 
         Enterprise inEnterprise=null;
         Organization inOrganization=null;
-
+        
+       /* Produce produce = null;
+        if (produceDirectory == null)
+        {
+            produceDirectory = new ProduceDirectory();
+        }
+        else
+        {
+            produceDirectory.getProduceList();
+        }*/
         if(userAccount==null){
             //Step 2: Go inside each network and check each enterprise
             for(Network network:system.getNetworkList()){
                 //Step 2.a: check against each enterprise
                 for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList()){
                     userAccount=enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+                    System.out.println(userAccount);
+                    System.out.println(network.getEnterpriseDirectory().getEnterpriseList());
                     if(userAccount==null){
                         //Step 3:check against each organization for each enterprise
                         for(Organization organization:enterprise.getOrganizationDirectory().getOrganizationList()){
+                           
                             userAccount=organization.getUserAccountDirectory().authenticateUser(userName, password);
                             if(userAccount!=null){
                                 inEnterprise=enterprise;
                                 inOrganization=organization;
+                               
                                 break;
                             }
                         }
@@ -173,7 +189,8 @@ public class MainJFrame extends javax.swing.JFrame {
         }
         else{
             CardLayout layout=(CardLayout)container.getLayout();
-            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system));
+            
+            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system,produceDirectory));
             layout.next(container);
         }
 
