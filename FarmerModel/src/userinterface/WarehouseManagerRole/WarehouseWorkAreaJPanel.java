@@ -55,12 +55,12 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(WorkRequest request : warehouseOrganization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = request;
             row[1] = request.getSender().getEmployee().getName();
             row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
             row[3] = request.getStatus();
-            
+            row[4] = request.getCropQty();
             model.addRow(row);
         }
     }
@@ -106,14 +106,14 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "Message", "Sender", "Receiver", "Status", "Crop Quantity"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -130,9 +130,10 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
             workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
             workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
+            workRequestJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 375, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 460, 96));
 
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -193,11 +194,33 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-        request.setReceiver(userAccount);
-        request.setStatus("Pending");
-        populateTable();
-        
+        String cropName = workRequestJTable.getModel().getValueAt(selectedRow, 0).toString();
+        int cropQty = Integer.parseInt((String.valueOf(workRequestJTable.getModel().getValueAt(selectedRow, 4))));
+
+          int i =0;
+         int cropQntyProduce = 0;
+         String tempName = null;
+        for(int j = 0; j <produceTable.getRowCount(); j++){
+             tempName = produceTable.getModel().getValueAt(i, j).toString();
+            if(tempName.equals(cropName)){
+                i++;
+               
+                cropQntyProduce = Integer.parseInt((String.valueOf(produceTable.getModel().getValueAt(j, i))));
+                break;
+            }
+        }
+   
+        if (tempName.equals(cropName) && cropQty <= cropQntyProduce)
+        {
+            WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+            request.setReceiver(userAccount);
+            request.setStatus("Pending");
+            populateTable();
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null,"Cannot assign");
+        }
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed

@@ -25,10 +25,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private EcoSystem system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-    ProduceDirectory produceDirectory = new ProduceDirectory();
+    //ProduceDirectory produceDirectory = new ProduceDirectory();
+    ProduceDirectory produceDirectory;
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
+        this.produceDirectory = system.getProduceDirectory();
+        System.out.println(this.produceDirectory);
         this.setSize(1200, 800);
     }
 

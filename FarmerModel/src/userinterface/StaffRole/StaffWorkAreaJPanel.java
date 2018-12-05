@@ -58,12 +58,12 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = request;
             row[1] = request.getSender().getEmployee().getName();
             row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
             row[3] = request.getStatus();
-            
+            row[4] = request.getCropQty();
             model.addRow(row);
         }
     }
@@ -106,20 +106,20 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
 
         workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "Message", "Sender", "Receiver", "Status", "Crop Quantity"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -131,13 +131,21 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(workRequestJTable1);
+        if (workRequestJTable1.getColumnModel().getColumnCount() > 0) {
+            workRequestJTable1.getColumnModel().getColumn(0).setResizable(false);
+            workRequestJTable1.getColumnModel().getColumn(1).setResizable(false);
+            workRequestJTable1.getColumnModel().getColumn(2).setResizable(false);
+            workRequestJTable1.getColumnModel().getColumn(3).setResizable(false);
+            workRequestJTable1.getColumnModel().getColumn(4).setResizable(false);
+        }
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 133, 375, 96));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 440, 96));
 
         jLabel1.setText("Customer Request");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 94, -1, -1));
 
         sendToFarmerJButton.setText("Send to Farmer");
+        sendToFarmerJButton.setEnabled(false);
         sendToFarmerJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendToFarmerJButtonActionPerformed(evt);

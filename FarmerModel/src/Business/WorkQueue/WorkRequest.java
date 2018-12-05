@@ -19,6 +19,15 @@ public abstract class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
+    private int cropQty;
+
+    public int getCropQty() {
+        return cropQty;
+    }
+
+    public void setCropQty(int cropQty) {
+        this.cropQty = cropQty;
+    }
     
     public WorkRequest(){
         requestDate = new Date();
@@ -70,5 +79,11 @@ public abstract class WorkRequest {
 
     public void setResolveDate(Date resolveDate) {
         this.resolveDate = resolveDate;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return message;
     }
 }

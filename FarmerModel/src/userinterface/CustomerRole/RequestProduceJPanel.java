@@ -53,6 +53,8 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         valueLabel = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        qtyJTextField = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -62,7 +64,7 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 95, -1, -1));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
 
         jLabel1.setText("Message");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 40, -1, -1));
@@ -82,6 +84,10 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
+
+        jLabel2.setText("Quanitty");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+        add(qtyJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
@@ -92,7 +98,7 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         request.setMessage(message);
         request.setSender(userAccount);
         request.setStatus("Sent");
-        
+        request.setCropQty(Integer.parseInt(qtyJTextField.getText()));
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
             if (organization instanceof StaffOrganization){
@@ -123,7 +129,9 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField messageJTextField;
+    private javax.swing.JTextField qtyJTextField;
     private javax.swing.JButton requestTestJButton;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables

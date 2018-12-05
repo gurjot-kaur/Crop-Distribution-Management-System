@@ -13,10 +13,19 @@ import java.util.ArrayList;
  */
 public class ProduceDirectory {
     private ArrayList<Produce>produceList;
+    private static ProduceDirectory prodInstance;
+    
+     public static ProduceDirectory getInstance(){
+        if(prodInstance==null){
+            System.out.println("Inside get instance");
+            prodInstance=new ProduceDirectory();
+        }
+        return prodInstance;
+    }
     
     public ProduceDirectory(){
         produceList = new ArrayList<Produce>();
-        System.out.println("produce list"+ produceList);
+        
         
     }
 
