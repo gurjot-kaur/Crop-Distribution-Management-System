@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Enterprise.*;
 import Business.Organization.*;
 import Business.Produce.ProduceDirectory;
+import Business.RawMaterial.RawMaterialDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.ManufacturerWarehouseRole.ManufacturerWarehouseJPanel;
@@ -18,8 +19,8 @@ import userinterface.ManufacturerWarehouseRole.ManufacturerWarehouseJPanel;
  */
 public class ManufacturerWarehouseManagerRole extends Role {
      @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
-        return new ManufacturerWarehouseJPanel(userProcessContainer,account, (ManufacturerWarehouseOrganization)organization,(ManufacturerEnterprise)enterprise,business);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory, RawMaterialDirectory rmDirectory) {
+        return new ManufacturerWarehouseJPanel(userProcessContainer,account, (ManufacturerWarehouseOrganization)organization,(ManufacturerEnterprise)enterprise,business,rmDirectory);
        
     }
     

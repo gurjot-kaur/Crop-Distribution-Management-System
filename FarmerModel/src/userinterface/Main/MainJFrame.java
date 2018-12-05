@@ -12,6 +12,7 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Produce.Produce;
 import Business.Produce.ProduceDirectory;
+import Business.RawMaterial.*;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -27,10 +28,12 @@ public class MainJFrame extends javax.swing.JFrame {
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     //ProduceDirectory produceDirectory = new ProduceDirectory();
     ProduceDirectory produceDirectory;
+    RawMaterialDirectory rmDirectory;
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.produceDirectory = system.getProduceDirectory();
+        this.rmDirectory = system.getRmDirectory();
         System.out.println(this.produceDirectory);
         this.setSize(1200, 800);
     }
@@ -193,7 +196,7 @@ public class MainJFrame extends javax.swing.JFrame {
         else{
             CardLayout layout=(CardLayout)container.getLayout();
             
-            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system,produceDirectory));
+            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system,produceDirectory,rmDirectory));
             layout.next(container);
         }
 

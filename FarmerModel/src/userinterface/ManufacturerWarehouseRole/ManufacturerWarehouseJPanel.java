@@ -11,6 +11,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.ManufacturerEnterprise;
 import Business.Organization.*;
+import Business.RawMaterial.*;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.*;
 import java.awt.CardLayout;
@@ -27,7 +28,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
     private ManufacturerWarehouseOrganization organization;
     private ManufacturerEnterprise enterprise;
     private UserAccount userAccount;
-
+    private RawMaterialDirectory rmDirectory;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
@@ -35,7 +36,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public ManufacturerWarehouseJPanel(JPanel userProcessContainer, UserAccount account, ManufacturerWarehouseOrganization organization, Enterprise enterprise,EcoSystem business) {
+    public ManufacturerWarehouseJPanel(JPanel userProcessContainer, UserAccount account, ManufacturerWarehouseOrganization organization, Enterprise enterprise,EcoSystem business, RawMaterialDirectory rmDirectiry) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -43,9 +44,10 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
         this.enterprise = (ManufacturerEnterprise)enterprise;
         this.userAccount = account;
         this.business = business;
+        this.rmDirectory = rmDirectiry;
         valueLabel.setText(enterprise.getName());
         populateSuppRequestTable();
-      
+        populateRM();
         
     }
 
@@ -83,6 +85,8 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         processJButton = new javax.swing.JButton();
         assignJButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        rmJTable = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -149,6 +153,31 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
             }
         });
         add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
+
+        rmJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Raw Material", "Quantity", "Producer"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(rmJTable);
+        if (rmJTable.getColumnModel().getColumnCount() > 0) {
+            rmJTable.getColumnModel().getColumn(0).setResizable(false);
+            rmJTable.getColumnModel().getColumn(1).setResizable(false);
+            rmJTable.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 350, 200));
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
@@ -218,10 +247,28 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
     private javax.swing.JButton assignJButton;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton processJButton;
     private javax.swing.JButton refreshJButton;
+    private javax.swing.JTable rmJTable;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestRMJTable;
     // End of variables declaration//GEN-END:variables
+
+    private void populateRM() {
+        DefaultTableModel model = (DefaultTableModel)rmJTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for(RawMaterial rm : rmDirectory.getRawMaterial()){
+            Object[] row = new Object[4];
+            row[0] = rm;
+            row[1] = rm.getMaterialQuantity();
+            row[2] = rm.getProducerName();
+            //row[3] = userAccount.getUsername();
+            
+            model.addRow(row);
+        }
+    }
 }

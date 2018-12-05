@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.Enterprise.ManufacturerEnterprise;
 import Business.Organization.*;
 import Business.Produce.ProduceDirectory;
+import Business.RawMaterial.RawMaterialDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.SupplierRole.SupplierWorkAreaJPanel;
@@ -20,7 +21,7 @@ import userinterface.SupplierRole.SupplierWorkAreaJPanel;
  */
 public class ManufacturerSupplierRole extends Role {
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory, RawMaterialDirectory rmDirectory) {
         return new SupplierWorkAreaJPanel(userProcessContainer,account,(ManufacturerSupplierOrganization)organization, (ManufacturerEnterprise)enterprise, business);
        
     }

@@ -12,9 +12,12 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.ManufacturerEnterprise;
 import Business.Organization.*;
+import Business.RawMaterial.RawMaterial;
+import Business.RawMaterial.RawMaterialDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.*;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,7 +31,8 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
     private ManufacturerProductionOrganization organization;
     private ManufacturerEnterprise enterprise;
     private UserAccount userAccount;
-
+    private RawMaterialDirectory rmDirectory;
+           
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
@@ -36,7 +40,7 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public ManufacturerProducerJPanel(JPanel userProcessContainer, UserAccount account, ManufacturerProductionOrganization organization, Enterprise enterprise,EcoSystem business) {
+    public ManufacturerProducerJPanel(JPanel userProcessContainer, UserAccount account, ManufacturerProductionOrganization organization, Enterprise enterprise,EcoSystem business, RawMaterialDirectory rmDirectory) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -44,6 +48,7 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
         this.enterprise = (ManufacturerEnterprise)enterprise;
         this.userAccount = account;
         this.business = business;
+        this.rmDirectory = rmDirectory;
         valueLabel.setText(enterprise.getName());
         populateSuppRequestTable();
       
@@ -84,6 +89,13 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         processJButton = new javax.swing.JButton();
         assignJButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        rmNameTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        quantityTextField = new javax.swing.JTextField();
+        addCropButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        rmJTable = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -150,6 +162,47 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
             }
         });
         add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
+
+        jLabel2.setText("Raw Material");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
+        add(rmNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 200, -1));
+
+        jLabel3.setText("Quantity");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
+        add(quantityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 200, -1));
+
+        addCropButton.setText("Add to the list");
+        addCropButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCropButtonActionPerformed(evt);
+            }
+        });
+        add(addCropButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
+
+        rmJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Raw Material", "Quantity", "Producer"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(rmJTable);
+        if (rmJTable.getColumnModel().getColumnCount() > 0) {
+            rmJTable.getColumnModel().getColumn(0).setResizable(false);
+            rmJTable.getColumnModel().getColumn(1).setResizable(false);
+            rmJTable.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 320, 130));
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
@@ -215,14 +268,80 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_assignJButtonActionPerformed
 
+    private void addCropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCropButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            if(rmNameTextField.getText().equals("") || quantityTextField.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Please fill all the details");
+            else if (checkIfRMExists(rmNameTextField.getText()))
+            {
+                RawMaterial rm =  rmDirectory.addRM();
+                rm.setMaterialName(rmNameTextField.getText());
+                rm.setMaterialQuantity(Integer.parseInt(quantityTextField.getText()));
+                rm.setProducerName(userAccount.getUsername());
+                populateRMTable();
+            }
+            else {JOptionPane.showMessageDialog(null,"Material already added to the list");}
+
+        }
+        catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null,"Please enter a number in Quantity");
+        }
+    }//GEN-LAST:event_addCropButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCropButton;
     private javax.swing.JButton assignJButton;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton processJButton;
+    private javax.swing.JTextField quantityTextField;
     private javax.swing.JButton refreshJButton;
+    private javax.swing.JTable rmJTable;
+    private javax.swing.JTextField rmNameTextField;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestRMJTable;
     // End of variables declaration//GEN-END:variables
+
+    private boolean checkIfRMExists(String text) {
+        boolean flag = true;
+        for (RawMaterial rm: rmDirectory.getRawMaterial()){
+            String temp = rm.getMaterialName();
+            if(temp == null)
+            {   
+                break;
+            }
+            else if (temp.equals(text))
+            {
+                flag = false;
+                break;
+            }
+                else
+                flag = true;
+        } 
+        
+        return flag;
+    }
+
+    private void populateRMTable() {
+         DefaultTableModel model = (DefaultTableModel)rmJTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for(RawMaterial rm : rmDirectory.getRawMaterial()){
+            Object[] row = new Object[4];
+            row[0] = rm;
+            row[1] = rm.getMaterialQuantity();
+            row[2] = rm.getProducerName();
+            //row[3] = userAccount.getUsername();
+            
+            model.addRow(row);
+        }
+    }
 }

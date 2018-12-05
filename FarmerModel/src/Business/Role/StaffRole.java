@@ -10,6 +10,7 @@ import Business.Enterprise.USFDEnterprise;
 import Business.Organization.Organization;
 import Business.Organization.StaffOrganization;
 import Business.Produce.ProduceDirectory;
+import Business.RawMaterial.RawMaterialDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 import userinterface.StaffRole.StaffWorkAreaJPanel;
@@ -21,7 +22,7 @@ import userinterface.StaffRole.StaffWorkAreaJPanel;
 public class StaffRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ProduceDirectory produceDirectory, RawMaterialDirectory rmDirectory) {
 
         return new StaffWorkAreaJPanel(userProcessContainer, account,(StaffOrganization)organization, (USFDEnterprise)enterprise,business);
 

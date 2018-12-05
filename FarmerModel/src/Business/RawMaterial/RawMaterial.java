@@ -12,7 +12,15 @@ package Business.RawMaterial;
 public class RawMaterial {
     private String materialName;
     private int materialQuantity;
-    private double materialPrice;
+    private String producerName;
+
+    public String getProducerName() {
+        return producerName;
+    }
+
+    public void setProducerName(String producerName) {
+        this.producerName = producerName;
+    }
     
     public String getMaterialName() {
         return materialName;
@@ -29,13 +37,9 @@ public class RawMaterial {
     public void setMaterialQuantity(int materialQuantity) {
         this.materialQuantity = materialQuantity;
     }
-
-    public double getMaterialPrice() {
-        return materialPrice;
-    }
-
-    public void setMaterialPrice(double materialPrice) {
-        this.materialPrice = materialPrice;
+  @Override
+    public String toString() {
+        return materialName;
     }
     
 }
