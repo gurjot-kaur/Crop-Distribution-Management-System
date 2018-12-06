@@ -20,6 +20,15 @@ public abstract class WorkRequest {
     private Date requestDate;
     private Date resolveDate;
     private int cropQty;
+    private int rawMaterialQty;
+
+    public int getRawMaterialQty() {
+        return rawMaterialQty;
+    }
+
+    public void setRawMaterialQty(int rawMaterialQty) {
+        this.rawMaterialQty = rawMaterialQty;
+    }
 
     public int getCropQty() {
         return cropQty;

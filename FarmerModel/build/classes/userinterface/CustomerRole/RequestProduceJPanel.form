@@ -27,11 +27,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-<<<<<<< HEAD
-          <AbsoluteConstraints x="215" y="95" width="-1" height="-1"/>
-=======
           <AbsoluteConstraints x="210" y="130" width="-1" height="-1"/>
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
         </Constraint>
       </Constraints>
     </Component>
@@ -88,8 +84,6 @@
         </Constraint>
       </Constraints>
     </Component>
-<<<<<<< HEAD
-=======
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quanitty"/>
@@ -107,6 +101,5 @@
         </Constraint>
       </Constraints>
     </Component>
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
   </SubComponents>
 </Form>

@@ -1,9 +1,4 @@
 /Databank.db4o
-<<<<<<< HEAD
-/FarmerModel/nbproject/private/
-/FarmerModel/build/
-/FarmerModel/dist/
-=======
 /FarmerModel/dist/
 /FarmerModel/nbproject/private/
 /FarmerModel/build/
@@ -14,4 +9,3 @@
 /FarmerModel/FarmerModel/build/
 /FarmerModel/FarmerModel/dist/
 /FarmerModel/FarmerModel/nbproject/private/
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332

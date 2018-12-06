@@ -69,13 +69,9 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         valueLabel = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
-<<<<<<< HEAD
-        jComboBox1 = new javax.swing.JComboBox();
-=======
         cropCombo = new javax.swing.JComboBox();
         rmCoboBox = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -106,10 +102,6 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
 
-<<<<<<< HEAD
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 90, -1));
-=======
         add(cropCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 90, -1));
 
         rmCoboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -126,18 +118,19 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         
-        String message = messageJTextField.getText();
-        
+        //String message = messageJTextField.getText();
+        //int materialQuantity = Integer.parseInt(messageJTextField.getText());
+        String message = (String) rmCoboBox.getSelectedItem();
         ProduceRequest request = new ProduceRequest();
         request.setMessage(message);
         request.setSender(userAccount);
         request.setStatus("Sent");
-        
+        request.setRawMaterialQty(Integer.parseInt(messageJTextField.getText()));
+
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
             if (organization instanceof StaffOrganization){
@@ -176,11 +169,7 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JComboBox cropCombo;
     private javax.swing.JLabel enterpriseLabel;
-<<<<<<< HEAD
-    private javax.swing.JComboBox jComboBox1;
-=======
     private javax.swing.JButton jButton1;
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField messageJTextField;
     private javax.swing.JButton requestTestJButton;

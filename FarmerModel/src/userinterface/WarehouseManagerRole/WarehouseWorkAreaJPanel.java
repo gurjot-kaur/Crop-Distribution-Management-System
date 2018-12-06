@@ -201,7 +201,8 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
          int cropQntyProduce = 0;
          String tempName = null;
         for(int j = 0; j <produceTable.getRowCount(); j++){
-             tempName = produceTable.getModel().getValueAt(i, j).toString();
+             tempName = produceTable.getModel().getValueAt(j, i).toString();
+             System.out.println(tempName);
             if(tempName.equals(cropName)){
                 i++;
                

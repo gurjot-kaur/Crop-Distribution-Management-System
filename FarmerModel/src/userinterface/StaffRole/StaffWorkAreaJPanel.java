@@ -58,12 +58,13 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(WorkRequest request : organization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             row[0] = request;
             row[1] = request.getSender().getEmployee().getName();
             row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
             row[3] = request.getStatus();
             row[4] = request.getCropQty();
+            row[5] = request.getRawMaterialQty();
             model.addRow(row);
         }
     }
@@ -106,20 +107,20 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
 
         workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status", "Crop Quantity"
+                "Message", "Sender", "Receiver", "Status", "Crop Quantity", "Raw Material Quantity"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -137,13 +138,10 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable1.getColumnModel().getColumn(2).setResizable(false);
             workRequestJTable1.getColumnModel().getColumn(3).setResizable(false);
             workRequestJTable1.getColumnModel().getColumn(4).setResizable(false);
+            workRequestJTable1.getColumnModel().getColumn(5).setResizable(false);
         }
 
-<<<<<<< HEAD
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 133, 375, 96));
-=======
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 440, 96));
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 780, 96));
 
         jLabel1.setText("Customer Request");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 94, -1, -1));

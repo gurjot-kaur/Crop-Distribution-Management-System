@@ -8,6 +8,7 @@ package Business;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Produce.ProduceDirectory;
+import Business.RawMaterial.RawMaterialDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import java.util.ArrayList;
@@ -21,7 +22,15 @@ public class EcoSystem extends Organization{
     private static EcoSystem business;
     private ArrayList<Network> networkList;
     private ProduceDirectory produceDirectory;
+    private RawMaterialDirectory rmDirectory;
 
+    public RawMaterialDirectory getRmDirectory() {
+        return rmDirectory;
+    }
+
+    public void setRmDirectory(RawMaterialDirectory rmDirectory) {
+        this.rmDirectory = rmDirectory;
+    }
     public ProduceDirectory getProduceDirectory() {
         return produceDirectory;
     }
@@ -52,6 +61,7 @@ public class EcoSystem extends Organization{
         super(null);
         networkList=new ArrayList<Network>();
         produceDirectory = ProduceDirectory.getInstance();
+        rmDirectory = RawMaterialDirectory.getInstance();
     }
 
     public ArrayList<Network> getNetworkList() {

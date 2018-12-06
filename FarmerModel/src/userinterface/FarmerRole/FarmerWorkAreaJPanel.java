@@ -92,12 +92,13 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = request.getMessage();
             row[1] = request.getReceiver();
             row[2] = request.getStatus();
             String result = ((ProduceRequest) request).getTestResult();
             row[3] = result == null ? "Waiting" : result;
+            row[4] = request.getRawMaterialQty();
             
             model.addRow(row);
         }
@@ -223,11 +224,11 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "Message", "Sender", "Receiver", "Status", "Raw material Qty"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -240,9 +241,10 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             requestRMjTable.getColumnModel().getColumn(1).setResizable(false);
             requestRMjTable.getColumnModel().getColumn(2).setResizable(false);
             requestRMjTable.getColumnModel().getColumn(3).setResizable(false);
+            requestRMjTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 400, 90));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 470, 90));
 
         requestTestJButton.setText("Request Raw Material");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -250,11 +252,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
-=======
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, -1, -1));
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, -1, -1));
 
         weatherButton.setText("Weather Information");
         weatherButton.addActionListener(new java.awt.event.ActionListener() {
@@ -270,11 +268,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 addCropButtonActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
-        add(addCropButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 780, -1, -1));
-=======
         add(addCropButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, -1, -1));
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -375,8 +369,6 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton weatherButton;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
-<<<<<<< HEAD
-=======
 
     private boolean checkIfCropExists(String text) {
          boolean flag = true;
@@ -397,6 +389,5 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         
         return flag;
     }
->>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
 
 }
