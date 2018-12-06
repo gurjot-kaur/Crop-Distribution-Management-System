@@ -33,6 +33,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
     private WarehouseOrganization warehouseOrganization;
     private ProduceDirectory produceDirectory;
     private USFDEnterprise enterprise;
+   public static boolean flag = false;
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
@@ -194,33 +195,68 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
         
-        String cropName = workRequestJTable.getModel().getValueAt(selectedRow, 0).toString();
-        int cropQty = Integer.parseInt((String.valueOf(workRequestJTable.getModel().getValueAt(selectedRow, 4))));
+            String cropName = workRequestJTable.getModel().getValueAt(selectedRow, 0).toString();
+            int cropQty = Integer.parseInt((String.valueOf(workRequestJTable.getModel().getValueAt(selectedRow, 4))));
 
-          int i =0;
-         int cropQntyProduce = 0;
-         String tempName = null;
-        for(int j = 0; j <produceTable.getRowCount(); j++){
+            int i =0;
+            int cropQntyProduce = 0;
+            String tempName = null;
+            for(int j = 0; j <produceTable.getRowCount(); j++)
+            {
              tempName = produceTable.getModel().getValueAt(j, i).toString();
              System.out.println(tempName);
-            if(tempName.equals(cropName)){
+                if(tempName.equals(cropName)){
                 i++;
                
                 cropQntyProduce = Integer.parseInt((String.valueOf(produceTable.getModel().getValueAt(j, i))));
                 break;
+                }
             }
-        }
    
-        if (tempName.equals(cropName) && cropQty <= cropQntyProduce)
-        {
-            WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
-            request.setReceiver(userAccount);
-            request.setStatus("Pending");
-            populateTable();
-        }
+            if (tempName.equals(cropName))
+            {
+                if (cropQty <= cropQntyProduce)
+                    {
+                        WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+                        request.setReceiver(userAccount);
+                        request.setStatus("Pending");
+            
+                        for(Produce produce : produceDirectory.getProduceList()){
+                            if (tempName.equals((String)produce.getCropName()))
+                            {
+                                produce.setCropQuantity(cropQntyProduce - cropQty);
+                                request.setCropQty(0);
+                            }
+                            populateCropTable();
+                            populateTable();
+                        }  
+ 
+                    }
+                else if (cropQty > cropQntyProduce)
+                {
+                    WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
+                    request.setReceiver(userAccount);
+                    request.setStatus("Pending");
+                    request.setCropQty(cropQty - cropQntyProduce);
+                    
+                    for(Produce produce : produceDirectory.getProduceList()){
+                    if (tempName.equals((String)produce.getCropName()))
+                    {
+                        produce.setCropQuantity(0);
+                        request.setCropQty(cropQty - cropQntyProduce);
+                        flag = true;
+                    }
+                    
+                    populateCropTable();
+                    populateTable();
+                    }  
+                }
+            
+            }
         else 
         {
-            JOptionPane.showMessageDialog(null,"Cannot assign");
+            JOptionPane.showMessageDialog(null,"Cannot assign this job, please go farmer");
+            flag = true;
         }
     }//GEN-LAST:event_assignJButtonActionPerformed
 

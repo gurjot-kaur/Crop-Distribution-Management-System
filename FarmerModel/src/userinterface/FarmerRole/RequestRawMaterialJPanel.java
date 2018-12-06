@@ -124,7 +124,13 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         
         //String message = messageJTextField.getText();
         //int materialQuantity = Integer.parseInt(messageJTextField.getText());
+        
         String message = (String) rmCoboBox.getSelectedItem();
+        String rawMaterial = (String) cropCombo.getSelectedItem();
+        if(rawMaterial.equalsIgnoreCase("rice") && message.equalsIgnoreCase("food scraps")){
+            JOptionPane.showMessageDialog(null,"Not a suitable raw material for rice");
+           
+        } 
         ProduceRequest request = new ProduceRequest();
         request.setMessage(message);
         request.setSender(userAccount);
@@ -191,6 +197,7 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
     private void populateRMCombo() {
         rmCoboBox.removeAllItems();
         String crop = (String) cropCombo.getSelectedItem();
+        String rawMaterial = (String) rmCoboBox.getSelectedItem();
         
         if (crop.equalsIgnoreCase("rice"))
         {
@@ -205,6 +212,35 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
             rmCoboBox.removeAllItems();
             rmCoboBox.addItem("abc");
         }
+        else if (crop.equalsIgnoreCase("tomato"))
+        {   
+            rmCoboBox.removeAllItems();
+            rmCoboBox.addItem("Pest A");
+            rmCoboBox.addItem("Pest B");
+            rmCoboBox.addItem("Pest C");    
+        }
+        else if (crop.equalsIgnoreCase("wheat"))
+        {   
+            rmCoboBox.removeAllItems();
+            rmCoboBox.addItem("Pest A");
+            rmCoboBox.addItem("Pest B");
+            rmCoboBox.addItem("Pest C");    
+        }
+        else if (crop.equalsIgnoreCase("carrot"))
+        {   
+            rmCoboBox.removeAllItems();
+            rmCoboBox.addItem("Pest A");
+            rmCoboBox.addItem("Pest B");
+            rmCoboBox.addItem("Pest C");    
+        }
+        else if (crop.equalsIgnoreCase("cucumber"))
+        {   
+            rmCoboBox.removeAllItems();
+            rmCoboBox.addItem("Pest A");
+            rmCoboBox.addItem("Pest B");
+            rmCoboBox.addItem("Pest C");    
+        }
+        
         
         //populateRMCombo();
     }

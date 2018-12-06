@@ -15,9 +15,11 @@ import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.*;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import sun.applet.AppletViewer;
+import static userinterface.WarehouseManagerRole.WarehouseWorkAreaJPanel.flag;
 
 /**
  *
@@ -29,6 +31,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
     private StaffOrganization organization;
     private USFDEnterprise enterprise;
     private UserAccount userAccount;
+    private ProduceDirectory produceDirectory;
     
 
     /**
@@ -38,7 +41,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public StaffWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, StaffOrganization organization, Enterprise enterprise,EcoSystem business) {
+    public StaffWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, StaffOrganization organization, Enterprise enterprise,EcoSystem business,ProduceDirectory produceDirectory ) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -46,9 +49,14 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = (USFDEnterprise)enterprise;
         this.userAccount = account;
         this.business = business;
+        this.produceDirectory = produceDirectory;
         valueLabel.setText(enterprise.getName());
         populateCustomerRequestTable();
-      
+        populateProduceTable();
+        if (flag == true)
+        {  
+            sendToFarmerJButton.setEnabled(true);
+        }
         
     }
 
@@ -87,6 +95,8 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         sendToFarmerJButton = new javax.swing.JButton();
         sendToWarehouseJButton = new javax.swing.JButton();
         sendToSupp = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        produceTable = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -170,6 +180,26 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(sendToSupp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 110, 40));
+
+        produceTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Crop Name", "Quantity", "Price", "Farmer", "Raw Material"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(produceTable);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, 170));
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
@@ -298,6 +328,8 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable produceTable;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JButton sendToFarmerJButton;
     private javax.swing.JButton sendToSupp;
@@ -306,5 +338,34 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTable workRequestJTable1;
     // End of variables declaration//GEN-END:variables
 
+    private void populateProduceTable() {
+        DefaultTableModel model = (DefaultTableModel)produceTable.getModel();
+        
+        model.setRowCount(0);
+        
+        for(Produce produce : produceDirectory.getProduceList()){
+            Object[] row = new Object[4];
+            row[0] = produce;
+            row[1] = produce.getCropQuantity();
+            row[2] = produce.getCropPrice();
+            //row[3] = userAccount.getUsername();
+            row[3] = produce.getFarmerName();
+            model.addRow(row);
+            
+        }
+        checkforProduce();
+    }
+
+    private void checkforProduce() {
+        int i = 1;
+        
+        for (int j = 0; j < produceTable.getRowCount(); j++) {
+           int tempQuantity = Integer.parseInt((String.valueOf(produceTable.getModel().getValueAt(j, i)))) ;
+            if(tempQuantity == 0){
+                JOptionPane.showMessageDialog(null,"Send produce request to farmer");
+            }
+        }
+    }
+    
     
 }

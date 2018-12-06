@@ -334,13 +334,35 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         {
             Produce produce =  produceDirectory.addProduce();
             produce.setCropName(cropNameTextField.getText());
-            produce.setCropPrice(Double.parseDouble(quantityTextField.getText()));
-            produce.setCropQuantity(Integer.parseInt(priceTextField.getText()));
+            produce.setCropPrice(Double.parseDouble(priceTextField.getText()));
+            produce.setCropQuantity(Integer.parseInt(quantityTextField.getText()));
             produce.setFarmerName(userAccount.getUsername());
             populateCropTable();
         }
-        else {JOptionPane.showMessageDialog(null,"Crop already added to the list");}
-        
+        else {
+             String tempName = null;   
+             int cropQty = Integer.parseInt(quantityTextField.getText());
+             int i = 0;
+             String cropName = cropNameTextField.getText();
+             for(int j = 0; j <produceTable.getRowCount(); j++){
+             tempName = produceTable.getModel().getValueAt(j, i).toString();
+             
+             if(tempName.equals(cropName)){
+                i++;
+               
+                cropQty = Integer.parseInt((String.valueOf(produceTable.getModel().getValueAt(j, i)))) + cropQty;
+                 //System.out.println("New qunty" +cropQty);
+                
+                for (Produce prod : produceDirectory.getProduceList())
+                {
+                    if (prod.getCropName().equalsIgnoreCase(cropName))
+                     prod.setCropQuantity(cropQty);
+                }
+                break;
+            }
+        }
+             populateCropTable();
+            }
         }
         catch(NumberFormatException e)
             {
