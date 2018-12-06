@@ -10,13 +10,21 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.StaffOrganization;
+import Business.Produce.Produce;
+import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProduceRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,18 +35,25 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Enterprise enterprise;
     private UserAccount userAccount;
+     private ProduceDirectory produceDirectory;
+    
     /**
      * Creates new form RequestLabTestJPanel
      */
-    public RequestRawMaterialJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise) {
+    public RequestRawMaterialJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise,ProduceDirectory produceDirectory) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.userAccount = account;
+        this.produceDirectory = produceDirectory;
         valueLabel.setText(enterprise.getName());
-    }
+        populateCropCombo();
+        populateRMCombo();
 
+
+       
+                }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +69,13 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         valueLabel = new javax.swing.JLabel();
         enterpriseLabel = new javax.swing.JLabel();
+<<<<<<< HEAD
         jComboBox1 = new javax.swing.JComboBox();
+=======
+        cropCombo = new javax.swing.JComboBox();
+        rmCoboBox = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
+>>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,8 +106,27 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         enterpriseLabel.setText("EnterPrise :");
         add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
 
+<<<<<<< HEAD
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 90, -1));
+=======
+        add(cropCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 90, -1));
+
+        rmCoboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmCoboBoxActionPerformed(evt);
+            }
+        });
+        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 60, -1));
+
+        jButton1.setText("RefreshRM");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
+>>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
@@ -124,13 +164,61 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void rmCoboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmCoboBoxActionPerformed
+        
+    }//GEN-LAST:event_rmCoboBoxActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    populateRMCombo();        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
+    private javax.swing.JComboBox cropCombo;
     private javax.swing.JLabel enterpriseLabel;
+<<<<<<< HEAD
     private javax.swing.JComboBox jComboBox1;
+=======
+    private javax.swing.JButton jButton1;
+>>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField messageJTextField;
     private javax.swing.JButton requestTestJButton;
+    private javax.swing.JComboBox rmCoboBox;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
+
+    private void populateCropCombo() {
+        for(Produce produce: produceDirectory.getProduceList())
+        {
+            Object row[] = new Object[2];
+            row[0]= produce.getCropName();
+
+            cropCombo.addItem(row[0]);     
+        }
+            
+    }
+
+    private void populateRMCombo() {
+        rmCoboBox.removeAllItems();
+        String crop = (String) cropCombo.getSelectedItem();
+        
+        if (crop.equalsIgnoreCase("rice"))
+        {
+            rmCoboBox.removeAllItems();
+            rmCoboBox.addItem("grass clippings");
+            rmCoboBox.addItem("food scraps");
+            rmCoboBox.addItem("Pest A");
+        }
+        
+        else if (crop.equalsIgnoreCase("potato"))
+        {   
+            rmCoboBox.removeAllItems();
+            rmCoboBox.addItem("abc");
+        }
+        
+        //populateRMCombo();
+    }
+
+   
 }

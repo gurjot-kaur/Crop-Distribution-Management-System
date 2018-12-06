@@ -82,14 +82,14 @@ public abstract class Organization {
         this.workQueue = workQueue;
     }
 
-    public ProduceDirectory getProduceDirectory() {
+  /*  public ProduceDirectory getProduceDirectory() {
         return produceDirectory;
     }
 
     public void setProduceDirectory(ProduceDirectory produceDirectory) {
         this.produceDirectory = produceDirectory;
     }
-
+*/
     @Override
     public String toString() {
         return name;

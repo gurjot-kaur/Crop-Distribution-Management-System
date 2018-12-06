@@ -7,6 +7,7 @@ package Business;
 
 import Business.Network.Network;
 import Business.Organization.Organization;
+import Business.Produce.ProduceDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import java.util.ArrayList;
@@ -19,6 +20,16 @@ public class EcoSystem extends Organization{
     
     private static EcoSystem business;
     private ArrayList<Network> networkList;
+    private ProduceDirectory produceDirectory;
+
+    public ProduceDirectory getProduceDirectory() {
+        return produceDirectory;
+    }
+
+    public void setProduceDirectory(ProduceDirectory produceDirectory) {
+        this.produceDirectory = produceDirectory;
+    }
+    
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();
@@ -40,6 +51,7 @@ public class EcoSystem extends Organization{
     private EcoSystem(){
         super(null);
         networkList=new ArrayList<Network>();
+        produceDirectory = ProduceDirectory.getInstance();
     }
 
     public ArrayList<Network> getNetworkList() {

@@ -47,7 +47,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         this.farmerOrganization = (FarmerOrganization)organization;
         this.enterprise = (USFDEnterprise)enterprise;
         this.produceDirectory = produceDirectory;
-        System.out.println("produce directory"+ produceDirectory);
+        System.out.println("farmer panel produce directory"+ produceDirectory);
         populateTable();
         populateRequestRMTable();
         populateCropTable();
@@ -59,12 +59,12 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(WorkRequest request : farmerOrganization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = request;
             row[1] = request.getSender().getEmployee().getName();
             row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
             row[3] = request.getStatus();
-            
+            row[4] = request.getCropQty();
             model.addRow(row);
             
         }
@@ -135,20 +135,20 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "Message", "Sender", "Receiver", "Status", "Crop Quantity"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -165,9 +165,10 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
             workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
             workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
+            workRequestJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 58, 375, 96));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 58, 440, 96));
 
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -243,13 +244,17 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 400, 90));
 
-        requestTestJButton.setText("Request Test");
+        requestTestJButton.setText("Request Raw Material");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
+=======
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, -1, -1));
+>>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
 
         weatherButton.setText("Weather Information");
         weatherButton.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +270,11 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 addCropButtonActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         add(addCropButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 780, -1, -1));
+=======
+        add(addCropButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, -1, -1));
+>>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -309,7 +318,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestProduceJPanel", new RequestRawMaterialJPanel(userProcessContainer, userAccount, enterprise));
+        userProcessContainer.add("RequestProduceJPanel", new RequestRawMaterialJPanel(userProcessContainer, userAccount, enterprise,produceDirectory));
         layout.next(userProcessContainer);
 
     }//GEN-LAST:event_requestTestJButtonActionPerformed
@@ -323,16 +332,26 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
     private void addCropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCropButtonActionPerformed
         // TODO add your handling code here:
-        Produce produce =  produceDirectory.addProduce();
-        System.out.println(produce);
-        produce.setCropName(cropNameTextField.getText());
-        produce.setCropPrice(Double.parseDouble(quantityTextField.getText()));
-        produce.setCropQuantity(Integer.parseInt(priceTextField.getText()));
-        produce.setFarmerName(userAccount.getUsername());
-        System.out.println(produce);
-        //farmerOrganization.getProduceDirectory().getProduceList().add(produce);
+        try 
+        {
+        if(cropNameTextField.getText().equals("") || quantityTextField.getText().equals("") || priceTextField.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Please fill all the details");
+         else if (checkIfCropExists(cropNameTextField.getText()))
+        {
+            Produce produce =  produceDirectory.addProduce();
+            produce.setCropName(cropNameTextField.getText());
+            produce.setCropPrice(Double.parseDouble(quantityTextField.getText()));
+            produce.setCropQuantity(Integer.parseInt(priceTextField.getText()));
+            produce.setFarmerName(userAccount.getUsername());
+            populateCropTable();
+        }
+        else {JOptionPane.showMessageDialog(null,"Crop already added to the list");}
         
-        populateCropTable();
+        }
+        catch(NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(null,"Please enter a number in Quantity  and price");
+            }
     }//GEN-LAST:event_addCropButtonActionPerformed
 
 
@@ -356,5 +375,28 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton weatherButton;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
+<<<<<<< HEAD
+=======
+
+    private boolean checkIfCropExists(String text) {
+         boolean flag = true;
+        for (Produce produce: produceDirectory.getProduceList()){
+            String temp = produce.getCropName();
+            if(temp == null)
+            {   
+                break;
+            }
+            else if (temp.equals(text))
+            {
+                flag = false;
+                break;
+            }
+                else
+                flag = true;
+        } 
+        
+        return flag;
+    }
+>>>>>>> 45b42600d29a7aa636be087abda5c1f3e9630332
 
 }
