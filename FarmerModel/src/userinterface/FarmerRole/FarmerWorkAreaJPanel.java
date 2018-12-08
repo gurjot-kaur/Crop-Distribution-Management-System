@@ -200,7 +200,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Crop Name", "Quantity", "Price", "Farmer", "Raw Material"
+                "Crop Name", "Quantity", "Price", "Farmer"
             }
         ));
         jScrollPane2.setViewportView(produceTable);
@@ -282,7 +282,14 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         request.setReceiver(userAccount);
         request.setStatus("Pending");
+        String cropName = workRequestJTable.getModel().getValueAt(selectedRow, 0).toString();
+        int cropQty = Integer.parseInt((String.valueOf(workRequestJTable.getModel().getValueAt(selectedRow, 4))));
         populateTable();
+        if(cropName.equalsIgnoreCase("rice")) if(cropName.equalsIgnoreCase("tomato")){
+            JOptionPane.showMessageDialog(null, "The amount of pesticides required for rice of quality pest A is" + (cropQty*2) + 
+                    "The amount of pesticides required for rice of quality pest B is" + (cropQty/2)+ "The amount of pesticides required for rice of quality pest A is" +(cropQty*1.5));
+        }
+        
         
     }//GEN-LAST:event_assignJButtonActionPerformed
 

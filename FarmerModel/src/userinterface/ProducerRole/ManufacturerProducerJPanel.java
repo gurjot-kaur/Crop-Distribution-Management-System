@@ -17,6 +17,7 @@ import Business.RawMaterial.RawMaterialDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.*;
 import java.awt.CardLayout;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -169,6 +170,17 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Quantity");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
+
+        quantityTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quantityTextFieldActionPerformed(evt);
+            }
+        });
+        quantityTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                quantityTextFieldKeyTyped(evt);
+            }
+        });
         add(quantityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 200, -1));
 
         addCropButton.setText("Add to the list");
@@ -270,7 +282,7 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
 
     private void addCropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCropButtonActionPerformed
         // TODO add your handling code here:
-        try
+        /*try
         {
             if(rmNameTextField.getText().equals("") || quantityTextField.getText().equals(""))
             JOptionPane.showMessageDialog(null,"Please fill all the details");
@@ -288,8 +300,62 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
         catch(NumberFormatException e)
         {
             JOptionPane.showMessageDialog(null,"Please enter a number in Quantity");
+        }*/
+        try 
+        {
+        if(rmNameTextField.getText().equals("") || quantityTextField.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"Please fill all the details");
+         else if (checkIfRMExists(rmNameTextField.getText()))
+        {
+            RawMaterial rm =  rmDirectory.addRM();
+            rm.setMaterialName(rmNameTextField.getText());
+            rm.setMaterialQuantity(Integer.parseInt(quantityTextField.getText()));
+           
+            rm.setProducerName(userAccount.getUsername());
+            populateRMTable();
         }
+        else {
+             String tempName = null;   
+             int cropQty = Integer.parseInt(quantityTextField.getText());
+             int i = 0;
+             String cropName = rmNameTextField.getText();
+             for(int j = 0; j <rmJTable.getRowCount(); j++){
+             tempName = rmJTable.getModel().getValueAt(j, i).toString();
+             
+             if(tempName.equals(cropName)){
+                i++;
+               
+                cropQty = Integer.parseInt((String.valueOf(rmJTable.getModel().getValueAt(j, i)))) + cropQty;
+                 //System.out.println("New qunty" +cropQty);
+                
+                for (RawMaterial rm : rmDirectory.getRawMaterial())
+                {
+                    if (rm.getMaterialName().equalsIgnoreCase(cropName))
+                     rm.setMaterialQuantity(cropQty);
+                }
+                break;
+            }
+        }
+             populateRMTable();
+            }
+        }
+        catch(NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(null,"Please enter a number in Quantity  and price");
+            }
     }//GEN-LAST:event_addCropButtonActionPerformed
+
+    private void quantityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityTextFieldActionPerformed
+         
+    }//GEN-LAST:event_quantityTextFieldActionPerformed
+
+    private void quantityTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextFieldKeyTyped
+        char vchar = evt.getKeyChar();
+        if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE)){
+        getToolkit().beep();
+        evt.consume();
+        }
+    }//GEN-LAST:event_quantityTextFieldKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCropButton;

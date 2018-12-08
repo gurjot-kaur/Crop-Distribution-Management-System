@@ -3,20 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/CustomerRole/RequestProduceJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/FarmerRole/WeatherInformationJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/WarehouseManagerRole/ProcessRequestJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/ManufacturerWarehouseRole/ManufacturerWarehouseJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/FarmerRole/RequestRawMaterialJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/StaffRole/StaffWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/WarehouseManagerRole/WarehouseWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/SupplierRole/SupplierWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/FarmerRole/FarmerWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/FarmerRole/ProcessProduceRequestJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/WarehouseManagerRole/ProcessProduceRequestJPanel.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/Business/WorkQueue/WorkRequest.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/Business/RawMaterial/RawMaterial.java</file>
-            <file>file:/C:/Users/Harsh%20Shah/Desktop/FarmerModel/src/userinterface/CustomerRole/CustomerWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Harsh%20Shah/Desktop/AED_FINAL%20PROJECT/aed-final-project/FarmerModel/src/userinterface/FarmerRole/FarmerWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Harsh%20Shah/Desktop/AED_FINAL%20PROJECT/aed-final-project/FarmerModel/src/userinterface/WarehouseManagerRole/WarehouseWorkAreaJPanel.java</file>
+            <file>file:/C:/Users/Harsh%20Shah/Desktop/AED_FINAL%20PROJECT/aed-final-project/FarmerModel/src/userinterface/StaffRole/StaffWorkAreaJPanel.java</file>
         </group>
     </open-files>
 </project-private>

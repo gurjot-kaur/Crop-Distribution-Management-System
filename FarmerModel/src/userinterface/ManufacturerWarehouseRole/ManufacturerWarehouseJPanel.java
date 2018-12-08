@@ -30,6 +30,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
     private ManufacturerEnterprise enterprise;
     private UserAccount userAccount;
     private RawMaterialDirectory rmDirectory;
+    public static boolean flag = false;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
@@ -238,7 +239,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_processJButtonActionPerformed
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
-
+ 
         int selectedRow = workRequestRMJTable.getSelectedRow();
 
         if (selectedRow < 0){
@@ -261,8 +262,52 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
                 break;
             }
         }
-         
-         if (tempName.equals(rawMaterialName) && rawMaterialQty <= rawMaterialQntyProduce)
+         if (tempName.equals(rawMaterialName))
+            {
+                if (rawMaterialQty <= rawMaterialQntyProduce)
+                    {
+                        WorkRequest request = (WorkRequest)workRequestRMJTable.getValueAt(selectedRow, 0);
+                        request.setReceiver(userAccount);
+                        request.setStatus("Pending");
+            
+                        for(RawMaterial rawMaterial : rmDirectory.getRawMaterial()){
+                            if (tempName.equals((String)rawMaterial.getMaterialName()))
+                            {
+                                rawMaterial.setMaterialQuantity(rawMaterialQntyProduce - rawMaterialQty);
+                                request.setRawMaterialQty(0);
+                            }
+                            
+                            populateSuppRequestTable();
+                            populateRM();       
+                        }  
+ 
+                    }
+                else if (rawMaterialQty > rawMaterialQntyProduce)
+                {
+                    WorkRequest request = (WorkRequest)workRequestRMJTable.getValueAt(selectedRow, 0);
+                    request.setReceiver(userAccount);
+                    request.setStatus("Pending");
+                    request.setCropQty(rawMaterialQty - rawMaterialQntyProduce);
+                    
+                    for(RawMaterial rawMaterial : rmDirectory.getRawMaterial()){
+                    if (tempName.equals((String)rawMaterial.getMaterialName()))
+                    {
+                        rawMaterial.setMaterialQuantity(0);
+                        request.setRawMaterialQty(rawMaterialQty - rawMaterialQntyProduce);
+                        flag = true;
+                    }
+                    populateSuppRequestTable();
+                    populateRM();
+                    }  
+                }
+            
+            }
+        else 
+        {
+            JOptionPane.showMessageDialog(null,"Cannot assign this job, please go farmer");
+            flag = true;
+        }
+         /*if (tempName.equals(rawMaterialName) && rawMaterialQty <= rawMaterialQntyProduce)
         {
             
               WorkRequest request = (WorkRequest)workRequestRMJTable.getValueAt(selectedRow, 0);
@@ -273,7 +318,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
         else 
         {
             JOptionPane.showMessageDialog(null,"Cannot assign");
-        }
+        }*/
                     
 
        

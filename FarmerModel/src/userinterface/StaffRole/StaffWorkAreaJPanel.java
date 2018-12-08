@@ -15,8 +15,14 @@ import Business.Produce.ProduceDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.*;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import sun.applet.AppletViewer;
 import static userinterface.WarehouseManagerRole.WarehouseWorkAreaJPanel.flag;
@@ -53,6 +59,8 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel.setText(enterprise.getName());
         populateCustomerRequestTable();
         populateProduceTable();
+        
+        
         if (flag == true)
         {  
             sendToFarmerJButton.setEnabled(true);
@@ -76,7 +84,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -141,6 +149,11 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        workRequestJTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                workRequestJTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(workRequestJTable1);
         if (workRequestJTable1.getColumnModel().getColumnCount() > 0) {
             workRequestJTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -166,6 +179,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         add(sendToFarmerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 247, -1, -1));
 
         sendToWarehouseJButton.setText("Send to Warehouse Manager");
+        sendToWarehouseJButton.setEnabled(false);
         sendToWarehouseJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendToWarehouseJButtonActionPerformed(evt);
@@ -179,18 +193,18 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                 sendToSuppActionPerformed(evt);
             }
         });
-        add(sendToSupp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 110, 40));
+        add(sendToSupp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 150, 40));
 
         produceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Crop Name", "Quantity", "Price", "Farmer", "Raw Material"
+                "Crop Name", "Quantity", "Price", "Farmer"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -198,6 +212,11 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane3.setViewportView(produceTable);
+        if (produceTable.getColumnModel().getColumnCount() > 0) {
+            produceTable.getColumnModel().getColumn(0).setResizable(false);
+            produceTable.getColumnModel().getColumn(1).setResizable(false);
+            produceTable.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, 170));
     }// </editor-fold>//GEN-END:initComponents
@@ -259,8 +278,18 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         if (org!=null){
             org.getWorkQueue().getWorkRequestList().add(request);
         }
+        
+        
+         sendToWarehouseJButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    JButton source = (JButton) e.getSource();
+                    source.setEnabled(false);
+                    source.setBackground(Color.GREEN);
+            }
+    });
     }//GEN-LAST:event_sendToWarehouseJButtonActionPerformed
-
+    
     private void sendToSupplierJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToSupplierJButtonActionPerformed
         int selectedRow = workRequestJTable1.getSelectedRow();
         
@@ -324,6 +353,10 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_sendToSuppActionPerformed
 
+    private void workRequestJTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_workRequestJTable1MouseClicked
+       disableWarehouseButton();
+    }//GEN-LAST:event_workRequestJTable1MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
@@ -355,17 +388,44 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         }
         checkforProduce();
     }
+    
+             
 
     private void checkforProduce() {
+        
         int i = 1;
         
         for (int j = 0; j < produceTable.getRowCount(); j++) {
            int tempQuantity = Integer.parseInt((String.valueOf(produceTable.getModel().getValueAt(j, i)))) ;
             if(tempQuantity == 0){
-                JOptionPane.showMessageDialog(null,"Send produce request to farmer");
+                  int delay = 4000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                JOptionPane.showMessageDialog(null,"Send produce request for" + "to farmer");
+      }
+  };
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+                //JOptionPane.showMessageDialog(null,"Send produce request to farmer");
             }
         }
     }
+
+    private void disableWarehouseButton() {
+        int selectedRow = workRequestJTable1.getSelectedRow();
+        String requestedCrop = workRequestJTable1.getModel().getValueAt(selectedRow, 0).toString();
+        int i = 0;
+        String tempName = null;
+        for(int j = 0;j < produceTable.getRowCount(); j++) {
+            tempName = produceTable.getModel().getValueAt(j, i).toString();
+             //System.out.println(tempName);
+                if(!(tempName.equals(requestedCrop))){
+               continue; 
+                }
+                else {sendToWarehouseJButton.setEnabled(true);}
+        }
+        }
     
     
 }

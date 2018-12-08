@@ -204,7 +204,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
             for(int j = 0; j <produceTable.getRowCount(); j++)
             {
              tempName = produceTable.getModel().getValueAt(j, i).toString();
-             System.out.println(tempName);
+             //System.out.println(tempName);
                 if(tempName.equals(cropName)){
                 i++;
                
@@ -212,7 +212,14 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
                 break;
                 }
             }
-   
+            
+            if (cropQntyProduce == 0)
+        {
+            JOptionPane.showMessageDialog(null,"Cannot assign this job, please go farmer");
+            flag = true;
+        }
+            else{
+            
             if (tempName.equals(cropName))
             {
                 if (cropQty <= cropQntyProduce)
@@ -253,11 +260,12 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
                 }
             
             }
-        else 
+            }
+       /* else if (cropQntyProduce == 0)
         {
             JOptionPane.showMessageDialog(null,"Cannot assign this job, please go farmer");
             flag = true;
-        }
+        }*/
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed

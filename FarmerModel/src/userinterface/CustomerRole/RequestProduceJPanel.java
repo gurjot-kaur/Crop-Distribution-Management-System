@@ -13,9 +13,12 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProduceRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -58,7 +61,7 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        requestTestJButton.setText("Request Test");
+        requestTestJButton.setText("Request Crop");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
@@ -66,7 +69,7 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         });
         add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
 
-        jLabel1.setText("Message");
+        jLabel1.setText("Crop Name:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 40, -1, -1));
         add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 37, 89, -1));
 
@@ -87,6 +90,15 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Quanitty");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+
+        qtyJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                qtyJTextFieldKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                qtyJTextFieldKeyTyped(evt);
+            }
+        });
         add(qtyJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -99,6 +111,7 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         request.setSender(userAccount);
         request.setStatus("Sent");
         request.setCropQty(Integer.parseInt(qtyJTextField.getText()));
+        
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
             if (organization instanceof StaffOrganization){
@@ -124,6 +137,19 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
         
     }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void qtyJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtyJTextFieldKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_qtyJTextFieldKeyPressed
+
+    private void qtyJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtyJTextFieldKeyTyped
+        // TODO add your handling code here:
+        char vchar = evt.getKeyChar();
+        if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE)){
+        getToolkit().beep();
+        evt.consume();
+    } 
+    }//GEN-LAST:event_qtyJTextFieldKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

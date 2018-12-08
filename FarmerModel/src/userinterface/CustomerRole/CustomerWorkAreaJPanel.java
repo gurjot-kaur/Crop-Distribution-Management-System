@@ -12,7 +12,11 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProduceRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,6 +42,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         valueLabel.setText(enterprise.getName());
         populateRequestTable();
+        checkCompletion();
     }
     
     public void populateRequestTable(){
@@ -55,7 +60,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,7 +112,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        requestTestJButton.setText("Request Test");
+        requestTestJButton.setText("Request Crop");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
@@ -164,7 +168,26 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(183, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    private void checkCompletion() {
+    int temp = workRequestJTable.getRowCount() - 1;
+    final String cropName = workRequestJTable.getModel().getValueAt(temp, 0).toString();
+    String finalStatus = workRequestJTable.getModel().getValueAt(temp, 2).toString();
+    final int quantity = Integer.parseInt((String.valueOf(workRequestJTable.getModel().getValueAt(temp, 4))));
+    if(finalStatus.equalsIgnoreCase("Request fulfilled")){
+        int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+                JOptionPane.showMessageDialog(null, "The request for " +cropName+ " of quantity " +quantity+ " has been successfully delivered!");      
+                }
+  };
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+       // JOptionPane.showMessageDialog(null, "The request for " +cropName+ " of quantity " +quantity+ " has been successfully delivered");
+    }
+    }
+    
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

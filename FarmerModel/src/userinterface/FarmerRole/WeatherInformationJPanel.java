@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,6 +8,7 @@ package userinterface.FarmerRole;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.awt.Font;
 import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,6 +18,7 @@ import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -37,9 +40,10 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
     public WeatherInformationJPanel(JPanel userProcessContainer) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
+        populateCombo();
     }
     
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,6 +65,9 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         locationTxt = new javax.swing.JTextField();
         countryTxt = new javax.swing.JTextField();
+        rmCoboBox = new javax.swing.JComboBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtNotes = new javax.swing.JTextArea();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -94,6 +101,20 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
         add(locationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 110, -1));
         add(countryTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 110, -1));
+
+        rmCoboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmCoboBoxActionPerformed(evt);
+            }
+        });
+        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 60, 30));
+
+        txtNotes.setColumns(20);
+        txtNotes.setRows(5);
+        txtNotes.setEnabled(false);
+        jScrollPane1.setViewportView(txtNotes);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 380, 250));
     }// </editor-fold>//GEN-END:initComponents
 
     private void currentTempTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentTempTextActionPerformed
@@ -322,8 +343,35 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             //e.printStackTrace();
             System.out.println(e.getMessage());
         }
-
+        String crop = (String) rmCoboBox.getSelectedItem();
+        String location = (String) locationTxt.getText();
+        double number = Double.parseDouble(currentTempText.getText());
+        if(crop.equals("tomato") && location.equalsIgnoreCase("Boston") && number < 60.0 ) {
+            //JOptionPane.showMessageDialog(null, "It is ideal to grow tomato");
+            
+            Font font = new Font ("It is ideal to grow tomato",Font.BOLD,12);
+            txtNotes.setFont(font);
+          
+        } 
+        else if(crop.equals("tomato") && location.equalsIgnoreCase("Miami") && number > 60.0 && number < 80.0 ) {
+            //JOptionPane.showMessageDialog(null, "It is ideal to grow tomato");
+            
+            txtNotes.setText("It is ideal to grow tomato");
+            Font font = txtNotes.getFont();
+            txtNotes.setFont(font.deriveFont(Font.BOLD));
+        } 
+        else if (crop.equals("rice") && location.equalsIgnoreCase("Boston") && number > 20.0 ) {
+            //JOptionPane.showMessageDialog(null, "It is ideal to grow rice");
+            
+            //txtNotes.setText("It is ideal to grow rice");
+             Font font = new Font ("It is ideal to grow rice",Font.BOLD,12);
+            txtNotes.setFont(font);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void rmCoboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmCoboBoxActionPerformed
+
+    }//GEN-LAST:event_rmCoboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -337,7 +385,18 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField locationTxt;
     private javax.swing.JTextField nextDayTempText;
+    private javax.swing.JComboBox rmCoboBox;
+    private javax.swing.JTextArea txtNotes;
     // End of variables declaration//GEN-END:variables
+
+    private void populateCombo() {
+        rmCoboBox.addItem("rice");
+        rmCoboBox.addItem("wheat");
+        rmCoboBox.addItem("tomato");
+        rmCoboBox.addItem("potato");
+        
+    }
 }
