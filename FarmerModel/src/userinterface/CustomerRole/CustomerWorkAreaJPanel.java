@@ -119,13 +119,14 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         qpRadioButton = new javax.swing.JRadioButton();
         reviewButton = new javax.swing.JButton();
         submitButton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        workRequestJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Message", "Receiver", "Status", "Result", "Crop Quantity"
@@ -155,45 +156,69 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 206, 578, 165));
+
+        requestTestJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        requestTestJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crop-icon (1).png"))); // NOI18N
         requestTestJButton.setText("Request Crop");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 378, 196, -1));
 
+        refreshTestJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         refreshTestJButton.setText("Refresh");
         refreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshTestJButtonActionPerformed(evt);
             }
         });
+        add(refreshTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(813, 276, 161, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
+        enterpriseLabel.setText("Enterprise :");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 141, 127, 30));
 
-        valueLabel.setText("<value>");
+        valueLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(191, 141, 158, 26));
 
         additionalreviewsTextArea.setColumns(20);
         additionalreviewsTextArea.setRows(5);
         additionalreviewsTextArea.setEnabled(false);
         jScrollPane2.setViewportView(additionalreviewsTextArea);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 622, 507, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Additional Reviews");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 622, -1, -1));
 
-        jLabel4.setText("Product Shelf Life");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Produce Shelf Life");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 550, 147, -1));
 
-        jLabel2.setText("Product Quality");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Produce Quality");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 501, 147, -1));
 
+        qexRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qexRadioButton.setText("Excellent");
         qexRadioButton.setEnabled(false);
+        add(qexRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 497, -1, -1));
 
+        sleRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         sleRadioButton.setText("Excellent");
         sleRadioButton.setEnabled(false);
+        add(sleRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 546, -1, -1));
 
+        svgRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         svgRadioButton.setText("Very Good");
         svgRadioButton.setEnabled(false);
+        add(svgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 546, -1, -1));
 
+        qvgRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qvgRadioButton.setText("Very Good");
         qvgRadioButton.setEnabled(false);
         qvgRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -201,167 +226,69 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 qvgRadioButtonActionPerformed(evt);
             }
         });
+        add(qvgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 497, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/user-comments-icon (1).png"))); // NOI18N
         jLabel1.setText("Review Crop");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 447, 198, -1));
 
+        qgRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qgRadioButton.setText("Good");
         qgRadioButton.setEnabled(false);
+        add(qgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 497, -1, -1));
 
+        qaRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qaRadioButton.setText("Average");
         qaRadioButton.setEnabled(false);
+        add(qaRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 497, -1, -1));
 
+        saRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         saRadioButton.setText("Average");
         saRadioButton.setEnabled(false);
+        add(saRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 546, -1, -1));
 
+        sgRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         sgRadioButton.setText("Good");
         sgRadioButton.setEnabled(false);
+        add(sgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 546, -1, -1));
 
+        spRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         spRadioButton.setText("Poor");
         spRadioButton.setEnabled(false);
+        add(spRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(761, 546, -1, -1));
 
+        qpRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qpRadioButton.setText("Poor");
         qpRadioButton.setEnabled(false);
+        add(qpRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(761, 497, -1, -1));
 
         reviewButton.setBackground(new java.awt.Color(255, 153, 102));
+        reviewButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        reviewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/review icon.png"))); // NOI18N
         reviewButton.setText("Review Crop");
         reviewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reviewButtonActionPerformed(evt);
             }
         });
+        add(reviewButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 378, 205, -1));
 
+        submitButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);
             }
         });
+        add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 736, 150, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
-                .addComponent(refreshTestJButton)
-                .addGap(103, 103, 103))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(requestTestJButton)
-                .addGap(86, 86, 86))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addComponent(submitButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(35, 35, 35)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(533, 533, 533)
-                            .addComponent(reviewButton))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(29, 29, 29))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel2))
-                                    .addGap(36, 36, 36)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(sleRadioButton)
-                                            .addGap(34, 34, 34)
-                                            .addComponent(svgRadioButton)
-                                            .addGap(32, 32, 32)
-                                            .addComponent(sgRadioButton)
-                                            .addGap(18, 18, 18))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(qexRadioButton)
-                                            .addGap(44, 44, 44)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(qvgRadioButton)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(qgRadioButton)))
-                                            .addGap(33, 33, 33)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(qaRadioButton)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(qpRadioButton))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(saRadioButton)
-                                            .addGap(37, 37, 37)
-                                            .addComponent(spRadioButton))))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(11, 11, 11)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(2, 2, 2)))
-                    .addContainerGap(36, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(refreshTestJButton)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(requestTestJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE)
-                .addComponent(submitButton)
-                .addGap(52, 52, 52))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(135, 135, 135)
-                    .addComponent(reviewButton)
-                    .addGap(195, 195, 195)
-                    .addComponent(jLabel1)
-                    .addGap(34, 34, 34)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(qpRadioButton)
-                        .addComponent(qaRadioButton)
-                        .addComponent(qgRadioButton)
-                        .addComponent(qvgRadioButton)
-                        .addComponent(qexRadioButton)
-                        .addComponent(jLabel2))
-                    .addGap(41, 41, 41)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(sleRadioButton)
-                        .addComponent(svgRadioButton)
-                        .addComponent(sgRadioButton)
-                        .addComponent(saRadioButton)
-                        .addComponent(spRadioButton))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(89, 89, 89)
-                            .addComponent(jLabel3)
-                            .addGap(61, 61, 61))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(136, Short.MAX_VALUE)))
-        );
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/customer.png"))); // NOI18N
+        jLabel5.setText("Customer ");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(364, 32, 334, -1));
     }// </editor-fold>//GEN-END:initComponents
     private void checkCompletion() {
     int temp = workRequestJTable.getRowCount();
@@ -518,6 +445,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton qaRadioButton;

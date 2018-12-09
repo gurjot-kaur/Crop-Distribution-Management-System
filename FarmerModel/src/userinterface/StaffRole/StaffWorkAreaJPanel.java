@@ -151,65 +151,97 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
-        refreshJButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        workRequestJTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        sendToFarmerJButton = new javax.swing.JButton();
-        sendToWarehouseJButton = new javax.swing.JButton();
-        sendToSupp = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        produceTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        enterpriseLabel1 = new javax.swing.JLabel();
-        valueLabel1 = new javax.swing.JLabel();
-        refreshJButton1 = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        workRequestJTable2 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        sendToFarmerJButton1 = new javax.swing.JButton();
-        sendToWarehouseJButton1 = new javax.swing.JButton();
-        sendToSupp1 = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        produceTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         supplierReviewTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
         customerReviewTable = new javax.swing.JTable();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        customerReviewTable3 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         lineBtn = new javax.swing.JButton();
         barBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        workRequestJTable1 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        produceTable = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        sendToFarmerJButton = new javax.swing.JButton();
+        sendToWarehouseJButton = new javax.swing.JButton();
+        sendToSupp = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        refreshJButton = new javax.swing.JButton();
+        valueLabel = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         customerReviewTable1 = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 27, 127, 30));
+        supplierReviewTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        supplierReviewTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 27, 158, 26));
+            },
+            new String [] {
+                "Raw Material", "Supplier Name", "Quality Review", "Shelf Life Review", "Additional Review"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        refreshJButton.setText("Refresh");
-        refreshJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshJButtonActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        add(refreshJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 90, -1, -1));
+        jScrollPane1.setViewportView(supplierReviewTable);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Customer Reviews");
+
+        customerReviewTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        customerReviewTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Crop Name", "Farmer Name", "Quality Review", "Shelf Life Review", "Additional Review"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(customerReviewTable);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Farmer Reviews");
+
+        lineBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lineBtn.setText("Line Chart");
+        lineBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lineBtnActionPerformed(evt);
+            }
+        });
+
+        barBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        barBtn.setText("Bar Chart");
+        barBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                barBtnActionPerformed(evt);
+            }
+        });
+
+        workRequestJTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestJTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Message", "Sender", "Receiver", "Status", "Crop Quantity", "Raw Material Quantity"
@@ -245,36 +277,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable1.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 780, 96));
-
-        jLabel1.setText("Customer Request");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 94, -1, -1));
-
-        sendToFarmerJButton.setText("Send to Farmer");
-        sendToFarmerJButton.setEnabled(false);
-        sendToFarmerJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendToFarmerJButtonActionPerformed(evt);
-            }
-        });
-        add(sendToFarmerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 247, -1, -1));
-
-        sendToWarehouseJButton.setText("Send to Warehouse Manager");
-        sendToWarehouseJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendToWarehouseJButtonActionPerformed(evt);
-            }
-        });
-        add(sendToWarehouseJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 247, -1, -1));
-
-        sendToSupp.setText("Send to Supplier");
-        sendToSupp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendToSuppActionPerformed(evt);
-            }
-        });
-        add(sendToSupp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 150, 40));
-
+        produceTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         produceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -298,190 +301,141 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
             produceTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, 170));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Produce Inventory");
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel1.setText("EnterPrise :");
-        jPanel1.add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 27, 127, 30));
-
-        valueLabel1.setText("<value>");
-        jPanel1.add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 27, 158, 26));
-
-        refreshJButton1.setText("Refresh");
-        refreshJButton1.addActionListener(new java.awt.event.ActionListener() {
+        sendToFarmerJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        sendToFarmerJButton.setText("Send to Farmer");
+        sendToFarmerJButton.setEnabled(false);
+        sendToFarmerJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshJButton1ActionPerformed(evt);
+                sendToFarmerJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(refreshJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 90, -1, -1));
 
-        workRequestJTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Message", "Sender", "Receiver", "Status", "Crop Quantity", "Raw Material Quantity"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        workRequestJTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                workRequestJTable2MouseClicked(evt);
-            }
-        });
-        jScrollPane4.setViewportView(workRequestJTable2);
-
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 780, 96));
-
-        jLabel2.setText("Customer Request");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 94, -1, -1));
-
-        sendToFarmerJButton1.setText("Send to Farmer");
-        sendToFarmerJButton1.setEnabled(false);
-        sendToFarmerJButton1.addActionListener(new java.awt.event.ActionListener() {
+        sendToWarehouseJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        sendToWarehouseJButton.setText("Send to Warehouse Manager");
+        sendToWarehouseJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendToFarmerJButton1ActionPerformed(evt);
+                sendToWarehouseJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(sendToFarmerJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 247, -1, -1));
 
-        sendToWarehouseJButton1.setText("Send to Warehouse Manager");
-        sendToWarehouseJButton1.setEnabled(false);
-        sendToWarehouseJButton1.addActionListener(new java.awt.event.ActionListener() {
+        sendToSupp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        sendToSupp.setText("Send to Supplier");
+        sendToSupp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendToWarehouseJButton1ActionPerformed(evt);
+                sendToSuppActionPerformed(evt);
             }
         });
-        jPanel1.add(sendToWarehouseJButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 247, -1, -1));
 
-        sendToSupp1.setText("Send to Supplier");
-        sendToSupp1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Customer Request");
+
+        refreshJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        refreshJButton.setText("Refresh");
+        refreshJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendToSupp1ActionPerformed(evt);
+                refreshJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(sendToSupp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 150, 40));
 
-        produceTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setText("EnterPrise :");
 
-            },
-            new String [] {
-                "Crop Name", "Quantity", "Price", "Farmer"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Staff");
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane5.setViewportView(produceTable1);
-
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, -1, 170));
-
-        supplierReviewTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Supply Name", "Supplier Name", "Quality Review", "Shelf Life Review", "Additional Review"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(supplierReviewTable);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 530, 210));
-
-        jLabel3.setText("Customer Reviews");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 560, -1, -1));
-
-        customerReviewTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Crop Name", "Farmer Name", "Quality Review", "Shelf Life Review", "Additional Review"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane7.setViewportView(customerReviewTable);
-
-        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 730, 210));
-
-        customerReviewTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Crop Name", "Farmer Name", "Quality Review", "Shelf Life Review", "Additional Review"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane8.setViewportView(customerReviewTable3);
-
-        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, 730, 210));
-
-        jLabel4.setText("Farmer Review");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 280, -1, -1));
-
-        lineBtn.setText("Line Chart");
-        lineBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lineBtnActionPerformed(evt);
-            }
-        });
-        jPanel1.add(lineBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 620, -1, -1));
-
-        barBtn.setText("Bar Chart");
-        barBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                barBtnActionPerformed(evt);
-            }
-        });
-        jPanel1.add(barBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 620, -1, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(85, 85, 85)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lineBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(barBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(365, 365, 365)
+                        .addComponent(sendToSupp, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(sendToFarmerJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(refreshJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(95, 95, 95)
+                                    .addComponent(sendToWarehouseJButton))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(372, 372, 372)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(334, 334, 334))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(351, 351, 351)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(261, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel6)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sendToFarmerJButton)
+                    .addComponent(sendToWarehouseJButton)
+                    .addComponent(refreshJButton))
+                .addGap(18, 18, 18)
+                .addComponent(sendToSupp)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(lineBtn)
+                        .addGap(16, 16, 16)
+                        .addComponent(barBtn)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 820));
 
@@ -642,116 +596,6 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
        disableWarehouseButton();
     }//GEN-LAST:event_workRequestJTable1MouseClicked
 
-    private void refreshJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButton1ActionPerformed
-        populateCustomerRequestTable();
-    }//GEN-LAST:event_refreshJButton1ActionPerformed
-
-    private void workRequestJTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_workRequestJTable2MouseClicked
-        disableWarehouseButton();
-    }//GEN-LAST:event_workRequestJTable2MouseClicked
-
-    private void sendToFarmerJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToFarmerJButton1ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = workRequestJTable1.getSelectedRow();
-
-        if (selectedRow < 0){
-            return;
-        }
-
-        ProduceRequest request = (ProduceRequest)workRequestJTable1.getValueAt(selectedRow, 0);
-        request.setStatus("sent to farmer ");
-        populateCustomerRequestTable();
-        userAccount.getWorkQueue().getWorkRequestList().add(request);
-
-        Organization org = null;
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof FarmerOrganization){
-                org = organization;
-                break;
-            }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(request);
-        }
-
-    }//GEN-LAST:event_sendToFarmerJButton1ActionPerformed
-
-    private void sendToWarehouseJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToWarehouseJButton1ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = workRequestJTable1.getSelectedRow();
-
-        if (selectedRow < 0){
-            return;
-        }
-
-        ProduceRequest request = (ProduceRequest)workRequestJTable1.getValueAt(selectedRow, 0);
-        request.setStatus("sent to warehouse");
-        populateCustomerRequestTable();
-        userAccount.getWorkQueue().getWorkRequestList().add(request);
-
-        Organization org = null;
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-            if (organization instanceof WarehouseOrganization){
-                org = organization;
-                break;
-            }
-            else if (organization instanceof WarehouseOrganization){
-                org = organization;
-                break;
-            }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(request);
-        }
-
-        sendToWarehouseJButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JButton source = (JButton) e.getSource();
-                source.setEnabled(false);
-                source.setBackground(Color.GREEN);
-            }
-        });
-    }//GEN-LAST:event_sendToWarehouseJButton1ActionPerformed
-
-    private void sendToSupp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToSupp1ActionPerformed
-        int selectedRow = workRequestJTable1.getSelectedRow();
-
-        if (selectedRow < 0){
-            return;
-        }
-
-        ProduceRequest request = (ProduceRequest)workRequestJTable1.getValueAt(selectedRow, 0);
-        request.setStatus("sent to supplier ");
-        populateCustomerRequestTable();
-        userAccount.getWorkQueue().getWorkRequestList().add(request);
-
-        Organization org = null;
-        for (Network network: business.getNetworkList()){
-
-            for (Enterprise e: network.getEnterpriseDirectory().getEnterpriseList())
-            {
-
-                if (e instanceof ManufacturerEnterprise)
-                {
-                    for (Organization organization : e.getOrganizationDirectory().getOrganizationList()){
-
-                        if (organization instanceof ManufacturerSupplierOrganization){
-                            org = organization;
-                            System.out.println(org);
-                            break;
-                        }
-                    }
-                    if (org!=null){
-                        org.getWorkQueue().getWorkRequestList().add(request);
-                    }
-                }
-
-            }
-        }
-
-    }//GEN-LAST:event_sendToSupp1ActionPerformed
-
     private void barBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barBtnActionPerformed
          DefaultCategoryDataset dataset = new DefaultCategoryDataset();
          int j= 0;
@@ -805,38 +649,27 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton barBtn;
     private javax.swing.JTable customerReviewTable;
     private javax.swing.JTable customerReviewTable1;
-    private javax.swing.JTable customerReviewTable3;
     private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JLabel enterpriseLabel1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JButton lineBtn;
     private javax.swing.JTable produceTable;
-    private javax.swing.JTable produceTable1;
     private javax.swing.JButton refreshJButton;
-    private javax.swing.JButton refreshJButton1;
     private javax.swing.JButton sendToFarmerJButton;
-    private javax.swing.JButton sendToFarmerJButton1;
     private javax.swing.JButton sendToSupp;
-    private javax.swing.JButton sendToSupp1;
     private javax.swing.JButton sendToWarehouseJButton;
-    private javax.swing.JButton sendToWarehouseJButton1;
     private javax.swing.JTable supplierReviewTable;
     private javax.swing.JLabel valueLabel;
-    private javax.swing.JLabel valueLabel1;
     private javax.swing.JTable workRequestJTable1;
-    private javax.swing.JTable workRequestJTable2;
     // End of variables declaration//GEN-END:variables
 
     private void populateProduceTable() {

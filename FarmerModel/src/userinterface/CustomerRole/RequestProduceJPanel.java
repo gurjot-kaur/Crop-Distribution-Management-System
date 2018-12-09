@@ -58,39 +58,49 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         enterpriseLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         qtyJTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        requestTestJButton.setText("Request Crop");
+        requestTestJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        requestTestJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crop-icon (1).png"))); // NOI18N
+        requestTestJButton.setText("Request Produce");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 476, 229, -1));
 
-        jLabel1.setText("Crop Name:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 40, -1, -1));
-        add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 37, 89, -1));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Crop Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 284, 110, -1));
 
-        backJButton.setText("<<Back");
+        messageJTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 281, 229, -1));
+
+        backJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon (2).png"))); // NOI18N
+        backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 138, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 728, -1, -1));
 
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 130, -1));
+        valueLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 195, 229, 30));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 30));
+        enterpriseLabel.setText("Enterprise :");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 195, 120, 30));
 
-        jLabel2.setText("Quanitty");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Crop Quantity");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 375, -1, -1));
 
+        qtyJTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qtyJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 qtyJTextFieldKeyPressed(evt);
@@ -99,7 +109,13 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
                 qtyJTextFieldKeyTyped(evt);
             }
         });
-        add(qtyJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 90, -1));
+        add(qtyJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 372, 229, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crop-icon.png"))); // NOI18N
+        jLabel3.setText("Request Produce");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 46, 471, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
@@ -164,6 +180,7 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField messageJTextField;
     private javax.swing.JTextField qtyJTextField;
     private javax.swing.JButton requestTestJButton;
