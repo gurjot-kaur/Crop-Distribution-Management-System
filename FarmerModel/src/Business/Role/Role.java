@@ -29,8 +29,7 @@ public abstract class Role {
         WarehouseManager("Warehouse Manager"),
         ManufacturerWarehouseManager("Manufacturer Warehouse Manager"),
         ManufacturerProducer("Producer"),
-        OfficeStaff("Staff"),
-        QualityControl("Quality Control Manager");
+        OfficeStaff("Staff");
         
         private String value;
         private RoleType(String value){
