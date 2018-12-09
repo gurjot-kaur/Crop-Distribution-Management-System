@@ -8,12 +8,15 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.USFDEnterprise;
 import Business.Organization.CustomerOrganization;
+import Business.ProduceReview.ProduceReview;
+import Business.ProduceReview.ProduceReviewDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProduceRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -30,20 +33,42 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
    // private Enterprise enterprise;
     private UserAccount userAccount;
     private USFDEnterprise enterprise;
+    private ProduceReviewDirectory prDirectory;
+     private ButtonGroup qualitybg = new ButtonGroup();
+    private ButtonGroup shelfbg = new ButtonGroup();
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public CustomerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, CustomerOrganization organization, Enterprise enterprise) {
+    public CustomerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, CustomerOrganization organization, Enterprise enterprise,ProduceReviewDirectory prDirectory) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
         this.organization = organization;
         this.enterprise = (USFDEnterprise)enterprise;
         this.userAccount = account;
+        this.prDirectory = prDirectory;
         valueLabel.setText(enterprise.getName());
         populateRequestTable();
+        qualitygroupbutton();
+         shelfgroupbutton();
         //checkCompletion();
     }
+     private void qualitygroupbutton() {
+        qualitybg.add(qexRadioButton);
+        qualitybg.add(qvgRadioButton);
+        qualitybg.add(qgRadioButton);
+        qualitybg.add(qaRadioButton);
+        qualitybg.add(qpRadioButton);
+    }
+    
+     private void shelfgroupbutton() {
+        shelfbg.add(sleRadioButton);
+        shelfbg.add(svgRadioButton);
+        shelfbg.add(sgRadioButton);
+        shelfbg.add(saRadioButton);
+        shelfbg.add(spRadioButton);
+    }
+
     
     public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
@@ -76,6 +101,24 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         refreshTestJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        additionalreviewsTextArea = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        qexRadioButton = new javax.swing.JRadioButton();
+        sleRadioButton = new javax.swing.JRadioButton();
+        svgRadioButton = new javax.swing.JRadioButton();
+        qvgRadioButton = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        qgRadioButton = new javax.swing.JRadioButton();
+        qaRadioButton = new javax.swing.JRadioButton();
+        saRadioButton = new javax.swing.JRadioButton();
+        sgRadioButton = new javax.swing.JRadioButton();
+        spRadioButton = new javax.swing.JRadioButton();
+        qpRadioButton = new javax.swing.JRadioButton();
+        reviewButton = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
 
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,6 +174,69 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
         valueLabel.setText("<value>");
 
+        additionalreviewsTextArea.setColumns(20);
+        additionalreviewsTextArea.setRows(5);
+        additionalreviewsTextArea.setEnabled(false);
+        jScrollPane2.setViewportView(additionalreviewsTextArea);
+
+        jLabel3.setText("Additional Reviews");
+
+        jLabel4.setText("Product Shelf Life");
+
+        jLabel2.setText("Product Quality");
+
+        qexRadioButton.setText("Excellent");
+        qexRadioButton.setEnabled(false);
+
+        sleRadioButton.setText("Excellent");
+        sleRadioButton.setEnabled(false);
+
+        svgRadioButton.setText("Very Good");
+        svgRadioButton.setEnabled(false);
+
+        qvgRadioButton.setText("Very Good");
+        qvgRadioButton.setEnabled(false);
+        qvgRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qvgRadioButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Review Crop");
+
+        qgRadioButton.setText("Good");
+        qgRadioButton.setEnabled(false);
+
+        qaRadioButton.setText("Average");
+        qaRadioButton.setEnabled(false);
+
+        saRadioButton.setText("Average");
+        saRadioButton.setEnabled(false);
+
+        sgRadioButton.setText("Good");
+        sgRadioButton.setEnabled(false);
+
+        spRadioButton.setText("Poor");
+        spRadioButton.setEnabled(false);
+
+        qpRadioButton.setText("Poor");
+        qpRadioButton.setEnabled(false);
+
+        reviewButton.setBackground(new java.awt.Color(255, 153, 102));
+        reviewButton.setText("Review Crop");
+        reviewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reviewButtonActionPerformed(evt);
+            }
+        });
+
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,9 +254,65 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(requestTestJButton)
                 .addGap(86, 86, 86))
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(315, 315, 315)
+                        .addComponent(submitButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(533, 533, 533)
+                            .addComponent(reviewButton))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(29, 29, 29))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel2))
+                                    .addGap(36, 36, 36)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(sleRadioButton)
+                                            .addGap(34, 34, 34)
+                                            .addComponent(svgRadioButton)
+                                            .addGap(32, 32, 32)
+                                            .addComponent(sgRadioButton)
+                                            .addGap(18, 18, 18))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(qexRadioButton)
+                                            .addGap(44, 44, 44)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(qvgRadioButton)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(qgRadioButton)))
+                                            .addGap(33, 33, 33)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(qaRadioButton)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(qpRadioButton))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(saRadioButton)
+                                            .addGap(37, 37, 37)
+                                            .addComponent(spRadioButton))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(11, 11, 11)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(2, 2, 2)))
+                    .addContainerGap(36, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +327,40 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(requestTestJButton)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE)
+                .addComponent(submitButton)
+                .addGap(52, 52, 52))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(135, 135, 135)
+                    .addComponent(reviewButton)
+                    .addGap(195, 195, 195)
+                    .addComponent(jLabel1)
+                    .addGap(34, 34, 34)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(qpRadioButton)
+                        .addComponent(qaRadioButton)
+                        .addComponent(qgRadioButton)
+                        .addComponent(qvgRadioButton)
+                        .addComponent(qexRadioButton)
+                        .addComponent(jLabel2))
+                    .addGap(41, 41, 41)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(sleRadioButton)
+                        .addComponent(svgRadioButton)
+                        .addComponent(sgRadioButton)
+                        .addComponent(saRadioButton)
+                        .addComponent(spRadioButton))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(89, 89, 89)
+                            .addComponent(jLabel3)
+                            .addGap(61, 61, 61))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(136, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
     private void checkCompletion() {
@@ -202,11 +397,143 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_refreshTestJButtonActionPerformed
 
+    private void qvgRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qvgRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_qvgRadioButtonActionPerformed
+
+    private void reviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reviewButtonActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+       
+       String status = workRequestJTable.getValueAt(selectedRow, 2).toString();
+       
+       if(status.equalsIgnoreCase("Request fulfilled")){
+
+            
+           
+            qexRadioButton.setEnabled(true);
+            qvgRadioButton.setEnabled(true);
+            qgRadioButton.setEnabled(true);
+            qaRadioButton.setEnabled(true);
+            qpRadioButton.setEnabled(true);
+
+            sleRadioButton.setEnabled(true);
+            svgRadioButton.setEnabled(true);
+            sgRadioButton.setEnabled(true);
+            saRadioButton.setEnabled(true);
+            spRadioButton.setEnabled(true);
+            
+            additionalreviewsTextArea.setEnabled(true);
+        
+       }
+       else{
+           JOptionPane.showMessageDialog(null, "Request not fulfilled");
+       }
+   
+    }//GEN-LAST:event_reviewButtonActionPerformed
+
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRow = workRequestJTable.getSelectedRow();
+
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+       
+       String status = workRequestJTable.getValueAt(selectedRow, 2).toString();
+       String cropName = workRequestJTable.getValueAt(selectedRow, 0).toString();
+       String farmerName = workRequestJTable.getValueAt(selectedRow, 1).toString();
+      
+       
+   
+        //ProduceReview pr = prDirectory.addProduceReview();
+        if(status.equalsIgnoreCase("Request fulfilled")){
+        ProduceReview pr = prDirectory.addProduceReview();
+        pr.setCropName(cropName);
+        pr.setFarmerName(farmerName);
+        
+        String quality = null;
+        if(qexRadioButton.isSelected())
+        quality = "Excellent";
+        else if (qvgRadioButton.isSelected())
+        quality = "Very Good";
+        else if (qgRadioButton.isSelected())
+        quality = "Good";
+        else if (qaRadioButton.isSelected())
+        quality = "Average";
+        else if(qpRadioButton.isSelected())
+        quality = "Poor";
+
+        
+
+        String shelfLife = null;
+
+        if(sleRadioButton.isSelected())
+        shelfLife = "Excellent";
+        else if (svgRadioButton.isSelected())
+        shelfLife = "Very Good";
+        else if (sgRadioButton.isSelected())
+        shelfLife = "Good";
+        else if (saRadioButton.isSelected())
+        shelfLife = "Average";
+        else if(spRadioButton.isSelected())
+        shelfLife = "Poor";
+
+        pr.setProduceQuality(quality);
+        pr.setProduceShelfLife(shelfLife);
+        pr.setAdditionalReviews(additionalreviewsTextArea.getText());
+        }
+       
+        qexRadioButton.setEnabled(false);
+            qvgRadioButton.setEnabled(false);
+            qgRadioButton.setEnabled(false);
+            qaRadioButton.setEnabled(false);
+            qpRadioButton.setEnabled(false);
+
+            sleRadioButton.setEnabled(false);
+            svgRadioButton.setEnabled(false);
+            sgRadioButton.setEnabled(false);
+            saRadioButton.setEnabled(false);
+            spRadioButton.setEnabled(false);
+            
+            additionalreviewsTextArea.setEnabled(false);
+            
+            qualitybg.clearSelection();
+            shelfbg.clearSelection();
+           
+            additionalreviewsTextArea.setText(" ");
+    }//GEN-LAST:event_submitButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea additionalreviewsTextArea;
     private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton qaRadioButton;
+    private javax.swing.JRadioButton qexRadioButton;
+    private javax.swing.JRadioButton qgRadioButton;
+    private javax.swing.JRadioButton qpRadioButton;
+    private javax.swing.JRadioButton qvgRadioButton;
     private javax.swing.JButton refreshTestJButton;
     private javax.swing.JButton requestTestJButton;
+    private javax.swing.JButton reviewButton;
+    private javax.swing.JRadioButton saRadioButton;
+    private javax.swing.JRadioButton sgRadioButton;
+    private javax.swing.JRadioButton sleRadioButton;
+    private javax.swing.JRadioButton spRadioButton;
+    private javax.swing.JButton submitButton;
+    private javax.swing.JRadioButton svgRadioButton;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables

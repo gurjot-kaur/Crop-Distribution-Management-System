@@ -118,14 +118,14 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
                 rmCoboBoxActionPerformed(evt);
             }
         });
-        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 120, 30));
+        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 90, 30));
 
         txtNotes.setColumns(20);
         txtNotes.setRows(5);
         txtNotes.setEnabled(false);
         jScrollPane1.setViewportView(txtNotes);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 380, 250));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 640, 250));
 
         back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -134,20 +134,14 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             }
         });
         add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 680, -1, -1));
-        add(currentDayHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 80, 30));
-
-        tomDayHigh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tomDayHighActionPerformed(evt);
-            }
-        });
+        add(currentDayHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 120, 90, -1));
         add(tomDayHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 100, -1));
-        add(dayAfterHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 100, 30));
+        add(dayAfterHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 110, -1));
 
-        jLabel7.setText("Minimum:");
+        jLabel7.setText("Minimum");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jLabel8.setText("Maximum:");
+        jLabel8.setText("Maximum");
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -157,7 +151,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
 
     private void requestWeatherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestWeatherActionPerformed
         // TODO add your handling code here:
-        boolean isMetric = true;
+ boolean isMetric = true;
         String city = locationTxt.getText();
         String country  = countryTxt.getText();
         String API_KEY = "a7a00470c6e4c9a97cd76242259a08cf"; /* YOUR OWM API KEY HERE */
@@ -400,7 +394,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 3000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-                txtNotes.setText("Perfect conditions to grow snap peas and use PestA for the best results");
+                txtNotes.setText("Perfect conditions to grow snap peas and use biosolids for the best results");
                     Font font = new Font ("It is ideal to grow tomato",Font.BOLD,20);
             txtNotes.setFont(font);
       }
@@ -413,7 +407,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 2000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-            txtNotes.setText("The conditions are not ideal to grow snap peas, therefore use PestC to maintain the pH level of the soil greater than 6.");
+            txtNotes.setText("The conditions are not ideal to grow snap peas, therefore use worm tea \n"+" to maintain the pH level of the soil greater than 6.");
             Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
         } 
@@ -426,7 +420,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 3000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-                txtNotes.setText("Perfect conditions to grow Brocolli and use PestB for the best results");
+                txtNotes.setText("Perfect conditions to grow Brocolli and use manure for the best results");
                     Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
       }
@@ -439,7 +433,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 2000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-            txtNotes.setText("The conditions are not ideal to grow Broccoli, therefore use PestD to maintain pH level greather than 8.0 and to keep the level of nitrogen at par. ");
+            txtNotes.setText("The conditions are not ideal to grow Broccoli, therefore use organic fertilizer to maintain pH level greather than 8.0 and to keep the level of nitrogen at par. ");
             Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
         } 
@@ -452,7 +446,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 3000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-                txtNotes.setText("Perfect conditions to grow cabbage and use PestA for the best results");
+                txtNotes.setText("Perfect conditions to grow cabbage and use biosolids for the best results");
                     Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
       }
@@ -465,7 +459,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 2000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-            txtNotes.setText("The conditions are not ideal to grow Cabbage, therefore use PestB to maintain pH level greather than 5.0 and to keep the alkaline soil. ");
+            txtNotes.setText("The conditions are not ideal to grow Cabbage, therefore use manure\n"+" to maintain pH level greather than 5.0 and to keep the alkaline soil. ");
             Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
         } 
@@ -478,7 +472,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 3000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-                txtNotes.setText("Perfect conditions to grow Sweet Potato and use PestB for the best results");
+                txtNotes.setText("Perfect conditions to grow Sweet Potato and use manure for the best results");
                     Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
       }
@@ -491,7 +485,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 2000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-            txtNotes.setText("The conditions are not ideal to grow Sweet Potato, therefore use PestD to maintain pH level and the biosolids level required for sweet potato. ");
+            txtNotes.setText("The conditions are not ideal to grow Sweet Potato, therefore use organic fertilizer\n"+" to maintain pH level and the biosolids level required for sweet potato. ");
             Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
         } 
@@ -505,7 +499,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                 //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
-                txtNotes.setText("Perfect conditions to grow Corn and use PestB for the best results");
+                txtNotes.setText("Perfect conditions to grow Corn and use manure for the best results");
                     Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
       }
@@ -518,7 +512,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 2000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-            txtNotes.setText("The conditions are not ideal to grow Corn, therefore use PestC as it has well rotted manure compost. ");
+            txtNotes.setText("The conditions are not ideal to grow Corn, therefore use vermicompost as it has well rotted manure compost. ");
             Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
         } 
@@ -532,7 +526,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                 //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
-                txtNotes.setText("Perfect conditions to grow Carrot and use PestD for the best results");
+                txtNotes.setText("Perfect conditions to grow Carrot and use organic fertilizer for the best results");
                     Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
       }
@@ -545,7 +539,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 2000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-            txtNotes.setText("The conditions are not ideal to grow Carrot, therefore use PestB to cut down the weed growth ");
+            txtNotes.setText("The conditions are not ideal to grow Carrot, therefore use organic pesticide to cut down the weed growth ");
             Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
         } 
@@ -559,7 +553,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                 //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
-                txtNotes.setText("Perfect conditions to grow Lettuce and use PestB for the best results");
+                txtNotes.setText("Perfect conditions to grow Lettuce and use manure for the best results");
                     Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
       }
@@ -572,7 +566,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 2000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-            txtNotes.setText("The conditions are not ideal to grow Lettuce, therefore use PestD to maintain pH level greather than 8.0 and to keep the level of nitrogen at par. ");
+            txtNotes.setText("The conditions are not ideal to grow Lettuce, therefore use organic fertilizer\n"+" to maintain pH level greather than 8.0 and to keep the level of nitrogen at par. ");
             Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
         } 
@@ -586,7 +580,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                 //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
-                txtNotes.setText("Perfect conditions to grow Cherry tomatoes and use PestC for the best results");
+                txtNotes.setText("Perfect conditions to grow Cherry tomatoes and use worm tea for the best results");
                     Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
       }
@@ -599,7 +593,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 2000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-            txtNotes.setText("The conditions are not ideal to grow Cherry Tomatoes, therefore use PestA to maintain the nutririon level and shelf life ");
+            txtNotes.setText("The conditions are not ideal to grow Cherry Tomatoes, therefore use biosolids\n"+" to maintain the nutririon level and shelf life ");
             Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
         } 
@@ -613,7 +607,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                 //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
-                txtNotes.setText("Perfect conditions to grow Kale and use PestA for the best results");
+                txtNotes.setText("Perfect conditions to grow Kale and use biosolids for the best results");
                     Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
       }
@@ -626,7 +620,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             int delay = 2000; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-            txtNotes.setText("The conditions are not ideal to grow Kale, therefore use PestC to maintain pH level greather than 6.0 and to increase the shelf life ");
+            txtNotes.setText("The conditions are not ideal to grow Kale, therefore use worm tea\n"+"to maintain pH level greather than 6.0 and to increase the shelf life ");
             Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
         } 
@@ -647,10 +641,6 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         Component component = componentArray[componentArray.length - 1];
         FarmerWorkAreaJPanel cwjp = (FarmerWorkAreaJPanel) component;
     }//GEN-LAST:event_backActionPerformed
-
-    private void tomDayHighActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tomDayHighActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tomDayHighActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -687,11 +677,11 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         rmCoboBox.addItem("lettuce");
         rmCoboBox.addItem("cherry tomato");
         rmCoboBox.addItem("kale");
-        //rmCoboBox.addItem("onion");
-        //rmCoboBox.addItem("squash");
-        //rmCoboBox.addItem("cucumber");
-        //rmCoboBox.addItem("pepper");
-        
+        rmCoboBox.addItem("onion");
+        rmCoboBox.addItem("squash");
+        rmCoboBox.addItem("cucumber");
+        rmCoboBox.addItem("pepper");
+                
         
     }
 }

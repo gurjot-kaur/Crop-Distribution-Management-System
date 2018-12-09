@@ -8,7 +8,9 @@ package Business;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Produce.ProduceDirectory;
+import Business.ProduceReview.ProduceReviewDirectory;
 import Business.RawMaterial.RawMaterialDirectory;
+import Business.RawMaterialReview.RawMaterialReviewDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import java.util.ArrayList;
@@ -23,6 +25,9 @@ public class EcoSystem extends Organization{
     private ArrayList<Network> networkList;
     private ProduceDirectory produceDirectory;
     private RawMaterialDirectory rmDirectory;
+    private ProduceReviewDirectory produceReviewDirectory;
+    private RawMaterialReviewDirectory rmReviewDirectory;
+    
 
     public RawMaterialDirectory getRmDirectory() {
         return rmDirectory;
@@ -38,6 +43,26 @@ public class EcoSystem extends Organization{
     public void setProduceDirectory(ProduceDirectory produceDirectory) {
         this.produceDirectory = produceDirectory;
     }
+
+    public ProduceReviewDirectory getProduceReviewDirectory() {
+        return produceReviewDirectory;
+    }
+
+    public void setProduceReviewDirectory(ProduceReviewDirectory produceReviewDirectory) {
+        this.produceReviewDirectory = produceReviewDirectory;
+    }
+
+    public RawMaterialReviewDirectory getRmReviewDirectory() {
+        return rmReviewDirectory;
+    }
+
+    public void setRmReviewDirectory(RawMaterialReviewDirectory rmReviewDirectory) {
+        this.rmReviewDirectory = rmReviewDirectory;
+    }
+
+    
+    
+    
     
     public static EcoSystem getInstance(){
         if(business==null){
@@ -62,6 +87,8 @@ public class EcoSystem extends Organization{
         networkList=new ArrayList<Network>();
         produceDirectory = ProduceDirectory.getInstance();
         rmDirectory = RawMaterialDirectory.getInstance();
+        produceReviewDirectory = ProduceReviewDirectory.getInstance();
+        rmReviewDirectory = RawMaterialReviewDirectory.getInstance();
     }
 
     public ArrayList<Network> getNetworkList() {

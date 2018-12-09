@@ -13,15 +13,16 @@ import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.StaffOrganization;
 import Business.Produce.ProduceDirectory;
-import Business.RawMaterial.*;
+import Business.RawMaterialReview.RawMaterialReview;
+import Business.RawMaterialReview.RawMaterialReviewDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProduceRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -35,13 +36,15 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private FarmerOrganization farmerOrganization;
     private USFDEnterprise enterprise;
     private ProduceDirectory produceDirectory;
-    private RawMaterialDirectory rmDirectory;
-           
+    private RawMaterialReviewDirectory rmrDirectory;
+    private ButtonGroup qualitybg = new ButtonGroup();
+    private ButtonGroup shelfbg = new ButtonGroup();
+    
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
 
-    public FarmerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise ,EcoSystem business,ProduceDirectory produceDirectory, RawMaterialDirectory rmDirectory) {
+    public FarmerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise ,EcoSystem business,ProduceDirectory produceDirectory,RawMaterialReviewDirectory rmrDirectory) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -50,17 +53,31 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         this.farmerOrganization = (FarmerOrganization)organization;
         this.enterprise = (USFDEnterprise)enterprise;
         this.produceDirectory = produceDirectory;
-        this.rmDirectory = rmDirectory;
+        this.rmrDirectory = rmrDirectory;
         System.out.println("farmer panel produce directory"+ produceDirectory);
         populateTable();
         populateRequestRMTable();
         populateCropTable();
         populatermCombo();
+         qualitygroupbutton();
+         shelfgroupbutton();
         
-        if(requestRMjTable.getRowCount()==0)
-        {
-            populateInventoryRM();
-        }
+  
+    }
+     private void qualitygroupbutton() {
+        qualitybg.add(qexRadioButton);
+        qualitybg.add(qvgRadioButton);
+        qualitybg.add(qgRadioButton);
+        qualitybg.add(qaRadioButton);
+        qualitybg.add(qpRadioButton);
+    }
+    
+     private void shelfgroupbutton() {
+        shelfbg.add(sleRadioButton);
+        shelfbg.add(svgRadioButton);
+        shelfbg.add(sgRadioButton);
+        shelfbg.add(saRadioButton);
+        shelfbg.add(spRadioButton);
     }
     
     public void populateTable(){
@@ -141,8 +158,24 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         requestTestJButton = new javax.swing.JButton();
         weatherButton = new javax.swing.JButton();
         addCropButton = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        inventoryRMTable = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        qexRadioButton = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        sleRadioButton = new javax.swing.JRadioButton();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        additionalreviewsTextArea = new javax.swing.JTextArea();
+        submitButton = new javax.swing.JButton();
+        svgRadioButton = new javax.swing.JRadioButton();
+        qvgRadioButton = new javax.swing.JRadioButton();
+        qgRadioButton = new javax.swing.JRadioButton();
+        sgRadioButton = new javax.swing.JRadioButton();
+        saRadioButton = new javax.swing.JRadioButton();
+        qaRadioButton = new javax.swing.JRadioButton();
+        qpRadioButton = new javax.swing.JRadioButton();
+        spRadioButton = new javax.swing.JRadioButton();
+        reviewSupplyButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -264,7 +297,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 360, -1, -1));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, -1, -1));
 
         weatherButton.setText("Weather Information");
         weatherButton.addActionListener(new java.awt.event.ActionListener() {
@@ -282,29 +315,85 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(addCropButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, -1, -1));
 
-        inventoryRMTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jLabel4.setText("Review Supply");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 450, -1, 10));
 
-            },
-            new String [] {
-                "Raw Material", "Quantity"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, false
-            };
+        jLabel5.setText("Supply Quality");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 510, -1, -1));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        qexRadioButton.setText("Excellent");
+        qexRadioButton.setEnabled(false);
+        add(qexRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, -1, -1));
+
+        jLabel6.setText("Supply Shelf Life");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 550, -1, -1));
+
+        sleRadioButton.setText("Excellent");
+        sleRadioButton.setEnabled(false);
+        add(sleRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 550, -1, -1));
+
+        jLabel7.setText("Additional Reviews");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 620, -1, -1));
+
+        additionalreviewsTextArea.setColumns(20);
+        additionalreviewsTextArea.setRows(5);
+        additionalreviewsTextArea.setEnabled(false);
+        jScrollPane5.setViewportView(additionalreviewsTextArea);
+
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 600, -1, -1));
+
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
             }
         });
-        jScrollPane4.setViewportView(inventoryRMTable);
-        if (inventoryRMTable.getColumnModel().getColumnCount() > 0) {
-            inventoryRMTable.getColumnModel().getColumn(0).setResizable(false);
-            inventoryRMTable.getColumnModel().getColumn(1).setResizable(false);
-        }
+        add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 740, -1, -1));
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 420, 130));
+        svgRadioButton.setText("Very Good");
+        svgRadioButton.setEnabled(false);
+        add(svgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 550, -1, -1));
+
+        qvgRadioButton.setText("Very Good");
+        qvgRadioButton.setEnabled(false);
+        qvgRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qvgRadioButtonActionPerformed(evt);
+            }
+        });
+        add(qvgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 510, -1, -1));
+
+        qgRadioButton.setText("Good");
+        qgRadioButton.setEnabled(false);
+        add(qgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 510, -1, -1));
+
+        sgRadioButton.setText("Good");
+        sgRadioButton.setEnabled(false);
+        add(sgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 550, -1, -1));
+
+        saRadioButton.setText("Average");
+        saRadioButton.setEnabled(false);
+        add(saRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 550, -1, -1));
+
+        qaRadioButton.setText("Average");
+        qaRadioButton.setEnabled(false);
+        add(qaRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 510, -1, -1));
+
+        qpRadioButton.setText("Poor");
+        qpRadioButton.setEnabled(false);
+        add(qpRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 480, -1, -1));
+
+        spRadioButton.setText("Poor");
+        spRadioButton.setEnabled(false);
+        add(spRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 590, -1, -1));
+
+        reviewSupplyButton.setText("Review Supply");
+        reviewSupplyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reviewSupplyButtonActionPerformed(evt);
+            }
+        });
+        add(reviewSupplyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(683, 333, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
         int selectedRow = workRequestJTable.getSelectedRow();
@@ -429,26 +518,152 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             }
     }//GEN-LAST:event_addCropButtonActionPerformed
 
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        // TODO add your handling code here:
+
+        int selectedRow = requestRMjTable.getSelectedRow();
+
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+
+        String status = requestRMjTable.getValueAt(selectedRow, 3).toString();
+        String supplyName = requestRMjTable.getValueAt(selectedRow, 0).toString();
+        String supplierName = requestRMjTable.getValueAt(selectedRow, 2).toString();
+
+        //ProduceReview pr = prDirectory.addProduceReview();
+        if(status.equalsIgnoreCase("done")){
+            RawMaterialReview rmr = rmrDirectory.addRawMaterialReview();
+            rmr.setSupplyName(supplyName);
+           rmr.setSupplierName(supplierName);
+
+            String quality = null;
+            if(qexRadioButton.isSelected())
+            quality = "Excellent";
+            else if (qvgRadioButton.isSelected())
+            quality = "Very Good";
+            else if (qgRadioButton.isSelected())
+            quality = "Good";
+            else if (qaRadioButton.isSelected())
+            quality = "Average";
+            else if(qpRadioButton.isSelected())
+            quality = "Poor";
+
+            String shelfLife = null;
+
+            if(sleRadioButton.isSelected())
+            shelfLife = "Excellent";
+            else if (svgRadioButton.isSelected())
+            shelfLife = "Very Good";
+            else if (sgRadioButton.isSelected())
+            shelfLife = "Good";
+            else if (saRadioButton.isSelected())
+            shelfLife = "Average";
+            else if(spRadioButton.isSelected())
+            shelfLife = "Poor";
+
+            rmr.setProduceQuality(quality);
+            rmr.setProduceShelfLife(shelfLife);
+            rmr.setAdditionalReviews(additionalreviewsTextArea.getText());
+        }
+
+        qexRadioButton.setEnabled(false);
+        qvgRadioButton.setEnabled(false);
+        qgRadioButton.setEnabled(false);
+        qaRadioButton.setEnabled(false);
+        qpRadioButton.setEnabled(false);
+
+        sleRadioButton.setEnabled(false);
+        svgRadioButton.setEnabled(false);
+        sgRadioButton.setEnabled(false);
+        saRadioButton.setEnabled(false);
+        spRadioButton.setEnabled(false);
+
+        additionalreviewsTextArea.setEnabled(false);
+
+        qualitybg.clearSelection();
+        shelfbg.clearSelection();
+
+        additionalreviewsTextArea.setText(" ");
+    }//GEN-LAST:event_submitButtonActionPerformed
+
+    private void qvgRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qvgRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_qvgRadioButtonActionPerformed
+
+    private void reviewSupplyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reviewSupplyButtonActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = requestRMjTable.getSelectedRow();
+
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+       
+       String status = requestRMjTable.getValueAt(selectedRow, 3).toString();
+       
+       if(status.equalsIgnoreCase("done")){
+
+            
+           
+            qexRadioButton.setEnabled(true);
+            qvgRadioButton.setEnabled(true);
+            qgRadioButton.setEnabled(true);
+            qaRadioButton.setEnabled(true);
+            qpRadioButton.setEnabled(true);
+
+            sleRadioButton.setEnabled(true);
+            svgRadioButton.setEnabled(true);
+            sgRadioButton.setEnabled(true);
+            saRadioButton.setEnabled(true);
+            spRadioButton.setEnabled(true);
+            
+            additionalreviewsTextArea.setEnabled(true);
+        
+       }
+       else{
+           JOptionPane.showMessageDialog(null, "Request not fulfilled");
+       }
+        
+    }//GEN-LAST:event_reviewSupplyButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addCropButton;
+    private javax.swing.JTextArea additionalreviewsTextArea;
     private javax.swing.JButton assignJButton;
     private javax.swing.JTextField cropNameTextField;
-    private javax.swing.JTable inventoryRMTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextField priceTextField;
     private javax.swing.JButton processJButton;
     private javax.swing.JTable produceTable;
+    private javax.swing.JRadioButton qaRadioButton;
+    private javax.swing.JRadioButton qexRadioButton;
+    private javax.swing.JRadioButton qgRadioButton;
+    private javax.swing.JRadioButton qpRadioButton;
     private javax.swing.JTextField quantityTextField;
+    private javax.swing.JRadioButton qvgRadioButton;
     private javax.swing.JButton refreshJButton;
     private javax.swing.JTable requestRMjTable;
     private javax.swing.JButton requestTestJButton;
+    private javax.swing.JButton reviewSupplyButton;
+    private javax.swing.JRadioButton saRadioButton;
+    private javax.swing.JRadioButton sgRadioButton;
+    private javax.swing.JRadioButton sleRadioButton;
+    private javax.swing.JRadioButton spRadioButton;
+    private javax.swing.JButton submitButton;
+    private javax.swing.JRadioButton svgRadioButton;
     private javax.swing.JButton weatherButton;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
@@ -481,47 +696,5 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
     }
 
-    private void populateInventoryRM() {
-        
-        int status =3;
-        String tempStatus = null;
-        String tempRMName = null;
-        int rm = 0;
-        int qunatity= 4;
-        int QtyRM;
-        for(int j = 0; j <requestRMjTable.getRowCount(); j++){
-           tempStatus =  requestRMjTable.getModel().getValueAt(j, status).toString();
-           if (tempStatus.equalsIgnoreCase("done"))
-           {
-             /*tempRMName = requestRMjTable.getModel().getValueAt(j, rm).toString();
-             QtyRM =  Integer.parseInt(String.valueOf(requestRMjTable.getModel().getValueAt(j, qunatity).toString()));
-             DefaultTableModel dtm = (DefaultTableModel)inventoryRMTable.getModel();
-        
-             dtm.setRowCount(0);
-            
-            Object[] row = new Object[2];
-            row[0] = tempRMName;
-            row[1] = QtyRM;
-
-            dtm.addRow(row);
-        */
-           
-           for (RawMaterial rmD : rmDirectory.getRawMaterial())
-           {
-              DefaultTableModel dtm = (DefaultTableModel)inventoryRMTable.getModel();
-        
-             dtm.setRowCount(0);
-            
-            Object[] row = new Object[2];
-            row[0] = rmD;
-            row[1] = rmD.getMaterialQuantity();
-
-            dtm.addRow(row); 
-           }
-           }
-             
-           }
-        }
-    
-
+  
 }
