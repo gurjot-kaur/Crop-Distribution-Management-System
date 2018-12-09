@@ -83,9 +83,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         enterpriseTypeJComboBox = new javax.swing.JComboBox();
         submitJButton = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        enterpriseJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         enterpriseJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -104,48 +106,56 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(enterpriseJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 69, 523, 245));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 570, 245));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Network");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 392, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, -1));
 
         networkJComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         networkJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 389, 218, -1));
+        add(networkJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 218, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 541, -1, -1));
+        jLabel2.setText("Enterprise Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, -1, -1));
 
         nameJTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 538, 218, -1));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 550, 218, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Enterprise Type");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 467, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, -1, -1));
 
         enterpriseTypeJComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         enterpriseTypeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 464, 218, -1));
+        add(enterpriseTypeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 490, 218, -1));
 
         submitJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        submitJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/submit.png"))); // NOI18N
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(515, 612, 218, -1));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 620, 218, -1));
 
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        backJButton.setText("<< Back");
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon (2).png"))); // NOI18N
+        backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 730, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/enterprise-icon.png"))); // NOI18N
+        jLabel4.setText("Manage Enterprise");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 644, 59));
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -180,6 +190,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox networkJComboBox;

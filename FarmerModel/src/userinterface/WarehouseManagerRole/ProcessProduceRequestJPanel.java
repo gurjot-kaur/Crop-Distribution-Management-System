@@ -37,25 +37,37 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        submitJButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        resultJTextField = new javax.swing.JTextField();
-        backJButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        resultJTextField1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         resultCombo = new javax.swing.JComboBox();
+        submitJButton1 = new javax.swing.JButton();
+        backJButton1 = new javax.swing.JButton();
 
-        submitJButton.setText("Submit Result");
-        submitJButton.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("Produce Request Result");
+
+        resultJTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Result");
+
+        resultCombo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        submitJButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        submitJButton1.setText("Submit Result");
+        submitJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitJButtonActionPerformed(evt);
+                submitJButton1ActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Result");
-
-        backJButton.setText("Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
+        backJButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        backJButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon (2).png"))); // NOI18N
+        backJButton1.setText("Back");
+        backJButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
+                backJButton1ActionPerformed(evt);
             }
         });
 
@@ -64,40 +76,59 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(backJButton)
-                    .addComponent(jLabel1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                        .addComponent(submitJButton)
-                        .addGap(63, 63, 63))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(resultCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(321, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(327, 327, 327))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backJButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(233, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(resultJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(105, 105, 105)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(resultCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(submitJButton1)
+                                    .addGap(50, 50, 50)))))
+                    .addGap(360, 360, 360)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(resultJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(resultCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitJButton)
-                    .addComponent(backJButton))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 615, Short.MAX_VALUE)
+                .addComponent(backJButton1)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(278, Short.MAX_VALUE)
+                    .addComponent(resultJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(30, 30, 30)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(resultCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addGap(45, 45, 45)
+                    .addComponent(submitJButton1)
+                    .addGap(358, 358, 358)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+    private void submitJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButton1ActionPerformed
+        //request.setTestResult(resultJTextField.getText());
+        //request.setStatus("Completed");
+        String status = (String) resultCombo.getSelectedItem();
+
+        request.setStatus(status);
+    }//GEN-LAST:event_submitJButton1ActionPerformed
+
+    private void backJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButton1ActionPerformed
 
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
@@ -106,21 +137,15 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
         wwjp.populateTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
-    private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        //request.setTestResult(resultJTextField.getText());
-         String status = (String) resultCombo.getSelectedItem();
-
-        request.setStatus(status);
-    }//GEN-LAST:event_submitJButtonActionPerformed
+    }//GEN-LAST:event_backJButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton backJButton1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JComboBox resultCombo;
-    private javax.swing.JTextField resultJTextField;
-    private javax.swing.JButton submitJButton;
+    private javax.swing.JTextField resultJTextField1;
+    private javax.swing.JButton submitJButton1;
     // End of variables declaration//GEN-END:variables
 
     private void populateResultCombo() {
