@@ -13,6 +13,7 @@ import Business.Organization.FarmerOrganization;
 import Business.Organization.Organization;
 import Business.Organization.StaffOrganization;
 import Business.Produce.ProduceDirectory;
+import Business.RawMaterial.*;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProduceRequest;
 import Business.WorkQueue.WorkRequest;
@@ -20,6 +21,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -33,12 +35,13 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private FarmerOrganization farmerOrganization;
     private USFDEnterprise enterprise;
     private ProduceDirectory produceDirectory;
-    
+    private RawMaterialDirectory rmDirectory;
+           
     /**
      * Creates new form LabAssistantWorkAreaJPanel
      */
 
-    public FarmerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise ,EcoSystem business,ProduceDirectory produceDirectory) {
+    public FarmerWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization,Enterprise enterprise ,EcoSystem business,ProduceDirectory produceDirectory, RawMaterialDirectory rmDirectory) {
         initComponents();
         
         this.userProcessContainer = userProcessContainer;
@@ -47,10 +50,17 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         this.farmerOrganization = (FarmerOrganization)organization;
         this.enterprise = (USFDEnterprise)enterprise;
         this.produceDirectory = produceDirectory;
+        this.rmDirectory = rmDirectory;
         System.out.println("farmer panel produce directory"+ produceDirectory);
         populateTable();
         populateRequestRMTable();
         populateCropTable();
+        populatermCombo();
+        
+        if(requestRMjTable.getRowCount()==0)
+        {
+            populateInventoryRM();
+        }
     }
     
     public void populateTable(){
@@ -94,8 +104,8 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
             Object[] row = new Object[5];
             row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
+            row[1] = request.getSender();
+            row[2] = request.getReceiver();
             String result = ((ProduceRequest) request).getTestResult();
             row[3] = result == null ? "Waiting" : result;
             row[4] = request.getRawMaterialQty();
@@ -131,6 +141,8 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         requestTestJButton = new javax.swing.JButton();
         weatherButton = new javax.swing.JButton();
         addCropButton = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        inventoryRMTable = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -244,7 +256,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             requestRMjTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 470, 90));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 620, 90));
 
         requestTestJButton.setText("Request Raw Material");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +264,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, -1, -1));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 360, -1, -1));
 
         weatherButton.setText("Weather Information");
         weatherButton.addActionListener(new java.awt.event.ActionListener() {
@@ -269,16 +281,56 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(addCropButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, -1, -1));
+
+        inventoryRMTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Raw Material", "Quantity"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(inventoryRMTable);
+        if (inventoryRMTable.getColumnModel().getColumnCount() > 0) {
+            inventoryRMTable.getColumnModel().getColumn(0).setResizable(false);
+            inventoryRMTable.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 420, 130));
     }// </editor-fold>//GEN-END:initComponents
-
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
-
         int selectedRow = workRequestJTable.getSelectedRow();
-        
+       // String selectedRM = (String)rmComboBox.getSelectedItem();
+
         if (selectedRow < 0){
             return;
         }
         
+        
+        /*int i =0;
+        for(int j=0; j<requestRMjTable.getRowCount();j++){
+            String valueRMTable = requestRMjTable.getModel().getValueAt(j, i).toString();
+            if(!(selectedRM.equalsIgnoreCase(valueRMTable))){
+                continue;
+            }                         
+            else {
+                
+                break;
+                
+            }
+
+        }
+
+        JOptionPane.showMessageDialog(null, "can not assign, request for raw material");
+  */
         WorkRequest request = (WorkRequest)workRequestJTable.getValueAt(selectedRow, 0);
         request.setReceiver(userAccount);
         request.setStatus("Pending");
@@ -354,7 +406,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
              for(int j = 0; j <produceTable.getRowCount(); j++){
              tempName = produceTable.getModel().getValueAt(j, i).toString();
              
-             if(tempName.equals(cropName)){
+             if(tempName.equalsIgnoreCase(cropName)){
                 i++;
                
                 cropQty = Integer.parseInt((String.valueOf(produceTable.getModel().getValueAt(j, i)))) + cropQty;
@@ -382,12 +434,14 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton addCropButton;
     private javax.swing.JButton assignJButton;
     private javax.swing.JTextField cropNameTextField;
+    private javax.swing.JTable inventoryRMTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField priceTextField;
     private javax.swing.JButton processJButton;
     private javax.swing.JTable produceTable;
@@ -407,7 +461,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             {   
                 break;
             }
-            else if (temp.equals(text))
+            else if (temp.equalsIgnoreCase(text))
             {
                 flag = false;
                 break;
@@ -418,5 +472,56 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         
         return flag;
     }
+
+    private void populatermCombo() {
+        /*rmComboBox.addItem("Pest A");
+        rmComboBox.addItem("Pest B");
+        rmComboBox.addItem("Pest C");
+*/
+
+    }
+
+    private void populateInventoryRM() {
+        
+        int status =3;
+        String tempStatus = null;
+        String tempRMName = null;
+        int rm = 0;
+        int qunatity= 4;
+        int QtyRM;
+        for(int j = 0; j <requestRMjTable.getRowCount(); j++){
+           tempStatus =  requestRMjTable.getModel().getValueAt(j, status).toString();
+           if (tempStatus.equalsIgnoreCase("done"))
+           {
+             /*tempRMName = requestRMjTable.getModel().getValueAt(j, rm).toString();
+             QtyRM =  Integer.parseInt(String.valueOf(requestRMjTable.getModel().getValueAt(j, qunatity).toString()));
+             DefaultTableModel dtm = (DefaultTableModel)inventoryRMTable.getModel();
+        
+             dtm.setRowCount(0);
+            
+            Object[] row = new Object[2];
+            row[0] = tempRMName;
+            row[1] = QtyRM;
+
+            dtm.addRow(row);
+        */
+           
+           for (RawMaterial rmD : rmDirectory.getRawMaterial())
+           {
+              DefaultTableModel dtm = (DefaultTableModel)inventoryRMTable.getModel();
+        
+             dtm.setRowCount(0);
+            
+            Object[] row = new Object[2];
+            row[0] = rmD;
+            row[1] = rmD.getMaterialQuantity();
+
+            dtm.addRow(row); 
+           }
+           }
+             
+           }
+        }
+    
 
 }

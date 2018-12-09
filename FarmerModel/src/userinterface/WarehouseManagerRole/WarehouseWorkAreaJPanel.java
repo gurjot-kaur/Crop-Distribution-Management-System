@@ -217,6 +217,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
         {
             JOptionPane.showMessageDialog(null,"Cannot assign this job, please go farmer");
             flag = true;
+            processJButton.setEnabled(false);
         }
             else{
             
@@ -247,7 +248,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
                     request.setCropQty(cropQty - cropQntyProduce);
                     
                     for(Produce produce : produceDirectory.getProduceList()){
-                    if (tempName.equals((String)produce.getCropName()))
+                    if (tempName.equals((String)produce.getCropName()) || (!tempName.equals((String)produce.getCropName())))
                     {
                         produce.setCropQuantity(0);
                         request.setCropQty(cropQty - cropQntyProduce);

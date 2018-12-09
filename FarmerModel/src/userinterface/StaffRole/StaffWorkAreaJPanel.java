@@ -64,6 +64,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         if (flag == true)
         {  
             sendToFarmerJButton.setEnabled(true);
+            sendToWarehouseJButton.setEnabled(false);
         }
         
     }
@@ -179,7 +180,6 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         add(sendToFarmerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 247, -1, -1));
 
         sendToWarehouseJButton.setText("Send to Warehouse Manager");
-        sendToWarehouseJButton.setEnabled(false);
         sendToWarehouseJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendToWarehouseJButtonActionPerformed(evt);

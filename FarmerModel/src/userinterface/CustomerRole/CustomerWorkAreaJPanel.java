@@ -42,7 +42,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = account;
         valueLabel.setText(enterprise.getName());
         populateRequestTable();
-        checkCompletion();
+        //checkCompletion();
     }
     
     public void populateRequestTable(){
@@ -50,7 +50,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             row[0] = request.getMessage();
             row[1] = request.getReceiver();
             row[2] = request.getStatus();
@@ -169,7 +169,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     private void checkCompletion() {
-    int temp = workRequestJTable.getRowCount() - 1;
+    int temp = workRequestJTable.getRowCount();
     final String cropName = workRequestJTable.getModel().getValueAt(temp, 0).toString();
     String finalStatus = workRequestJTable.getModel().getValueAt(temp, 2).toString();
     final int quantity = Integer.parseInt((String.valueOf(workRequestJTable.getModel().getValueAt(temp, 4))));

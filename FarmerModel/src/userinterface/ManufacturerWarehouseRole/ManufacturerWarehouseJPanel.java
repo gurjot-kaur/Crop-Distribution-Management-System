@@ -262,6 +262,12 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
                 break;
             }
         }
+         if (tempName == null)
+         {
+             JOptionPane.showMessageDialog(null,"Cannot assign this job, please go producer");
+             processJButton.setEnabled(false);
+         }
+         else{
          if (tempName.equals(rawMaterialName))
             {
                 if (rawMaterialQty <= rawMaterialQntyProduce)
@@ -320,7 +326,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Cannot assign");
         }*/
                     
-
+         }
        
 
     }//GEN-LAST:event_assignJButtonActionPerformed
