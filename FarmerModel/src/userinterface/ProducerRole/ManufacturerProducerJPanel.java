@@ -322,7 +322,7 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
              for(int j = 0; j <rmJTable.getRowCount(); j++){
              tempName = rmJTable.getModel().getValueAt(j, i).toString();
              
-             if(tempName.equals(cropName)){
+             if(tempName.equalsIgnoreCase(cropName)){
                 i++;
                
                 cropQty = Integer.parseInt((String.valueOf(rmJTable.getModel().getValueAt(j, i)))) + cropQty;
@@ -383,7 +383,7 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
             {   
                 break;
             }
-            else if (temp.equals(text))
+            else if (temp.equalsIgnoreCase(text))
             {
                 flag = false;
                 break;

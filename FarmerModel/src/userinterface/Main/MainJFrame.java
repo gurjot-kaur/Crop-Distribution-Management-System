@@ -12,7 +12,9 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Produce.Produce;
 import Business.Produce.ProduceDirectory;
+import Business.ProduceReview.ProduceReviewDirectory;
 import Business.RawMaterial.*;
+import Business.RawMaterialReview.RawMaterialReviewDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -29,12 +31,18 @@ public class MainJFrame extends javax.swing.JFrame {
     //ProduceDirectory produceDirectory = new ProduceDirectory();
     ProduceDirectory produceDirectory;
     RawMaterialDirectory rmDirectory;
+    ProduceReviewDirectory produceReviewDirectory;
+    RawMaterialReviewDirectory rawMaterialReviewDirectory;
+    
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.produceDirectory = system.getProduceDirectory();
         this.rmDirectory = system.getRmDirectory();
-        System.out.println(this.produceDirectory);
+        this.produceReviewDirectory = system.getProduceReviewDirectory();
+        this.rawMaterialReviewDirectory = system.getRmReviewDirectory();
+        System.out.println(this.produceReviewDirectory);
+        System.out.println(this.rawMaterialReviewDirectory);
         this.setSize(1200, 800);
     }
 
@@ -196,7 +204,7 @@ public class MainJFrame extends javax.swing.JFrame {
         else{
             CardLayout layout=(CardLayout)container.getLayout();
             
-            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system,produceDirectory,rmDirectory));
+            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system,produceDirectory,rmDirectory,produceReviewDirectory,rawMaterialReviewDirectory));
             layout.next(container);
         }
 
