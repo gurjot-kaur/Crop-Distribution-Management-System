@@ -12,7 +12,9 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Produce.Produce;
 import Business.Produce.ProduceDirectory;
+import Business.ProduceReview.ProduceReviewDirectory;
 import Business.RawMaterial.*;
+import Business.RawMaterialReview.RawMaterialReviewDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -29,12 +31,18 @@ public class MainJFrame extends javax.swing.JFrame {
     //ProduceDirectory produceDirectory = new ProduceDirectory();
     ProduceDirectory produceDirectory;
     RawMaterialDirectory rmDirectory;
+    ProduceReviewDirectory produceReviewDirectory;
+    RawMaterialReviewDirectory rawMaterialReviewDirectory;
+    
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
         this.produceDirectory = system.getProduceDirectory();
         this.rmDirectory = system.getRmDirectory();
-        System.out.println(this.produceDirectory);
+        this.produceReviewDirectory = system.getProduceReviewDirectory();
+        this.rawMaterialReviewDirectory = system.getRmReviewDirectory();
+        System.out.println(this.produceReviewDirectory);
+        System.out.println(this.rawMaterialReviewDirectory);
         this.setSize(1200, 800);
     }
 
@@ -61,17 +69,22 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane.setDividerLocation(200);
 
+        loginPanel.setBackground(new java.awt.Color(255, 204, 153));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/username.png"))); // NOI18N
         jLabel1.setText("User Name");
 
         userNameJTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/password (2).png"))); // NOI18N
         jLabel2.setText("Password");
 
         passwordField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         loginJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        loginJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Login-icon.png"))); // NOI18N
         loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +93,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         logoutJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logout-icon.png"))); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.setEnabled(false);
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +120,7 @@ public class MainJFrame extends javax.swing.JFrame {
         loginPanelLayout.setVerticalGroup(
             loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addContainerGap(206, Short.MAX_VALUE)
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(userNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,7 +210,7 @@ public class MainJFrame extends javax.swing.JFrame {
         else{
             CardLayout layout=(CardLayout)container.getLayout();
             
-            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system,produceDirectory,rmDirectory));
+            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system,produceDirectory,rmDirectory,produceReviewDirectory,rawMaterialReviewDirectory));
             layout.next(container);
         }
 

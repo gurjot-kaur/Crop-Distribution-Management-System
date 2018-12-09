@@ -8,8 +8,11 @@ package userinterface.FarmerRole;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,9 +20,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -62,12 +67,18 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        requestWeather = new javax.swing.JButton();
         locationTxt = new javax.swing.JTextField();
         countryTxt = new javax.swing.JTextField();
         rmCoboBox = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtNotes = new javax.swing.JTextArea();
+        back = new javax.swing.JButton();
+        currentDayHigh = new javax.swing.JTextField();
+        tomDayHigh = new javax.swing.JTextField();
+        dayAfterHigh = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -92,13 +103,13 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 150, 160, 150));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 170, 130));
 
-        jButton1.setText("Request Weather");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        requestWeather.setText("Request Weather");
+        requestWeather.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                requestWeatherActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 400, -1, -1));
+        add(requestWeather, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, -1, -1));
         add(locationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 110, -1));
         add(countryTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 110, -1));
 
@@ -107,23 +118,40 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
                 rmCoboBoxActionPerformed(evt);
             }
         });
-        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 60, 30));
+        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 90, 30));
 
         txtNotes.setColumns(20);
         txtNotes.setRows(5);
         txtNotes.setEnabled(false);
         jScrollPane1.setViewportView(txtNotes);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 380, 250));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 640, 250));
+
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+        add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 680, -1, -1));
+        add(currentDayHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 120, 90, -1));
+        add(tomDayHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 100, -1));
+        add(dayAfterHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 110, -1));
+
+        jLabel7.setText("Minimum");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jLabel8.setText("Maximum");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void currentTempTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentTempTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_currentTempTextActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void requestWeatherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestWeatherActionPerformed
         // TODO add your handling code here:
-        boolean isMetric = true;
+ boolean isMetric = true;
         String city = locationTxt.getText();
         String country  = countryTxt.getText();
         String API_KEY = "a7a00470c6e4c9a97cd76242259a08cf"; /* YOUR OWM API KEY HERE */
@@ -155,11 +183,27 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
             double number = Double.parseDouble((String.valueOf(mainMap.get("temp"))));
             double wind = Double.parseDouble((String.valueOf(windMap.get("speed"))));
             double humid = Double.parseDouble((String.valueOf(mainMap.get("humidity"))));
-            double min = number -3.0;
-            double max  = number +3.0;
+            Random rand = new Random();
+            double random = Math.random() * 6;
+            double random1 = Math.random() * 8;
+            double random3 = Math.random() *6;
+            random3 = Math.round(random3*100.0)/100.0;
+            double numberhigh = number + random3;
+            numberhigh = Math.round(numberhigh*100.0)/100.0;
+            double min = number - random;
+            min = Math.round(min*100.0)/100.0;
+            double minhigh = min + random3;
+            minhigh = Math.round(minhigh*100.0)/100;
+            double max  = number + random1;
+            max = Math.round(max*100.0)/100.0;
+            double maxhigh = max + random3;
+            maxhigh = Math.round(maxhigh*100.0)/100.0;
             currentTempText.setText(String.valueOf(number));
             nextDayTempText.setText(String.valueOf(min));
             dayAfterTempText.setText(String.valueOf(max));
+            currentDayHigh.setText(String.valueOf(numberhigh));
+            tomDayHigh.setText(String.valueOf(minhigh));
+            dayAfterHigh.setText(String.valueOf(maxhigh));
             if (number>60.0 && wind > 0.0 && humid <= 20.0)
             {
                 Image MyImage = new ImageIcon(this.getClass().getResource("/Images/sunny.jpg")).getImage();;
@@ -346,57 +390,298 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         String crop = (String) rmCoboBox.getSelectedItem();
         String location = (String) locationTxt.getText();
         double number = Double.parseDouble(currentTempText.getText());
-        if(crop.equals("tomato") && location.equalsIgnoreCase("Boston") && number < 60.0 ) {
-            //JOptionPane.showMessageDialog(null, "It is ideal to grow tomato");
-            
-            Font font = new Font ("It is ideal to grow tomato",Font.BOLD,12);
+        if(crop.equals("snap peas") && location.equalsIgnoreCase("Boston") && number > 50.0 && number < 70.0 ) {
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                txtNotes.setText("Perfect conditions to grow snap peas and use biosolids for the best results");
+                    Font font = new Font ("It is ideal to grow tomato",Font.BOLD,20);
             txtNotes.setFont(font);
-          
+      }
+  };            Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
         } 
-        else if(crop.equals("tomato") && location.equalsIgnoreCase("Miami") && number > 60.0 && number < 80.0 ) {
-            //JOptionPane.showMessageDialog(null, "It is ideal to grow tomato");
-            
-            txtNotes.setText("It is ideal to grow tomato");
-            Font font = txtNotes.getFont();
-            txtNotes.setFont(font.deriveFont(Font.BOLD));
-        } 
-        else if (crop.equals("rice") && location.equalsIgnoreCase("Boston") && number > 20.0 ) {
-            //JOptionPane.showMessageDialog(null, "It is ideal to grow rice");
-            
-            //txtNotes.setText("It is ideal to grow rice");
-             Font font = new Font ("It is ideal to grow rice",Font.BOLD,12);
+        else if(crop.equals("snap peas") && location.equalsIgnoreCase("Boston") && number <= 50.0 || number >= 70.0 ) {
+            JOptionPane.showMessageDialog(null, "Warning!");
+            int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+            txtNotes.setText("The conditions are not ideal to grow snap peas, therefore use worm tea \n"+" to maintain the pH level of the soil greater than 6.");
+            Font font = new Font ("",Font.BOLD,20);
             txtNotes.setFont(font);
+        } 
+        };            
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        } 
+        else if(crop.equalsIgnoreCase("broccoli") && location.equalsIgnoreCase("Boston") && number > 10.0 && number < 70.0 ) {
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                txtNotes.setText("Perfect conditions to grow Brocolli and use manure for the best results");
+                    Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+      }
+  };            Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        } 
+        else if(crop.equalsIgnoreCase("brocolli") && location.equalsIgnoreCase("Boston") && number <= 10.0 || number >= 70.0 ) {
+            JOptionPane.showMessageDialog(null, "Warning!");
+            int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+            txtNotes.setText("The conditions are not ideal to grow Broccoli, therefore use organic fertilizer to maintain pH level greather than 8.0 and to keep the level of nitrogen at par. ");
+            Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+        } 
+        };            
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        else if(crop.equalsIgnoreCase("cabbage") && location.equalsIgnoreCase("Boston") && number > 25.0 && number < 80.0 ) {
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                txtNotes.setText("Perfect conditions to grow cabbage and use biosolids for the best results");
+                    Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+      }
+  };            Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        } 
+        else if(crop.equalsIgnoreCase("cabbage") && location.equalsIgnoreCase("Boston") && number <= 25.0 || number >= 80.0 ) {
+            JOptionPane.showMessageDialog(null, "Warning!");
+            int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+            txtNotes.setText("The conditions are not ideal to grow Cabbage, therefore use manure\n"+" to maintain pH level greather than 5.0 and to keep the alkaline soil. ");
+            Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+        } 
+        };            
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        }
+        else if(crop.equalsIgnoreCase("sweet potato") && location.equalsIgnoreCase("Boston") && number > 30.0 && number < 80.0 ) {
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                txtNotes.setText("Perfect conditions to grow Sweet Potato and use manure for the best results");
+                    Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+      }
+  };            Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        } 
+        else if(crop.equalsIgnoreCase("sweet potato") && location.equalsIgnoreCase("Boston") && number <= 30.0 || number >= 80.0 ) {
+            JOptionPane.showMessageDialog(null, "Warning!");
+            int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+            txtNotes.setText("The conditions are not ideal to grow Sweet Potato, therefore use organic fertilizer\n"+" to maintain pH level and the biosolids level required for sweet potato. ");
+            Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+        } 
+        };            
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        }
+        else if(crop.equalsIgnoreCase("corn") && location.equalsIgnoreCase("Boston") && number > 35.0 && number < 80.0 ) {
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
+                txtNotes.setText("Perfect conditions to grow Corn and use manure for the best results");
+                    Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+      }
+  };            Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        } 
+        else if(crop.equalsIgnoreCase("corn") && location.equalsIgnoreCase("Boston") && number <= 35.0 || number >= 80.0 ) {
+            JOptionPane.showMessageDialog(null, "Warning!");
+            int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+            txtNotes.setText("The conditions are not ideal to grow Corn, therefore use vermicompost as it has well rotted manure compost. ");
+            Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+        } 
+        };            
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        }
+        else if(crop.equalsIgnoreCase("carrot") && location.equalsIgnoreCase("Boston") && number > 30.0 && number < 70.0 ) {
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
+                txtNotes.setText("Perfect conditions to grow Carrot and use organic fertilizer for the best results");
+                    Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+      }
+  };            Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        } 
+        else if(crop.equalsIgnoreCase("carrot") && location.equalsIgnoreCase("Boston") && number <= 30.0 || number >= 70.0 ) {
+            JOptionPane.showMessageDialog(null, "Warning!");
+            int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+            txtNotes.setText("The conditions are not ideal to grow Carrot, therefore use organic pesticide to cut down the weed growth ");
+            Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+        } 
+        };            
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        }
+        else if(crop.equalsIgnoreCase("lettuce") && location.equalsIgnoreCase("Boston") && number > 20.0 && number < 75.0 ) {
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
+                txtNotes.setText("Perfect conditions to grow Lettuce and use manure for the best results");
+                    Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+      }
+  };            Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        } 
+        else if(crop.equalsIgnoreCase("lettuce") && location.equalsIgnoreCase("Boston") && number <= 20.0 || number >= 75.0 ) {
+            JOptionPane.showMessageDialog(null, "Warning!");
+            int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+            txtNotes.setText("The conditions are not ideal to grow Lettuce, therefore use organic fertilizer\n"+" to maintain pH level greather than 8.0 and to keep the level of nitrogen at par. ");
+            Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+        } 
+        };            
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        }
+        else if(crop.equalsIgnoreCase("cherry tomato") && location.equalsIgnoreCase("Boston") && number > 50.0 && number < 80.0 ) {
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
+                txtNotes.setText("Perfect conditions to grow Cherry tomatoes and use worm tea for the best results");
+                    Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+      }
+  };            Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        } 
+        else if(crop.equalsIgnoreCase("cherry tomato") && location.equalsIgnoreCase("Boston") && number <= 50.0 || number >= 80.0 ) {
+            JOptionPane.showMessageDialog(null, "Warning!");
+            int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+            txtNotes.setText("The conditions are not ideal to grow Cherry Tomatoes, therefore use biosolids\n"+" to maintain the nutririon level and shelf life ");
+            Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+        } 
+        };            
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        }
+        else if(crop.equalsIgnoreCase("kale") && location.equalsIgnoreCase("Boston") && number > 20.0 && number < 70.0 ) {
+            int delay = 3000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                //JOptionPane.showMessageDialog(null, "Perfect conditions to grow tomatoes and use PestA for the best results");
+                txtNotes.setText("Perfect conditions to grow Kale and use biosolids for the best results");
+                    Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+      }
+  };            Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        } 
+        else if(crop.equalsIgnoreCase("kale") && location.equalsIgnoreCase("Boston") && number <= 20.0 || number >= 70.0 ) {
+            JOptionPane.showMessageDialog(null, "Warning!");
+            int delay = 2000; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+            txtNotes.setText("The conditions are not ideal to grow Kale, therefore use worm tea\n"+"to maintain pH level greather than 6.0 and to increase the shelf life ");
+            Font font = new Font ("",Font.BOLD,20);
+            txtNotes.setFont(font);
+        } 
+        };            
+                Timer myTimer = new Timer(delay, taskPerformer);
+                myTimer.setRepeats(false);
+                myTimer.start();
+        }
+    }//GEN-LAST:event_requestWeatherActionPerformed
 
     private void rmCoboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmCoboBoxActionPerformed
 
     }//GEN-LAST:event_rmCoboBoxActionPerformed
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+       userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        FarmerWorkAreaJPanel cwjp = (FarmerWorkAreaJPanel) component;
+    }//GEN-LAST:event_backActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
     private javax.swing.JTextField countryTxt;
+    private javax.swing.JTextField currentDayHigh;
     private javax.swing.JTextField currentTempText;
+    private javax.swing.JTextField dayAfterHigh;
     private javax.swing.JTextField dayAfterTempText;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField locationTxt;
     private javax.swing.JTextField nextDayTempText;
+    private javax.swing.JButton requestWeather;
     private javax.swing.JComboBox rmCoboBox;
+    private javax.swing.JTextField tomDayHigh;
     private javax.swing.JTextArea txtNotes;
     // End of variables declaration//GEN-END:variables
 
     private void populateCombo() {
-        rmCoboBox.addItem("rice");
-        rmCoboBox.addItem("wheat");
-        rmCoboBox.addItem("tomato");
-        rmCoboBox.addItem("potato");
+        rmCoboBox.addItem("snap peas");
+        rmCoboBox.addItem("broccoli");
+        rmCoboBox.addItem("cabbage");
+        rmCoboBox.addItem("sweet potato");
+        rmCoboBox.addItem("corn");
+        rmCoboBox.addItem("carrot");
+        rmCoboBox.addItem("lettuce");
+        rmCoboBox.addItem("cherry tomato");
+        rmCoboBox.addItem("kale");
+        rmCoboBox.addItem("onion");
+        rmCoboBox.addItem("squash");
+        rmCoboBox.addItem("cucumber");
+        rmCoboBox.addItem("pepper");
+                
         
     }
 }

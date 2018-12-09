@@ -103,14 +103,20 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
-        
-        String message = messageJTextField.getText();
+        if (messageJTextField.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please enter the product name");
+        }
+        else{
+            String message = messageJTextField.getText();
         
         ProduceRequest request = new ProduceRequest();
         request.setMessage(message);
         request.setSender(userAccount);
         request.setStatus("Sent");
+       
         request.setCropQty(Integer.parseInt(qtyJTextField.getText()));
+       
         
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
@@ -123,6 +129,8 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
             org.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
         }
+        }
+        
         
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
