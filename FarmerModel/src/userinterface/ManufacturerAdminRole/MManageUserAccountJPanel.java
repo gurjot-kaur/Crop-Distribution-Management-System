@@ -121,7 +121,7 @@ public class MManageUserAccountJPanel extends javax.swing.JPanel {
                 createUserJButtonActionPerformed(evt);
             }
         });
-        add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(556, 651, -1, 50));
+        add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 650, -1, 50));
 
         nameJTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 547, 310, -1));
@@ -169,7 +169,7 @@ public class MManageUserAccountJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(269, 601, 135, -1));
 
         passwordJTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 603, 224, -1));
+        add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 603, 310, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Groups-Meeting-Light-icon (1).png"))); // NOI18N

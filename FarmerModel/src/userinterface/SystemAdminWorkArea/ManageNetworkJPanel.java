@@ -95,11 +95,11 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 510, 240));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Network Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 450, 190, -1));
 
-        submitJButton.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        submitJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         submitJButton.setText("Submit");
         submitJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +108,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         });
         add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 170, -1));
 
-        nameJTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        nameJTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 260, -1));
 
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -121,7 +121,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         });
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 733, -1, 50));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Network.png"))); // NOI18N
         jLabel2.setText("Manage Networks");

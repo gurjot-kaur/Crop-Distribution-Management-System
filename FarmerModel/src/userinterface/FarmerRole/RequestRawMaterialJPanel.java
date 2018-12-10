@@ -83,7 +83,7 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 415, 173, -1));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 173, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Plants-Hand-Planting-icon (2).png"))); // NOI18N
