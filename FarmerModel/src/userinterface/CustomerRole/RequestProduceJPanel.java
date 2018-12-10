@@ -101,6 +101,11 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 375, -1, -1));
 
         qtyJTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        qtyJTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qtyJTextFieldActionPerformed(evt);
+            }
+        });
         qtyJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 qtyJTextFieldKeyPressed(evt);
@@ -145,6 +150,7 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
             org.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
         }
+        JOptionPane.showMessageDialog(null,"Request done successfully");
         }
         
         
@@ -174,6 +180,10 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         evt.consume();
     } 
     }//GEN-LAST:event_qtyJTextFieldKeyTyped
+
+    private void qtyJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtyJTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_qtyJTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;

@@ -80,7 +80,7 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 38, 347, -1));
     }// </editor-fold>//GEN-END:initComponents
     private void populateStatusCombo(){
-        statusCombo.addItem("Waiting for raw material");
+        
         statusCombo.addItem("Request fulfilled");
     }
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

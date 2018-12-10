@@ -129,14 +129,14 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Message", "Receiver", "Status", "Result", "Crop Quantity"
+                "Message", "Receiver", "Status", "Crop Quantity"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -153,10 +153,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
             workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
             workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(217, 206, 578, 165));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(175, 206, 620, 165));
 
         requestTestJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         requestTestJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crop-icon (1).png"))); // NOI18N
@@ -339,7 +338,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
        
        String status = workRequestJTable.getValueAt(selectedRow, 2).toString();
        
-       if(status.equalsIgnoreCase("Request fulfilled")){
+       if(status.equalsIgnoreCase("Request fulfilled") || status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("done")){
 
             
            
@@ -381,7 +380,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
        
    
         //ProduceReview pr = prDirectory.addProduceReview();
-        if(status.equalsIgnoreCase("Request fulfilled")){
+        if(status.equalsIgnoreCase("Request fulfilled") || status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("done") ){
         ProduceReview pr = prDirectory.addProduceReview();
         pr.setCropName(cropName);
         pr.setFarmerName(farmerName);

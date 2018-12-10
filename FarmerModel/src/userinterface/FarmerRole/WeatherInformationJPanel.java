@@ -254,10 +254,11 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(dayAfterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tomDayHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(currentDayHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tomDayHigh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(currentDayHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,7 +292,13 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
 
     private void requestWeatherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestWeatherActionPerformed
         // TODO add your handling code here:
- boolean isMetric = true;
+    if (locationTxt.getText().equals("") || countryTxt.getText().equals(""))
+    {
+        JOptionPane.showMessageDialog(null,"Please enter the city and country name");
+    }
+    else
+    {
+        boolean isMetric = true;
         String city = locationTxt.getText();
         String country  = countryTxt.getText();
         String API_KEY = "a7a00470c6e4c9a97cd76242259a08cf"; /* YOUR OWM API KEY HERE */
@@ -769,6 +776,9 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
                 myTimer.setRepeats(false);
                 myTimer.start();
         }
+    }
+    locationTxt.setText("");
+    countryTxt.setText("");
     }//GEN-LAST:event_requestWeatherActionPerformed
 
     private void rmCoboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmCoboBoxActionPerformed
@@ -813,6 +823,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void populateCombo() {
+        rmCoboBox.addItem("");
         rmCoboBox.addItem("snap peas");
         rmCoboBox.addItem("broccoli");
         rmCoboBox.addItem("cabbage");
@@ -822,10 +833,7 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         rmCoboBox.addItem("lettuce");
         rmCoboBox.addItem("cherry tomato");
         rmCoboBox.addItem("kale");
-        rmCoboBox.addItem("onion");
-        rmCoboBox.addItem("squash");
-        rmCoboBox.addItem("cucumber");
-        rmCoboBox.addItem("pepper");
+    
                 
         
     }

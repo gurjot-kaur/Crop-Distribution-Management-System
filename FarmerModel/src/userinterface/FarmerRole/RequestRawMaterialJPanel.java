@@ -18,6 +18,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -74,7 +75,7 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         requestTestJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        requestTestJButton.setText("Request Test");
+        requestTestJButton.setText("Submit");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestTestJButtonActionPerformed(evt);
@@ -85,6 +86,19 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         jLabel1.setText("Raw Material");
 
         messageJTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        messageJTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                messageJTextFieldActionPerformed(evt);
+            }
+        });
+        messageJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                messageJTextFieldKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                messageJTextFieldKeyTyped(evt);
+            }
+        });
 
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon (2).png"))); // NOI18N
@@ -149,7 +163,7 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(requestTestJButton)
-                .addGap(338, 338, 338))
+                .addGap(374, 374, 374))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,6 +223,7 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
             org.getWorkQueue().getWorkRequestList().add(request);
             userAccount.getWorkQueue().getWorkRequestList().add(request);
         }
+        JOptionPane.showMessageDialog(null, "Request done successfully");
         }
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
@@ -227,6 +242,22 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
     private void rmCoboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmCoboBoxActionPerformed
         
     }//GEN-LAST:event_rmCoboBoxActionPerformed
+
+    private void messageJTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_messageJTextFieldKeyPressed
+         
+    }//GEN-LAST:event_messageJTextFieldKeyPressed
+
+    private void messageJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageJTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_messageJTextFieldActionPerformed
+
+    private void messageJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_messageJTextFieldKeyTyped
+        char vchar = evt.getKeyChar();
+        if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE)){
+        getToolkit().beep();
+        evt.consume();
+    } 
+    }//GEN-LAST:event_messageJTextFieldKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
@@ -263,9 +294,11 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         
        
         
-            rmCoboBox.addItem("Pest A");
-            rmCoboBox.addItem("Pest B");
-            rmCoboBox.addItem("Pest C");
+            rmCoboBox.addItem("biosolids");
+            rmCoboBox.addItem("manures");
+            rmCoboBox.addItem("organic fertilizers");
+            rmCoboBox.addItem("worm tea");
+            rmCoboBox.addItem("vermicompost");
         
         //populateRMCombo();
     }

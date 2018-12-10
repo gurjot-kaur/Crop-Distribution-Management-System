@@ -13,8 +13,10 @@ import Business.Organization.*;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.*;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import static userinterface.ManufacturerWarehouseRole.ManufacturerWarehouseJPanel.flagman;
 
 /**
  *
@@ -45,7 +47,12 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel.setText(enterprise.getName());
         populateSuppRequestTable();
       
-        
+        if (flagman ==true)
+        {
+            sendToFarmerJButton.setEnabled(true);
+            sendToWarehouseJButton.setEnabled(false);
+            flagman= false;
+        }
     }
 
 
@@ -136,6 +143,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
         sendToFarmerJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         sendToFarmerJButton.setText("Send to Producer");
+        sendToFarmerJButton.setEnabled(false);
         sendToFarmerJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendToFarmerJButtonActionPerformed(evt);
@@ -158,19 +166,6 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(sendToFarmerJButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(refreshJButton)
-                            .addGap(80, 80, 80)
-                            .addComponent(sendToWarehouseJButton))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(155, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -180,6 +175,21 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(331, 331, 331))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(sendToFarmerJButton)
+                        .addGap(93, 93, 93)
+                        .addComponent(refreshJButton)
+                        .addGap(80, 80, 80)
+                        .addComponent(sendToWarehouseJButton)))
+                .addContainerGap(155, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,9 +197,9 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(48, 48, 48)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(valueLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(95, 95, 95)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -213,7 +223,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestRMJTable.getSelectedRow();
         
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null,"Please select a row before proceeding");
         }
         
         ProduceRequest request = (ProduceRequest)workRequestRMJTable.getValueAt(selectedRow, 0);
@@ -264,7 +274,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestRMJTable.getSelectedRow();
 
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null,"Please select a row before proceeding");
         }
 
         ProduceRequest request = (ProduceRequest)workRequestRMJTable.getValueAt(selectedRow, 0);

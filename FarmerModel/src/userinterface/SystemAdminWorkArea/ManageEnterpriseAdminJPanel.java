@@ -12,6 +12,9 @@ import Business.Role.*;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -181,6 +184,11 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, 110, -1));
 
         passwordJPasswordField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        passwordJPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordJPasswordFieldActionPerformed(evt);
+            }
+        });
         add(passwordJPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, 230, -1));
 
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -211,12 +219,19 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        
+        if (nameJTextField.getText().equals("") || passwordJPasswordField.getText().equals("")|| usernameJTextField.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Please fill all details");
+        }
+        else
+        {
         Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
         
         String username = usernameJTextField.getText();
+        if(validatePassword(String.valueOf(passwordJPasswordField.getPassword())))
+        {
         String password = String.valueOf(passwordJPasswordField.getPassword());
-        String name = nameJTextField.getText();
+         String name = nameJTextField.getText();
         
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         
@@ -228,7 +243,18 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
            UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ManufacturerAdminRole()); 
         }
         populateTable();
+        }
         
+        
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please reenter a valid password ranging 6 to 14 containing alphanumeric values");
+        }
+        
+        }
+        usernameJTextField.setText("");
+        nameJTextField.setText("");
+        passwordJPasswordField.setText("");
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
@@ -244,6 +270,10 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private void usernameJTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameJTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameJTextFieldActionPerformed
+
+    private void passwordJPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordJPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordJPasswordFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backJButton;
@@ -262,4 +292,17 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton submitJButton;
     private javax.swing.JTextField usernameJTextField;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validatePassword(String text) {
+        boolean flag = false;
+        Pattern p = Pattern.compile("^[a-zA-Z]\\w{5,14}$");    
+        Matcher m = p.matcher(text);        
+        if (!m.matches())
+        {             
+            JOptionPane.showMessageDialog(null, "Password pattern is not valid"); 
+            flag = false;
+        }  
+        else{flag = true;}
+        return flag;   
+    }
 }
