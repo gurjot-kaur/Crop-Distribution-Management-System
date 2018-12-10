@@ -25,7 +25,8 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
-        populateResultCombo();
+        //populateResultCombo();
+        resultTxt.setText("Completed");
     }
 
     /**
@@ -38,21 +39,16 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        resultJTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        resultCombo = new javax.swing.JComboBox();
         submitJButton1 = new javax.swing.JButton();
         backJButton1 = new javax.swing.JButton();
+        resultTxt = new javax.swing.JTextField();
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("Produce Request Result");
 
-        resultJTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Result");
-
-        resultCombo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         submitJButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         submitJButton1.setText("Submit Result");
@@ -76,45 +72,42 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(321, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(327, 327, 327))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backJButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backJButton1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 309, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(327, 327, 327))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(resultTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(408, 408, 408))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap(233, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(resultJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(105, 105, 105)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(resultCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(submitJButton1)
-                                    .addGap(50, 50, 50)))))
-                    .addGap(360, 360, 360)))
+                    .addComponent(jLabel3)
+                    .addGap(162, 162, 162)
+                    .addComponent(submitJButton1)
+                    .addGap(410, 410, 410)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 615, Short.MAX_VALUE)
+                .addGap(222, 222, 222)
+                .addComponent(resultTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
                 .addComponent(backJButton1)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(278, Short.MAX_VALUE)
-                    .addComponent(resultJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(30, 30, 30)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(resultCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addGap(45, 45, 45)
+                    .addContainerGap(339, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addGap(48, 48, 48)
                     .addComponent(submitJButton1)
                     .addGap(358, 358, 358)))
         );
@@ -123,7 +116,9 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
     private void submitJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButton1ActionPerformed
         //request.setTestResult(resultJTextField.getText());
         //request.setStatus("Completed");
-        String status = (String) resultCombo.getSelectedItem();
+        
+       
+       String status = resultTxt.getText();
 
         request.setStatus(status);
     }//GEN-LAST:event_submitJButton1ActionPerformed
@@ -143,13 +138,12 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backJButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JComboBox resultCombo;
-    private javax.swing.JTextField resultJTextField1;
+    private javax.swing.JTextField resultTxt;
     private javax.swing.JButton submitJButton1;
     // End of variables declaration//GEN-END:variables
 
-    private void populateResultCombo() {
+    /*private void populateResultCombo() {
         resultCombo.addItem("Completed");
-        resultCombo.addItem("Send to Farmer");
-    }
+        
+    }*/
 }

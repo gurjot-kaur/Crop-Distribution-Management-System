@@ -10,6 +10,9 @@ import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -170,7 +173,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
         employeeJComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         employeeJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
-        add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 468, 233, -1));
+        add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 468, 310, -1));
 
         backjButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backjButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon (2).png"))); // NOI18N
@@ -193,7 +196,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 407, 233, -1));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 407, 310, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/roles.png"))); // NOI18N
@@ -201,7 +204,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 522, 200, -1));
 
         roleJComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 524, 233, -1));
+        add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 524, 310, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -211,15 +214,33 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
+         if (nameJTextField.getText().equals("")|| passwordJTextField.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Username/Password is empty");
+        }
+        else
+        {
         String userName = nameJTextField.getText();
-        String password = passwordJTextField.getText();
+        if (validatePassword(passwordJTextField.getText()))
+        {
+            
+         String password = (passwordJTextField.getText());
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
         
         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
         
-        popData();
+        popData();   
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Please reenter a valid password ranging 6 to 14 containing alphanumeric values");
+        }
+        }
+        
+        
+        nameJTextField.setText("");
+        passwordJTextField.setText(""); 
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
     private void backjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backjButton1ActionPerformed
@@ -258,4 +279,17 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox roleJComboBox;
     private javax.swing.JTable userJTable;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validatePassword(String text) {
+        boolean flag = false;
+        Pattern p = Pattern.compile("^[a-zA-Z]\\w{5,14}$");    
+        Matcher m = p.matcher(text);        
+        if (!m.matches())
+        {             
+            JOptionPane.showMessageDialog(null, "Password pattern is not valid"); 
+            flag = false;
+        }  
+        else{flag = true;}
+        return flag;   
+    }
 }

@@ -83,6 +83,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         {  
             sendToFarmerJButton.setEnabled(true);
             sendToWarehouseJButton.setEnabled(false);
+            flag = false;
         }
         
 
@@ -374,17 +375,14 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(sendToFarmerJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(115, 115, 115)
                                     .addComponent(refreshJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(95, 95, 95)
                                     .addComponent(sendToWarehouseJButton))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 835, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(372, 372, 372)))
+                                .addComponent(jLabel1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -392,8 +390,11 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGap(334, 334, 334))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(351, 351, 351)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(261, Short.MAX_VALUE))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 969, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,7 +470,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestJTable1.getSelectedRow();
         
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null,"Please select a row before proceeding");
         }
         
         ProduceRequest request = (ProduceRequest)workRequestJTable1.getValueAt(selectedRow, 0);
@@ -495,7 +496,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
       int selectedRow = workRequestJTable1.getSelectedRow();
         
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null,"Please select a row before proceeding");
         }
         
         ProduceRequest request = (ProduceRequest)workRequestJTable1.getValueAt(selectedRow, 0);
@@ -558,7 +559,7 @@ public class StaffWorkAreaJPanel extends javax.swing.JPanel {
          int selectedRow = workRequestJTable1.getSelectedRow();
         
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null,"Please select a row before proceeding");
         }
         
         ProduceRequest request = (ProduceRequest)workRequestJTable1.getValueAt(selectedRow, 0);

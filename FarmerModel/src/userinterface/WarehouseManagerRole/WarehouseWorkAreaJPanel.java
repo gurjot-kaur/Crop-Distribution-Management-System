@@ -246,7 +246,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestJTable.getSelectedRow();
         
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null,"Please select a row before proceeding");
         }
         
             String cropName = workRequestJTable.getModel().getValueAt(selectedRow, 0).toString();
@@ -328,7 +328,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestJTable.getSelectedRow();
         
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null,"Please select a row before proceeding");
         }
         
         ProduceRequest request = (ProduceRequest)workRequestJTable.getValueAt(selectedRow, 0);

@@ -354,7 +354,7 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestRMJTable.getSelectedRow();
 
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null,"Please select a row before proceeding");
         }
 
         WorkRequest request = (WorkRequest)workRequestRMJTable.getValueAt(selectedRow, 0);
@@ -427,6 +427,8 @@ public class ManufacturerProducerJPanel extends javax.swing.JPanel {
             {
                 JOptionPane.showMessageDialog(null,"Please enter a number in Quantity  and price");
             }
+        quantityTextField.setText("");
+        rmNameTextField.setText("");
     }//GEN-LAST:event_addCropButtonActionPerformed
 
     private void quantityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityTextFieldActionPerformed

@@ -9,6 +9,7 @@ import userinterface.WarehouseManagerRole.*;
 import Business.WorkQueue.ProduceRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -121,8 +122,15 @@ public class ProcessRequestRMJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
+        if (resultJTextField.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a response");
+        }
+        else{
         request.setTestResult(resultJTextField.getText());
         request.setStatus("Completed");
+        }
+       resultJTextField.setText("");
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

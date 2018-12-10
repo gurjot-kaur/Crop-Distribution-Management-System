@@ -30,7 +30,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
     private ManufacturerEnterprise enterprise;
     private UserAccount userAccount;
     private RawMaterialDirectory rmDirectory;
-    public static boolean flag = false;
+    public static boolean flagman = false;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
@@ -295,7 +295,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestRMJTable.getSelectedRow();
 
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null,"Please select a row before proceeding");
         }
         String rawMaterialName = workRequestRMJTable.getModel().getValueAt(selectedRow, 0).toString();
         int rawMaterialQty = Integer.parseInt((String.valueOf(workRequestRMJTable.getModel().getValueAt(selectedRow, 4))));
@@ -318,6 +318,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
          {
              JOptionPane.showMessageDialog(null,"Cannot assign this job, please go producer");
              processJButton.setEnabled(false);
+             flagman = true;
          }
          else{
          if (tempName.equals(rawMaterialName))
@@ -352,7 +353,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
                     {
                         rawMaterial.setMaterialQuantity(0);
                         request.setRawMaterialQty(rawMaterialQty - rawMaterialQntyProduce);
-                        flag = true;
+                        flagman = true;
                     }
                     populateSuppRequestTable();
                     populateRM();
@@ -363,7 +364,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
         else 
         {
             JOptionPane.showMessageDialog(null,"Cannot assign this job, please go farmer");
-            flag = true;
+            flagman = true;
         }
          /*if (tempName.equals(rawMaterialName) && rawMaterialQty <= rawMaterialQntyProduce)
         {

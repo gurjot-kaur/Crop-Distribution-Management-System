@@ -19,6 +19,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ProduceRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.event.KeyEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -86,7 +87,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(WorkRequest request : farmerOrganization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[5];
+            Object[] row = new Object[8];
             row[0] = request;
             row[1] = request.getSender().getEmployee().getName();
             row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
@@ -104,7 +105,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for(Produce produce : produceDirectory.getProduceList()){
-            Object[] row = new Object[4];
+            Object[] row = new Object[8];
             row[0] = produce;
             row[1] = produce.getCropQuantity();
             row[2] = produce.getCropPrice();
@@ -119,7 +120,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         
         model.setRowCount(0);
         for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[5];
+            Object[] row = new Object[8];
             row[0] = request.getMessage();
             row[1] = request.getSender();
             row[2] = request.getReceiver();
@@ -262,6 +263,11 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         cropNameTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         quantityTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        quantityTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                quantityTextFieldKeyTyped(evt);
+            }
+        });
 
         priceTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -530,7 +536,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(weatherButton))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(cropNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -596,7 +602,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
        // String selectedRM = (String)rmComboBox.getSelectedItem();
 
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null, "Please select a row");
         }
         
         
@@ -635,9 +641,10 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestJTable.getSelectedRow();
         
         if (selectedRow < 0){
-            return;
+            JOptionPane.showMessageDialog(null, "Please select a row");
         }
-        
+        else
+        {
         ProduceRequest request = (ProduceRequest)workRequestJTable.getValueAt(selectedRow, 0);
      
         request.setStatus("Processing");
@@ -646,6 +653,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         userProcessContainer.add("ProcessProduceJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
         
     }//GEN-LAST:event_processJButtonActionPerformed
 
@@ -673,7 +681,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         try 
         {
         if(cropNameTextField.getText().equals("") || quantityTextField.getText().equals("") || priceTextField.getText().equals(""))
-            JOptionPane.showMessageDialog(null,"Please fill all the details");
+            JOptionPane.showMessageDialog(null,"Please fill all the details before proceeding");
          else if (checkIfCropExists(cropNameTextField.getText()))
         {
             Produce produce =  produceDirectory.addProduce();
@@ -712,6 +720,10 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             {
                 JOptionPane.showMessageDialog(null,"Please enter a number in Quantity  and price");
             }
+        cropNameTextField.setText("");
+        quantityTextField.setText("");
+        priceTextField.setText("");
+        
     }//GEN-LAST:event_addCropButtonActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
@@ -721,7 +733,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
         if (selectedRow < 0){
             JOptionPane.showMessageDialog(null, "Please select a row");
-            return;
+            
         }
 
         String status = requestRMjTable.getValueAt(selectedRow, 3).toString();
@@ -729,7 +741,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         String supplierName = requestRMjTable.getValueAt(selectedRow, 2).toString();
 
         //ProduceReview pr = prDirectory.addProduceReview();
-        if(status.equalsIgnoreCase("done")){
+        if(status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("done")  || status.equalsIgnoreCase("Request fulfilled")){
             RawMaterialReview rmr = rmrDirectory.addRawMaterialReview();
             rmr.setSupplyName(supplyName);
            rmr.setSupplierName(supplierName);
@@ -794,12 +806,12 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
 
         if (selectedRow < 0){
             JOptionPane.showMessageDialog(null, "Please select a row");
-            return;
+            
         }
        
        String status = requestRMjTable.getValueAt(selectedRow, 3).toString();
        
-       if(status.equalsIgnoreCase("done")){
+       if(status.equalsIgnoreCase("Request fulfilled") || status.equalsIgnoreCase("Completed") || status.equalsIgnoreCase("done")){
 
             
            
@@ -823,6 +835,14 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
        }
         
     }//GEN-LAST:event_reviewSupplyButtonActionPerformed
+
+    private void quantityTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextFieldKeyTyped
+        char vchar = evt.getKeyChar();
+        if(!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACK_SPACE) || (vchar == KeyEvent.VK_DELETE)){
+        getToolkit().beep();
+        evt.consume();
+    } 
+    }//GEN-LAST:event_quantityTextFieldKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
