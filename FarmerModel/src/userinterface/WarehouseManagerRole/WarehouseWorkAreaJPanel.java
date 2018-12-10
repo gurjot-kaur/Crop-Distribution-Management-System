@@ -157,6 +157,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
         });
         add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 379, 170, -1));
 
+        produceTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         produceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

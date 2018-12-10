@@ -104,7 +104,7 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
                 messageJTextFieldKeyTyped(evt);
             }
         });
-        add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 334, 173, -1));
+        add(messageJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 334, 210, -1));
 
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon (2).png"))); // NOI18N
@@ -117,7 +117,7 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 741, -1, -1));
 
         valueLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(723, 261, 130, 30));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 180, 250, 30));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Enterprise :");
@@ -129,7 +129,7 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
                 rmCoboBoxActionPerformed(evt);
             }
         });
-        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 263, 173, -1));
+        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 263, 210, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -179,6 +179,8 @@ public class RequestRawMaterialJPanel extends javax.swing.JPanel {
         }
         JOptionPane.showMessageDialog(null, "Request done successfully");
         }
+        
+        messageJTextField.setText("");
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed

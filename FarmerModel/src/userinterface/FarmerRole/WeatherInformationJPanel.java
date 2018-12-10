@@ -127,10 +127,10 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         add(requestWeather, new org.netbeans.lib.awtextra.AbsoluteConstraints(701, 465, -1, -1));
 
         locationTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add(locationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 466, 110, -1));
+        add(locationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, 110, -1));
 
         countryTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add(countryTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 466, 110, -1));
+        add(countryTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, 110, -1));
 
         rmCoboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rmCoboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -138,14 +138,15 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
                 rmCoboBoxActionPerformed(evt);
             }
         });
-        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 465, 127, 30));
+        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 170, 30));
 
         txtNotes.setColumns(20);
+        txtNotes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNotes.setRows(5);
         txtNotes.setEnabled(false);
         jScrollPane1.setViewportView(txtNotes);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 526, 640, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 740, 190));
 
         back.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon (2).png"))); // NOI18N
@@ -180,19 +181,20 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Crop");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 90, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, 90, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel11.setText("City");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 110, -1));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 110, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Country");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 110, -1));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 110, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Weather-icon (1).png"))); // NOI18N
         jLabel13.setText("Weather Updates ");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 33, -1, -1));
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(362, 12, 330, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void currentTempTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentTempTextActionPerformed

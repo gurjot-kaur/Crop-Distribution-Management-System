@@ -90,7 +90,7 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 728, -1, -1));
 
         valueLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 195, 229, 30));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, 229, 30));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Enterprise :");
@@ -152,8 +152,9 @@ public class RequestProduceJPanel extends javax.swing.JPanel {
         }
         JOptionPane.showMessageDialog(null,"Request done successfully");
         }
-        
-        
+        messageJTextField.setText("");
+        qtyJTextField.setText("");
+       
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
