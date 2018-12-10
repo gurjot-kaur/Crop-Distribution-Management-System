@@ -41,7 +41,6 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
 
         submitJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        resultJTextField = new javax.swing.JTextField();
         backJButton = new javax.swing.JButton();
         statusCombo = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
@@ -55,29 +54,30 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
                 submitJButtonActionPerformed(evt);
             }
         });
-        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 556, -1, -1));
+        add(submitJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Produce Result");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 203, -1, -1));
-        add(resultJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 260, 210, 30));
 
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon (2).png"))); // NOI18N
         backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 754, -1, -1));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, -1, -1));
 
         statusCombo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add(statusCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 200, 210, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crop-icon.png"))); // NOI18N
         jLabel2.setText("Produce Results");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 38, 347, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 347, -1));
     }// </editor-fold>//GEN-END:initComponents
     private void populateStatusCombo(){
         
@@ -95,7 +95,7 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        request.setTestResult(resultJTextField.getText());
+        //request.setTestResult(resultJTextField.getText());
         //request.setStatus("Completed");
         String status = (String) statusCombo.getSelectedItem();
         request.setStatus(status);
@@ -105,7 +105,6 @@ public class ProcessProduceRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField resultJTextField;
     private javax.swing.JComboBox statusCombo;
     private javax.swing.JButton submitJButton;
     // End of variables declaration//GEN-END:variables

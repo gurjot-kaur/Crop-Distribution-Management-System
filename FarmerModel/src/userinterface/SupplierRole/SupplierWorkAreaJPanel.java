@@ -84,7 +84,6 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
-        refreshJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         workRequestRMJTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -96,14 +95,6 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel.setText("EnterPrise :");
 
         valueLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        refreshJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        refreshJButton.setText("Refresh");
-        refreshJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshJButtonActionPerformed(evt);
-            }
-        });
 
         workRequestRMJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestRMJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -167,39 +158,38 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 267, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(61, 61, 61)
                         .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(331, 331, 331))
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(sendToFarmerJButton)
-                        .addGap(93, 93, 93)
-                        .addComponent(refreshJButton)
-                        .addGap(80, 80, 80)
-                        .addComponent(sendToWarehouseJButton)))
+                .addGap(130, 130, 130)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(sendToFarmerJButton)
+                            .addGap(264, 264, 264)
+                            .addComponent(sendToWarehouseJButton))))
                 .addContainerGap(155, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(95, 95, 95)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,16 +197,10 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sendToFarmerJButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(sendToWarehouseJButton)
-                        .addComponent(refreshJButton)))
+                    .addComponent(sendToWarehouseJButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(325, 325, 325))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateSuppRequestTable();
-    }//GEN-LAST:event_refreshJButtonActionPerformed
 
     private void sendToFarmerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToFarmerJButtonActionPerformed
         // TODO add your handling code here:
@@ -300,7 +284,6 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JButton refreshJButton;
     private javax.swing.JButton sendToFarmerJButton;
     private javax.swing.JButton sendToWarehouseJButton;
     private javax.swing.JLabel valueLabel;

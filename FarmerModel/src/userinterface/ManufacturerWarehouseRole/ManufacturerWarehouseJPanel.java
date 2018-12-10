@@ -82,7 +82,6 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
 
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
-        refreshJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         workRequestRMJTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -93,18 +92,14 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Enterprise :");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 132, 127, 30));
 
         valueLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        refreshJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        refreshJButton.setText("Refresh");
-        refreshJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshJButtonActionPerformed(evt);
-            }
-        });
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 132, 158, 26));
 
         workRequestRMJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestRMJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -139,8 +134,12 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
             workRequestRMJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 267, 683, 96));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Plants-Hand-Planting-icon (2).png"))); // NOI18N
         jLabel1.setText("Raw Material Requests");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 238, -1, -1));
 
         processJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         processJButton.setText("Process");
@@ -149,6 +148,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 389, 180, -1));
 
         assignJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         assignJButton.setText("Assign to me");
@@ -157,6 +157,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
                 assignJButtonActionPerformed(evt);
             }
         });
+        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 389, 180, -1));
 
         rmJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rmJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -182,69 +183,19 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
             rmJTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 515, 683, 200));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Plants-Hand-Planting-icon (2).png"))); // NOI18N
         jLabel2.setText("Raw Material Inventory");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 486, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/City-Warehouse-icon.png"))); // NOI18N
         jLabel3.setText("Manufacturer Warehouse");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(assignJButton)
-                            .addGap(189, 189, 189)
-                            .addComponent(refreshJButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                            .addComponent(processJButton))
-                        .addComponent(jScrollPane2)
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(337, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(340, 340, 340))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(processJButton)
-                    .addComponent(refreshJButton)
-                    .addComponent(assignJButton))
-                .addGap(90, 90, 90)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 380, 61));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateSuppRequestTable();
-    }//GEN-LAST:event_refreshJButtonActionPerformed
 
     private void sendToSupplierJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToSupplierJButtonActionPerformed
         int selectedRow = workRequestRMJTable.getSelectedRow();
@@ -393,7 +344,6 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton processJButton;
-    private javax.swing.JButton refreshJButton;
     private javax.swing.JTable rmJTable;
     private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workRequestRMJTable;

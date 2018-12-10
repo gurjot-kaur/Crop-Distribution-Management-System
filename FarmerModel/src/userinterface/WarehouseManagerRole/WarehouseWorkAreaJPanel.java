@@ -96,12 +96,13 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
         workRequestJTable = new javax.swing.JTable();
         assignJButton = new javax.swing.JButton();
         processJButton = new javax.swing.JButton();
-        refreshJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         produceTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         workRequestJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -136,6 +137,8 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 217, 726, 122));
+
         assignJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +146,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
                 assignJButtonActionPerformed(evt);
             }
         });
+        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 379, 230, -1));
 
         processJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         processJButton.setText("Process");
@@ -151,14 +155,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-
-        refreshJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        refreshJButton.setText("Refresh");
-        refreshJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshJButtonActionPerformed(evt);
-            }
-        });
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(706, 379, 170, -1));
 
         produceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -184,61 +181,23 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
             produceTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 558, 726, 170));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/City-Warehouse-icon.png"))); // NOI18N
         jLabel1.setText("Warehouse Manager");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 27, 390, 85));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crop-icon (1).png"))); // NOI18N
         jLabel2.setText("Produce Request");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 178, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crop-icon (1).png"))); // NOI18N
         jLabel3.setText("Produce Inventory");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(284, 284, 284)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane2)
-                                .addComponent(jScrollPane1)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(assignJButton)
-                                    .addGap(196, 196, 196)
-                                    .addComponent(refreshJButton)
-                                    .addGap(213, 213, 213)
-                                    .addComponent(processJButton)))
-                            .addComponent(jLabel3))))
-                .addGap(174, 174, 174))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(refreshJButton)
-                    .addComponent(assignJButton)
-                    .addComponent(processJButton))
-                .addGap(109, 109, 109)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 519, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -316,11 +275,7 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
             
             }
             }
-       /* else if (cropQntyProduce == 0)
-        {
-            JOptionPane.showMessageDialog(null,"Cannot assign this job, please go farmer");
-            flag = true;
-        }*/
+       
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
@@ -342,10 +297,6 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_processJButtonActionPerformed
 
-    private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-        populateTable();
-    }//GEN-LAST:event_refreshJButtonActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JLabel jLabel1;
@@ -355,7 +306,6 @@ public class WarehouseWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton processJButton;
     private javax.swing.JTable produceTable;
-    private javax.swing.JButton refreshJButton;
     private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }
