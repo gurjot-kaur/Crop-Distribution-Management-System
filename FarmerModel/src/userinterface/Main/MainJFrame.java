@@ -43,7 +43,7 @@ public class MainJFrame extends javax.swing.JFrame {
         this.rawMaterialReviewDirectory = system.getRmReviewDirectory();
         System.out.println(this.produceReviewDirectory);
         System.out.println(this.rawMaterialReviewDirectory);
-        this.setSize(1200, 800);
+        this.setSize(1300, 1000);
     }
 
     /**
@@ -137,6 +137,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(loginPanel);
 
+        container.setBackground(new java.awt.Color(255, 204, 153));
         container.setLayout(new java.awt.CardLayout());
         splitPane.setRightComponent(container);
 

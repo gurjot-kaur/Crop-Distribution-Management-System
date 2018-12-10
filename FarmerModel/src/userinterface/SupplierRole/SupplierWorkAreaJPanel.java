@@ -91,10 +91,14 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         sendToWarehouseJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("EnterPrise :");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 127, 30));
 
         valueLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 160, 208, 30));
 
         workRequestRMJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestRMJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -129,8 +133,11 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
             workRequestRMJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 336, 709, 96));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Raw Material Request");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 307, -1, -1));
 
         sendToFarmerJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         sendToFarmerJButton.setText("Send to Producer");
@@ -140,6 +147,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
                 sendToFarmerJButtonActionPerformed(evt);
             }
         });
+        add(sendToFarmerJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 467, -1, -1));
 
         sendToWarehouseJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         sendToWarehouseJButton.setText("Send to Warehouse Manager");
@@ -148,56 +156,12 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
                 sendToWarehouseJButtonActionPerformed(evt);
             }
         });
+        add(sendToWarehouseJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 467, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Supplier");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 250, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)))
-                .addGap(331, 331, 331))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(sendToFarmerJButton)
-                            .addGap(264, 264, 264)
-                            .addComponent(sendToWarehouseJButton))))
-                .addContainerGap(155, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(117, 117, 117)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sendToFarmerJButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(sendToWarehouseJButton, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(325, 325, 325))
-        );
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 48, 353, 63));
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendToFarmerJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToFarmerJButtonActionPerformed

@@ -91,6 +91,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
         rmJTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -195,6 +196,10 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/City-Warehouse-icon.png"))); // NOI18N
         jLabel3.setText("Manufacturer Warehouse");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 380, 61));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/max-centra-warehouse-opt1-1920x1080.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-810, -80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendToSupplierJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToSupplierJButtonActionPerformed
@@ -341,6 +346,7 @@ public class ManufacturerWarehouseJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton processJButton;

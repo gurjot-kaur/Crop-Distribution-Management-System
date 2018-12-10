@@ -181,6 +181,9 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         workRequestJTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -215,6 +218,8 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             workRequestJTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 137, 619, 96));
+
         assignJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         assignJButton.setText("Assign to me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -222,6 +227,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 assignJButtonActionPerformed(evt);
             }
         });
+        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 137, 229, -1));
 
         processJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         processJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/process-accept-icon.png"))); // NOI18N
@@ -231,6 +237,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 192, 229, 32));
 
         produceTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         produceTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -243,19 +250,25 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(produceTable);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 293, 619, 98));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/crop-icon (1).png"))); // NOI18N
         jLabel1.setText("Crop Name");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 404, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/price-comparison-icon.png"))); // NOI18N
         jLabel2.setText("Quantity");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 451, 124, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Ecommerce-Price-Tag-icon.png"))); // NOI18N
         jLabel3.setText("Price");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 498, 124, -1));
 
         cropNameTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(cropNameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 404, 214, -1));
 
         quantityTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         quantityTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -263,8 +276,10 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 quantityTextFieldKeyTyped(evt);
             }
         });
+        add(quantityTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 453, 214, -1));
 
         priceTextField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(priceTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 500, 214, -1));
 
         requestRMjTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         requestRMjTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -292,6 +307,8 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
             requestRMjTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 566, 693, 90));
+
         requestTestJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         requestTestJButton.setText("Request Raw Material");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -299,6 +316,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 requestTestJButtonActionPerformed(evt);
             }
         });
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 566, 229, -1));
 
         weatherButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         weatherButton.setText("Weather Information");
@@ -307,6 +325,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 weatherButtonActionPerformed(evt);
             }
         });
+        add(weatherButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 332, 229, -1));
 
         addCropButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         addCropButton.setText("Add Produce");
@@ -315,31 +334,40 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 addCropButtonActionPerformed(evt);
             }
         });
+        add(addCropButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 438, 229, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Review Supply");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 684, -1, 32));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Supply Quality");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 740, -1, -1));
 
         qexRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qexRadioButton.setText("Excellent");
         qexRadioButton.setEnabled(false);
+        add(qexRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 783, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Supply Shelf Life");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 787, -1, -1));
 
         sleRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         sleRadioButton.setText("Excellent");
         sleRadioButton.setEnabled(false);
+        add(sleRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 734, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Additional Reviews");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 840, -1, -1));
 
         additionalreviewsTextArea.setColumns(20);
         additionalreviewsTextArea.setRows(5);
         additionalreviewsTextArea.setEnabled(false);
         jScrollPane5.setViewportView(additionalreviewsTextArea);
+
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 832, 530, -1));
 
         submitButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         submitButton.setText("Submit Review");
@@ -348,10 +376,12 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 submitButtonActionPerformed(evt);
             }
         });
+        add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(764, 832, 232, -1));
 
         svgRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         svgRadioButton.setText("Very Good");
         svgRadioButton.setEnabled(false);
+        add(svgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 783, -1, -1));
 
         qvgRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qvgRadioButton.setText("Very Good");
@@ -361,30 +391,37 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 qvgRadioButtonActionPerformed(evt);
             }
         });
+        add(qvgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 734, -1, -1));
 
         qgRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qgRadioButton.setText("Good");
         qgRadioButton.setEnabled(false);
+        add(qgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 734, -1, -1));
 
         sgRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         sgRadioButton.setText("Good");
         sgRadioButton.setEnabled(false);
+        add(sgRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 783, -1, -1));
 
         saRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         saRadioButton.setText("Average");
         saRadioButton.setEnabled(false);
+        add(saRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(572, 783, -1, -1));
 
         qaRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qaRadioButton.setText("Average");
         qaRadioButton.setEnabled(false);
+        add(qaRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(572, 734, -1, -1));
 
         qpRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         qpRadioButton.setText("Poor");
         qpRadioButton.setEnabled(false);
+        add(qpRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 734, -1, -1));
 
         spRadioButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         spRadioButton.setText("Poor");
         spRadioButton.setEnabled(false);
+        add(spRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(681, 783, -1, -1));
 
         reviewSupplyButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         reviewSupplyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/review icon.png"))); // NOI18N
@@ -394,194 +431,35 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
                 reviewSupplyButtonActionPerformed(evt);
             }
         });
+        add(reviewSupplyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 625, -1, 31));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Farmer-icon.png"))); // NOI18N
         jLabel8.setText("Farmer");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 35, 300, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Weather-icon.png"))); // NOI18N
         jLabel9.setText("Weather Updates");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 293, 229, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Raw Material Details");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 537, 162, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel11.setText("Produce Details");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 264, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Produce Transaction Details");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 108, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane5))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(qexRadioButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(svgRadioButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(sgRadioButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(saRadioButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(spRadioButton)))
-                                .addGap(18, 18, 18)
-                                .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(281, 281, 281)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(175, 175, 175)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(sleRadioButton, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(115, 115, 115)
-                                        .addComponent(qvgRadioButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(qgRadioButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(qaRadioButton)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(qpRadioButton))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(processJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                    .addComponent(assignJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(quantityTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                            .addComponent(cropNameTextField)
-                            .addComponent(priceTextField))
-                        .addGap(159, 159, 159)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(requestTestJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(reviewSupplyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addCropButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(weatherButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(32, 32, 32))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel8)
-                .addGap(9, 9, 9)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(assignJButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(processJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(weatherButton))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(cropNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(addCropButton)))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(requestTestJButton)
-                        .addGap(28, 28, 28)
-                        .addComponent(reviewSupplyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(sleRadioButton)
-                            .addComponent(qvgRadioButton)
-                            .addComponent(qgRadioButton)
-                            .addComponent(qaRadioButton)
-                            .addComponent(qpRadioButton)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(qexRadioButton)
-                    .addComponent(svgRadioButton)
-                    .addComponent(sgRadioButton)
-                    .addComponent(saRadioButton)
-                    .addComponent(spRadioButton)
-                    .addComponent(jLabel6))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(submitButton)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/office farms.jpg"))); // NOI18N
+        jLabel13.setText("jLabel13");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -130, 1980, 1350));
     }// </editor-fold>//GEN-END:initComponents
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
         int selectedRow = workRequestJTable.getSelectedRow();
@@ -836,6 +714,7 @@ public class FarmerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
