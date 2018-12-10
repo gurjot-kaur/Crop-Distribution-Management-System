@@ -98,7 +98,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         workRequestJTable = new javax.swing.JTable();
         requestTestJButton = new javax.swing.JButton();
-        refreshTestJButton = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -165,16 +164,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
                 requestTestJButtonActionPerformed(evt);
             }
         });
-        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 378, 196, -1));
-
-        refreshTestJButton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        refreshTestJButton.setText("Refresh");
-        refreshTestJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshTestJButtonActionPerformed(evt);
-            }
-        });
-        add(refreshTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(813, 276, 161, -1));
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 196, -1));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         enterpriseLabel.setText("Enterprise :");
@@ -317,12 +307,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 
-    private void refreshTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTestJButtonActionPerformed
-
-        populateRequestTable();
-        
-    }//GEN-LAST:event_refreshTestJButtonActionPerformed
-
     private void qvgRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qvgRadioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_qvgRadioButtonActionPerformed
@@ -452,7 +436,6 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton qgRadioButton;
     private javax.swing.JRadioButton qpRadioButton;
     private javax.swing.JRadioButton qvgRadioButton;
-    private javax.swing.JButton refreshTestJButton;
     private javax.swing.JButton requestTestJButton;
     private javax.swing.JButton reviewButton;
     private javax.swing.JRadioButton saRadioButton;
