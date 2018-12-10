@@ -68,6 +68,7 @@ public class ProcessRequestRMJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Plants-Hand-Planting-icon.png"))); // NOI18N
         jLabel2.setText("Raw Material Request ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

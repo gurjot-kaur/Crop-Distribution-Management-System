@@ -8,6 +8,7 @@ package userinterface.FarmerRole;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
@@ -85,18 +86,25 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Today");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 95, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Tomorrow");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 95, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Day After");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(717, 89, -1, -1));
 
         dayAfterTempText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(dayAfterTempText, new org.netbeans.lib.awtextra.AbsoluteConstraints(717, 129, 110, -1));
 
         nextDayTempText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(nextDayTempText, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 135, 100, -1));
 
         currentTempText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         currentTempText.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +112,10 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
                 currentTempTextActionPerformed(evt);
             }
         });
+        add(currentTempText, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 135, 90, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 227, 170, 159));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 227, 160, 150));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(717, 227, 170, 150));
 
         requestWeather.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         requestWeather.setText("Request Weather");
@@ -112,10 +124,13 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
                 requestWeatherActionPerformed(evt);
             }
         });
+        add(requestWeather, new org.netbeans.lib.awtextra.AbsoluteConstraints(701, 465, -1, -1));
 
         locationTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(locationTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(378, 466, 110, -1));
 
         countryTxt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(countryTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(524, 466, 110, -1));
 
         rmCoboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rmCoboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -123,11 +138,14 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
                 rmCoboBoxActionPerformed(evt);
             }
         });
+        add(rmCoboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 465, 127, 30));
 
         txtNotes.setColumns(20);
         txtNotes.setRows(5);
         txtNotes.setEnabled(false);
         jScrollPane1.setViewportView(txtNotes);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 526, 640, -1));
 
         back.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back-icon (2).png"))); // NOI18N
@@ -137,153 +155,44 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
                 backActionPerformed(evt);
             }
         });
+        add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 728, -1, -1));
 
         currentDayHigh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(currentDayHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 181, 90, -1));
 
         tomDayHigh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(tomDayHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 181, 100, -1));
 
         dayAfterHigh.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        add(dayAfterHigh, new org.netbeans.lib.awtextra.AbsoluteConstraints(717, 181, 110, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Minimum");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 141, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Maximum");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 184, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Suggestions");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 526, 127, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Crop");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 90, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel11.setText("City");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, 110, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Country");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 440, 110, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel13.setText("Weather Updates ");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(back))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(rmCoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(locationTxt)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                                        .addGap(36, 36, 36)
-                                        .addComponent(countryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(nextDayTempText, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(tomDayHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(41, 41, 41)))
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel5))))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(83, 83, 83)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(dayAfterTempText, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(dayAfterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(67, 67, 67)
-                                        .addComponent(requestWeather))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(322, 322, 322)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(currentTempText, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(currentDayHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(428, 428, 428)
-                        .addComponent(jLabel13)))
-                .addContainerGap(107, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(dayAfterTempText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(currentTempText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(nextDayTempText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dayAfterHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tomDayHigh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(currentDayHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(requestWeather)
-                    .addComponent(countryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(locationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rmCoboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(back)
-                .addContainerGap())
-        );
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(428, 33, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void currentTempTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentTempTextActionPerformed
@@ -786,10 +695,13 @@ public class WeatherInformationJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_rmCoboBoxActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-       userProcessContainer.remove(this);
+         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         FarmerWorkAreaJPanel cwjp = (FarmerWorkAreaJPanel) component;
+        cwjp.populateRequestRMTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backActionPerformed
 
 

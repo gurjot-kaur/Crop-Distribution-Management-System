@@ -79,9 +79,9 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
             row[0] = request.getMessage();
             row[1] = request.getReceiver();
             row[2] = request.getStatus();
-            String result = ((ProduceRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
-            row[4] = request.getCropQty();
+            //String result = ((ProduceRequest) request).getTestResult();
+           
+            row[3] = request.getCropQty();
             model.addRow(row);
         }
     }
